@@ -9,5 +9,6 @@ export interface IBuildPaths {
 export interface IBuildOptions {
     mode: BuildMode,
     paths: IBuildPaths,
-    isDev: boolean
+    isDev: boolean,
+    port: number
 }
