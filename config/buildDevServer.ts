@@ -7,6 +7,7 @@ export function buildDevServer(options: IBuildOptions): DevServerConfiguration {
     return {
         static: paths.build,
         open: true,
-        port
+        port,
+        historyApiFallback: true,
     }
 }
