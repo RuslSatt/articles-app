@@ -1,7 +1,9 @@
 import './index.scss'
 import {Link, Route, Routes} from "react-router-dom";
-import MainPage from "./components/MainPage/MainPage";
-import AboutPage from "./components/AboutPage/AboutPage";
+import {lazy, Suspense} from "react";
+
+const MainPage = lazy(() => import("./components/MainPage/MainPage"));
+const AboutPage = lazy(() => import("./components/AboutPage/AboutPage"));
 
 const App = () => {
     return (
@@ -12,10 +14,13 @@ const App = () => {
                 <Link to='/about'>About</Link>
             </ul>
 
-            <Routes>
-                <Route path="/" element={<MainPage />} />
-                <Route path="/about" element={<AboutPage />} />
-            </Routes>
+            <Suspense fallback={'loading'}>
+                <Routes>
+                    <Route path="/" element={<MainPage />} />
+                    <Route path="/about" element={<AboutPage />} />
+                </Routes>
+            </Suspense>
+
         </div>
     );
 };
