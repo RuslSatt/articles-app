@@ -1,4 +1,4 @@
-import './index.scss'
+import './styles/index.scss'
 import {Link, Route, Routes} from "react-router-dom";
 import {lazy, Suspense} from "react";
 
@@ -7,8 +7,7 @@ const AboutPage = lazy(() => import("./components/AboutPage/AboutPage"));
 
 const App = () => {
     return (
-        <div className="App">
-
+        <div className="app">
             <ul style={{display: 'flex', flexWrap: 'wrap', gap: 10}}>
                 <Link to='/'>Main</Link>
                 <Link to='/about'>About</Link>
