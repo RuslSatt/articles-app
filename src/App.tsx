@@ -1,13 +1,20 @@
 import './styles/index.scss'
 import {Link, Route, Routes} from "react-router-dom";
 import {lazy, Suspense} from "react";
+import {useTheme} from "./theme/useTheme";
 
 const MainPage = lazy(() => import("./components/MainPage/MainPage"));
 const AboutPage = lazy(() => import("./components/AboutPage/AboutPage"));
 
 const App = () => {
+    const {theme, toggleTheme} = useTheme();
+
     return (
-        <div className="app">
+        <div className={`app ${theme}`}>
+            <button onClick={toggleTheme}>
+                Toggle Theme
+            </button>
+
             <ul style={{display: 'flex', flexWrap: 'wrap', gap: 10}}>
                 <Link to='/'>Main</Link>
                 <Link to='/about'>About</Link>
