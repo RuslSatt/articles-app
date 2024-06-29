@@ -1,9 +1,9 @@
 import './styles/index.scss'
-import {Link, Route, Routes} from "react-router-dom";
-import {lazy, Suspense} from "react";
+import {lazy} from "react";
 import {useTheme} from "@/app/providers/theme";
 import {classNames} from "@/shared/lib/classNames/classNames";
 import {AppRouter} from "./providers/router";
+import {Navbar} from "@/widgets/Navbar";
 
 const MainPage = lazy(() => import("@/pages/MainPage"));
 const AboutPage = lazy(() => import("@/pages/AboutPage"));
@@ -13,15 +13,10 @@ const App = () => {
 
     return (
         <div className={classNames('app', [theme])}>
+            <Navbar />
             <button onClick={toggleTheme}>
                 Toggle Theme
             </button>
-
-            <ul style={{display: 'flex', flexWrap: 'wrap', gap: 10}}>
-                <Link to='/'>Main</Link>
-                <Link to='/about'>About</Link>
-            </ul>
-
             <AppRouter />
         </div>
     );
