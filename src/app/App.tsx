@@ -3,6 +3,7 @@ import {Link, Route, Routes} from "react-router-dom";
 import {lazy, Suspense} from "react";
 import {useTheme} from "@/app/providers/theme";
 import {classNames} from "@/shared/lib/classNames/classNames";
+import {AppRouter} from "./providers/router";
 
 const MainPage = lazy(() => import("@/pages/MainPage"));
 const AboutPage = lazy(() => import("@/pages/AboutPage"));
@@ -21,12 +22,7 @@ const App = () => {
                 <Link to='/about'>About</Link>
             </ul>
 
-            <Suspense fallback={'loading'}>
-                <Routes>
-                    <Route path="/" element={<MainPage />} />
-                    <Route path="/about" element={<AboutPage />} />
-                </Routes>
-            </Suspense>
+            <AppRouter />
         </div>
     );
 };
