@@ -1,8 +1,8 @@
 import React, {FC} from 'react';
-import {Link} from "react-router-dom";
 import {AppRoutes} from "@/shared/config/router/routerConfig";
 import style from './Navbar.module.scss'
 import {classNames} from "@/shared/lib/classNames/classNames";
+import {AppLink} from "@/shared/ui/AppLink/AppLink";
 
 export interface NavbarProps {
     className?: string
@@ -14,8 +14,8 @@ export const Navbar: FC<NavbarProps> = (props) => {
     return (
         <header className={classNames(style.navbar, [className])}>
             <nav className={style.navbar__links}>
-                <Link to={AppRoutes.MAIN}>Main</Link>
-                <Link to={AppRoutes.ABOUT}>About</Link>
+                <AppLink to={AppRoutes.MAIN}>Main</AppLink>
+                <AppLink to={AppRoutes.ABOUT}>About</AppLink>
             </nav>
         </header>
     );
