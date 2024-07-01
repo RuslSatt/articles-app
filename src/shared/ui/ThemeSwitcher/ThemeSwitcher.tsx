@@ -6,6 +6,7 @@ import MoonIcon from '@/shared/assets/icons/moon.svg';
 import SunIcon from '@/shared/assets/icons/sun.svg';
 import {Theme, useTheme} from "@/app/providers/theme";
 import {Button} from "@/shared/ui/Button/Button";
+import {icons} from "@/shared/assets/icons/types";
 
 export interface ThemeSwitcherProps {
     className?: string
@@ -16,17 +17,15 @@ export const ThemeSwitcher: FC<ThemeSwitcherProps> = (props) => {
 
     const { theme, toggleTheme } = useTheme();
 
-    const Icon = theme === Theme.DARK ? <MoonIcon className={style.icon__moon}/> : <SunIcon/>
+    const icon = theme === Theme.DARK ? icons.MOON : icons.SUN
 
     return (
         <Button
             text
+            icon={icon}
             onClick={toggleTheme}
             className={classNames(style.themeSwitcher, [className])}
         >
-            <span className={style.icon}>
-                {Icon}
-            </span>
         </Button>
     );
 };
