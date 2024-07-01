@@ -1,0 +1,26 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    width: 250px;
+    height: calc(100vh - var(--navbar-height));
+    border-right: 1px solid var(--border-color);
+    background-color: var(--bar-color);
+    transition: width 0.2s ease-in-out;
+
+    &.collapsed {
+        width: var(--sidebar-width-collapsed);
+    }
+
+    &.collapsed .sidebarHeader {
+        justify-content: center;
+    }
+}
+
+.sidebarHeader {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
