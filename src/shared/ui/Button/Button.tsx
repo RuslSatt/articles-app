@@ -4,6 +4,7 @@ import {ButtonHTMLAttributes, FC} from "react";
 import BurgerIcon from "@/shared/assets/icons/burger.svg";
 import MoonIcon from "@/shared/assets/icons/moon.svg";
 import SunIcon from "@/shared/assets/icons/sun.svg";
+import LangIcon from "@/shared/assets/icons/lang.svg";
 import {icons} from "@/shared/assets/icons/types";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -27,6 +28,9 @@ export const Button: FC<ButtonProps> = (props) => {
             break;
         case icons.SUN:
             Icon = <SunIcon />
+            break;
+        case icons.LANG:
+            Icon = <LangIcon />
             break;
     }
 

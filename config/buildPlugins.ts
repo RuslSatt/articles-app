@@ -14,7 +14,7 @@ export function buildPlugins({ paths, isDev }: IBuildOptions): webpack.WebpackPl
             filename: "css/[name].css",
         }),
         new webpack.DefinePlugin({
-            __IS_DEV__: isDev,
+            __IS_DEV__: JSON.stringify(isDev),
         })
     ]
 }
