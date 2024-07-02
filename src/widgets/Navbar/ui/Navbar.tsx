@@ -3,8 +3,8 @@ import {AppRoutes} from "@/shared/config/router/routerConfig";
 import style from './Navbar.module.scss'
 import {classNames} from "@/shared/lib/classNames/classNames";
 import {AppLink} from "@/shared/ui/AppLink/AppLink";
-import {ThemeSwitcher} from "@/shared/ui/ThemeSwitcher/ThemeSwitcher";
-import {LangSwitcher} from "@/shared/ui/LangSwitcher/LangSwitcher";
+import {ThemeSwitcher} from "@/feature/ThemeSwitcher";
+import {LangSwitcher} from "@/feature/LangSwitcher";
 
 export interface NavbarProps {
     className?: string
