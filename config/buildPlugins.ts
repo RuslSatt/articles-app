@@ -4,7 +4,7 @@ import path from "path";
 import {IBuildOptions} from "./types/config";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
-export function buildPlugins({ paths }: IBuildOptions): webpack.WebpackPluginInstance[] {
+export function buildPlugins({ paths, isDev }: IBuildOptions): webpack.WebpackPluginInstance[] {
     return [
         new webpack.ProgressPlugin(),
         new HtmlWebpackPlugin({
@@ -12,6 +12,9 @@ export function buildPlugins({ paths }: IBuildOptions): webpack.WebpackPluginIns
         }),
         new MiniCssExtractPlugin({
             filename: "css/[name].css",
+        }),
+        new webpack.DefinePlugin({
+            __IS_DEV__: isDev,
         })
     ]
 }

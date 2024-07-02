@@ -1,10 +1,8 @@
-import React, {FC, useState} from 'react';
+import React, {FC} from 'react';
 import {AppRoutes} from "@/shared/config/router/routerConfig";
 import style from './Navbar.module.scss'
 import {classNames} from "@/shared/lib/classNames/classNames";
 import {AppLink} from "@/shared/ui/AppLink/AppLink";
-import {Button} from "@/shared/ui/Button/Button";
-import {useTheme} from "@/app/providers/theme";
 import {ThemeSwitcher} from "@/shared/ui/ThemeSwitcher/ThemeSwitcher";
 
 export interface NavbarProps {

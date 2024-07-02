@@ -1,9 +1,6 @@
 import style from './ThemeSwitcher.module.scss'
 import { classNames } from "@/shared/lib/classNames/classNames";
-import {FC, useState} from "react";
-
-import MoonIcon from '@/shared/assets/icons/moon.svg';
-import SunIcon from '@/shared/assets/icons/sun.svg';
+import {FC} from "react";
 import {Theme, useTheme} from "@/app/providers/theme";
 import {Button} from "@/shared/ui/Button/Button";
 import {icons} from "@/shared/assets/icons/types";
