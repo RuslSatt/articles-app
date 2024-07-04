@@ -1,12 +1,12 @@
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import {IBuildOptions} from "./types/config";
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { IBuildOptions } from './types/config';
 
-export function buildLoaders({isDev}: IBuildOptions) {
+export function buildLoaders({ isDev }: IBuildOptions) {
     const tsLoader = {
         test: /\.tsx?$/,
         exclude: /node_modules/,
         use: 'ts-loader',
-    }
+    };
 
     const styleLoader = {
         test: /\.s[ac]ss$/i,
@@ -19,19 +19,19 @@ export function buildLoaders({isDev}: IBuildOptions) {
                 options: {
                     modules: {
                         auto: /\.module/,
-                        localIdentName: isDev ? "[name]__[local]--[hash:base64:5]" : "[hash:base64:8]",
+                        localIdentName: isDev ? '[name]__[local]--[hash:base64:5]' : '[hash:base64:8]',
                     },
-                }
+                },
             },
             // Compiles Sass to CSS
-            "sass-loader",
+            'sass-loader',
         ],
-    }
+    };
 
     const svgLoader = {
         test: /\.svg$/,
         use: ['@svgr/webpack'],
-    }
+    };
 
     const fileLoader = {
         test: /\.(png|jpe?g|gif)$/i,
@@ -40,8 +40,7 @@ export function buildLoaders({isDev}: IBuildOptions) {
                 loader: 'file-loader',
             },
         ],
-    }
+    };
 
-
-    return [fileLoader, svgLoader, tsLoader, styleLoader]
+    return [fileLoader, svgLoader, tsLoader, styleLoader];
 }

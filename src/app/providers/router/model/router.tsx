@@ -1,7 +1,7 @@
-import MainPage from "@/pages/MainPage";
-import AboutPage from "@/pages/AboutPage";
-import {RouteProps} from "react-router-dom";
-import {AppRoutes, routesPath} from "@/shared/config/router/routerConfig";
+import { RouteProps } from 'react-router-dom';
+import MainPage from '@/pages/MainPage';
+import AboutPage from '@/pages/AboutPage';
+import { AppRoutes, routesPath } from '@/shared/config/router/routerConfig';
 
 export const router: Array<RouteProps> = [
     {
@@ -12,4 +12,4 @@ export const router: Array<RouteProps> = [
         path: routesPath[AppRoutes.ABOUT],
         element: <AboutPage />,
     },
-]
+];

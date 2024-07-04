@@ -1,14 +1,12 @@
-import path from "path";
-import webpack from "webpack";
-import HtmlWebpackPlugin from "html-webpack-plugin";
-import {buildLoaders} from "./buildLoaders";
-import {buildPlugins} from "./buildPlugins";
-import {buildResolvers} from "./buildResolvers";
-import {IBuildOptions} from "./types/config";
-import {buildDevServer} from "./buildDevServer";
+import webpack from 'webpack';
+import { buildLoaders } from './buildLoaders';
+import { buildPlugins } from './buildPlugins';
+import { buildResolvers } from './buildResolvers';
+import { IBuildOptions } from './types/config';
+import { buildDevServer } from './buildDevServer';
 
 export function buildConfigWebpack(options: IBuildOptions): webpack.Configuration {
-    const {mode, paths, isDev} = options;
+    const { mode, paths, isDev } = options;
 
     return {
         mode,
@@ -21,9 +19,9 @@ export function buildConfigWebpack(options: IBuildOptions): webpack.Configuratio
             clean: true,
         },
         module: {
-            rules: buildLoaders(options)
+            rules: buildLoaders(options),
         },
         resolve: buildResolvers(options),
-        plugins: buildPlugins(options)
+        plugins: buildPlugins(options),
     };
 }

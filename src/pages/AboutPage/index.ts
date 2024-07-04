@@ -1,3 +1,3 @@
-import AboutPage from "./ui/AboutPage";
+import AboutPage from './ui/AboutPage';
 
 export default AboutPage;

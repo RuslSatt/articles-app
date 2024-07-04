@@ -1,7 +1,7 @@
-import webpack from "webpack";
-import {buildConfigWebpack} from "./config/buildConfigWebpack";
-import path from "path";
-import {IBuildEnv} from "./config/types/config";
+import webpack from 'webpack';
+import path from 'path';
+import { buildConfigWebpack } from './config/buildConfigWebpack';
+import { IBuildEnv } from './config/types/config';
 
 export default (env: IBuildEnv) => {
     const mode = env.mode || 'development';
@@ -18,6 +18,6 @@ export default (env: IBuildEnv) => {
             src: path.resolve(__dirname, 'src'),
         },
         isDev,
-        port
+        port,
     });
 };

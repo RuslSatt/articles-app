@@ -8,13 +8,11 @@ export type ClassNamesMods = Record<string, boolean | string>
  * @param {ClassNamesMods} [mods] - Modifiers to conditionally include in the class string.
  * @return {string} The generated CSS class string.
  */
-export function classNames(className: string, additional?: string[], mods?: ClassNamesMods): string {
-    if (!additional) additional = [];
-    if (!mods) mods = {};
-
+// eslint-disable-next-line max-len
+export function classNames(className: string, additional: string[] = [], mods: ClassNamesMods = {}): string {
     return [
         className,
         ...additional,
-        ...Object.keys(mods).filter(key => mods[key])
-    ].join(' ')
+        ...Object.keys(mods).filter((key) => mods[key]),
+    ].join(' ');
 }
