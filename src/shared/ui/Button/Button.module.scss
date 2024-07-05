@@ -9,10 +9,12 @@
     color: var(--primary-color);
     background-color: transparent;
     transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+
     &:hover {
         background-color: var(--highlight-bg);
         color: var(--highlight-text-color);
     }
+
     &.text {
         border: none;
         padding: 8px;

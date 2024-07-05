@@ -13,14 +13,14 @@
         width: var(--sidebar-width-collapsed);
     }
 
+    .sidebarHeader {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+    }
+
     &.collapsed .sidebarHeader {
         justify-content: center;
     }
-}
-
-.sidebarHeader {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 10px;
 }

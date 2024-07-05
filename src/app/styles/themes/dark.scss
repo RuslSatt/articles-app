@@ -1,18 +1,12 @@
 .app.dark {
-  --text-color: rgba(255, 255, 255, 0.87);
-  --text-color-secondary: rgba(255, 255, 255, 0.6);
-
-  --primary-color: #22d3ee;
-  --primary-color-text: #030712;
-
-  --highlight-bg: rgba(34, 211, 238, 0.16);
-  --highlight-text-color: rgba(255, 255, 255, 0.87);
-
-  --bg-color: #1f2937;
-
-  --border-color: rgba(255, 255, 255, 0.6);
-
-  --bar-color: #293849;
-
-  --icon-color: #f9fafb
+    --text-color: rgb(255 255 255 / 87%);
+    --text-color-secondary: rgb(255 255 255 / 60%);
+    --primary-color: #22d3ee;
+    --primary-color-text: #030712;
+    --highlight-bg: rgb(34 211 238 / 16%);
+    --highlight-text-color: rgb(255 255 255 / 87%);
+    --bg-color: #1f2937;
+    --border-color: rgb(255 255 255 / 60%);
+    --bar-color: #293849;
+    --icon-color: #f9fafb;
 }
