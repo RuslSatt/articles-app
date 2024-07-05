@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 import { AppRoutes } from '@/shared/config/router/routerConfig';
 import style from './Navbar.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -13,6 +14,8 @@ export interface NavbarProps {
 export const Navbar: FC<NavbarProps> = (props) => {
     const { className } = props;
 
+    const { t } = useTranslation();
+
     return (
         <header className={classNames(style.navbar, [className])}>
 
@@ -22,8 +25,8 @@ export const Navbar: FC<NavbarProps> = (props) => {
             </div>
 
             <nav className={style.navbar__links}>
-                <AppLink to={AppRoutes.MAIN}>Main</AppLink>
-                <AppLink to={AppRoutes.ABOUT}>About</AppLink>
+                <AppLink to={AppRoutes.MAIN}>{t('Main')}</AppLink>
+                <AppLink to={AppRoutes.ABOUT}>{t('About')}</AppLink>
             </nav>
         </header>
     );

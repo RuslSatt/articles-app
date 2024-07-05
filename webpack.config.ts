@@ -1,4 +1,3 @@
-import webpack from 'webpack';
 import path from 'path';
 import { buildConfigWebpack } from './config/buildConfigWebpack';
 import { IBuildEnv } from './config/types/config';
