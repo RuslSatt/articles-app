@@ -19,7 +19,10 @@ export function buildLoaders({ isDev }: IBuildOptions) {
                 options: {
                     modules: {
                         auto: /\.module/,
-                        localIdentName: isDev ? '[name]__[local]--[hash:base64:5]' : '[hash:base64:8]',
+                        localIdentName:
+                            isDev
+                                ? '[name]__[local]--[hash:base64:5]'
+                                : '[hash:base64:8]',
                     },
                 },
             },
@@ -42,5 +45,16 @@ export function buildLoaders({ isDev }: IBuildOptions) {
         ],
     };
 
-    return [fileLoader, svgLoader, tsLoader, styleLoader];
+    const babelLoader = {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+            loader: 'babel-loader',
+            options: {
+                presets: ['@babel/preset-env'],
+            },
+        },
+    };
+
+    return [fileLoader, svgLoader, babelLoader, tsLoader, styleLoader];
 }
