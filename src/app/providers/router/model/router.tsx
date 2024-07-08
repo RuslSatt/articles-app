@@ -1,7 +1,9 @@
 import { RouteProps } from 'react-router-dom';
-import MainPage from '@/pages/MainPage';
-import AboutPage from '@/pages/AboutPage';
+import { lazy } from 'react';
 import { AppRoutes, routesPath } from '@/shared/config/router/routerConfig';
+
+const MainPage = lazy((() => import('@/pages/MainPage')));
+const AboutPage = lazy((() => import('@/pages/AboutPage')));
 
 export const router: Array<RouteProps> = [
     {
