@@ -40,7 +40,10 @@ export const Button: FC<ButtonProps> = (props) => {
     return (
         <button
             type="button"
-            className={classNames(style.button, [className, text && style.text])}
+            className={classNames(
+                style.button,
+                [className, text && style.text],
+            )}
             {...other}
         >
             {

@@ -8,7 +8,7 @@ import { ThemeSwitcher } from '@/feature/ThemeSwitcher';
 import { LangSwitcher } from '@/feature/LangSwitcher';
 
 export interface NavbarProps {
-    className?: string
+    className?: string;
 }
 
 export const Navbar: FC<NavbarProps> = (props) => {
@@ -18,7 +18,6 @@ export const Navbar: FC<NavbarProps> = (props) => {
 
     return (
         <header className={classNames(style.navbar, [className])}>
-
             <div className={style.navbar__tools}>
                 <ThemeSwitcher />
                 <LangSwitcher />
