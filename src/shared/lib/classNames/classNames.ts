@@ -1,4 +1,4 @@
-export type ClassNamesMods = Record<string, boolean | string>
+export type ClassNamesMods = Record<string, boolean | string>;
 
 /**
  * Generates a CSS class string based on the provided parameters.
@@ -8,11 +8,11 @@ export type ClassNamesMods = Record<string, boolean | string>
  * @param {ClassNamesMods} [mods] - Modifiers to conditionally include in the class string.
  * @return {string} The generated CSS class string.
  */
-// eslint-disable-next-line max-len
-export function classNames(className: string, additional: string[] = [], mods: ClassNamesMods = {}): string {
-    return [
-        className,
-        ...additional,
-        ...Object.keys(mods).filter((key) => mods[key]),
-    ].join(' ');
+
+export function classNames(
+    className: string,
+    additional: string[] = [],
+    mods: ClassNamesMods = {}
+): string {
+    return [className, ...additional, ...Object.keys(mods).filter((key) => mods[key])].join(' ');
 }

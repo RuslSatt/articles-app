@@ -10,7 +10,7 @@ export function buildDevServer(options: IBuildOptions): DevServerConfiguration {
         port,
         historyApiFallback: true,
         client: {
-            overlay: isDev,
-        },
+            overlay: isDev
+        }
     };
 }

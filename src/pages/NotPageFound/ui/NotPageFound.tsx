@@ -4,7 +4,7 @@ import style from './NotPageFound.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
 export interface NotPageFoundProps {
-    className?: string
+    className?: string;
 }
 
 export const NotPageFound: FC<NotPageFoundProps> = (props) => {
@@ -15,9 +15,7 @@ export const NotPageFound: FC<NotPageFoundProps> = (props) => {
     return (
         <div className={classNames(style.notPageFound, [className])}>
             <h1 className={style.notPageFound__title}>404</h1>
-            <p className={style.notPageFound__text}>
-                {t('Page not found')}
-            </p>
+            <p className={style.notPageFound__text}>{t('Page not found')}</p>
         </div>
     );
 };

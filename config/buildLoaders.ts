@@ -5,7 +5,7 @@ export function buildLoaders({ isDev }: IBuildOptions) {
     const tsLoader = {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        use: 'ts-loader',
+        use: 'ts-loader'
     };
 
     const styleLoader = {
@@ -19,30 +19,29 @@ export function buildLoaders({ isDev }: IBuildOptions) {
                 options: {
                     modules: {
                         auto: /\.module/,
-                        localIdentName:
-                            isDev
-                                ? '[name]__[local]--[hash:base64:5]'
-                                : '[hash:base64:8]',
-                    },
-                },
+                        localIdentName: isDev
+                            ? '[name]__[local]--[hash:base64:5]'
+                            : '[hash:base64:8]'
+                    }
+                }
             },
             // Compiles Sass to CSS
-            'sass-loader',
-        ],
+            'sass-loader'
+        ]
     };
 
     const svgLoader = {
         test: /\.svg$/,
-        use: ['@svgr/webpack'],
+        use: ['@svgr/webpack']
     };
 
     const fileLoader = {
         test: /\.(png|jpe?g|gif)$/i,
         use: [
             {
-                loader: 'file-loader',
-            },
-        ],
+                loader: 'file-loader'
+            }
+        ]
     };
 
     const babelLoader = {
@@ -51,9 +50,9 @@ export function buildLoaders({ isDev }: IBuildOptions) {
         use: {
             loader: 'babel-loader',
             options: {
-                presets: ['@babel/preset-env'],
-            },
-        },
+                presets: ['@babel/preset-env']
+            }
+        }
     };
 
     return [fileLoader, svgLoader, babelLoader, tsLoader, styleLoader];

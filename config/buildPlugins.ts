@@ -10,16 +10,16 @@ export function buildPlugins(options: IBuildOptions): webpack.WebpackPluginInsta
     return [
         new webpack.ProgressPlugin(),
         new HtmlWebpackPlugin({
-            template: paths.html,
+            template: paths.html
         }),
         new MiniCssExtractPlugin({
-            filename: 'css/[name].css',
+            filename: 'css/[name].css'
         }),
         new webpack.DefinePlugin({
-            __IS_DEV__: JSON.stringify(isDev),
+            __IS_DEV__: JSON.stringify(isDev)
         }),
         new BundleAnalyzerPlugin({
-            openAnalyzer: false,
-        }),
+            openAnalyzer: false
+        })
     ];
 }

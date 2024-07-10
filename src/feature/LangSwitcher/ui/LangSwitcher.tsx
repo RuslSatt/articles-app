@@ -6,7 +6,7 @@ import { Button } from '@/shared/ui/Button/Button';
 import { icons } from '@/shared/assets/icons/types';
 
 export interface LangSwitcherProps {
-    className?: string
+    className?: string;
 }
 
 export const LangSwitcher: FC<LangSwitcherProps> = (props) => {

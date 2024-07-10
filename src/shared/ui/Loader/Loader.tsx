@@ -3,7 +3,7 @@ import style from './Loader.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
 export interface LoaderProps {
-    className?: string
+    className?: string;
 }
 
 export const Loader: FC<LoaderProps> = (props) => {

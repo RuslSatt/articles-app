@@ -5,7 +5,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button } from '@/shared/ui/Button/Button';
 
 export interface PageErrorProps {
-    className?: string
+    className?: string;
 }
 
 export const PageError: FC<PageErrorProps> = (props) => {

@@ -7,11 +7,7 @@ export const AppRouter = () => (
     <Suspense fallback={<PageLoader />}>
         <Routes>
             {router.map(({ path, element }) => (
-                <Route
-                    key={path}
-                    path={path}
-                    element={element}
-                />
+                <Route key={path} path={path} element={element} />
             ))}
         </Routes>
     </Suspense>

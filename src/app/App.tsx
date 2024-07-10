@@ -13,11 +13,11 @@ const App = () => {
     return (
         <div className={classNames('app', [theme])}>
             <ErrorBoundary>
-                <Suspense fallback="">
+                <Suspense fallback=''>
                     <Navbar />
-                    <div className="content-page">
+                    <div className='content-page'>
                         <Sidebar />
-                        <div className="page-wrapper">
+                        <div className='page-wrapper'>
                             <AppRouter />
                         </div>
                     </div>

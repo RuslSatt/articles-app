@@ -5,7 +5,7 @@ import { Button } from '@/shared/ui/Button/Button';
 import { icons } from '@/shared/assets/icons/types';
 
 export interface SidebarProps {
-    className?: string
+    className?: string;
 }
 
 export const Sidebar: FC<SidebarProps> = (props) => {
@@ -18,13 +18,10 @@ export const Sidebar: FC<SidebarProps> = (props) => {
     };
 
     return (
-        <div className={classNames(
-            style.sidebar,
-            [className],
-            {
-                [style.collapsed]: collapsed,
-            },
-        )}
+        <div
+            className={classNames(style.sidebar, [className], {
+                [style.collapsed]: collapsed
+            })}
         >
             <div className={classNames(style.sidebarHeader)}>
                 <Button text icon={icons.BURGER} onClick={onToggle} />

@@ -7,7 +7,7 @@ export function buildResolvers({ paths }: IBuildOptions): ResolveOptions {
         preferAbsolute: true,
         modules: [paths.src, 'node_modules'],
         alias: {
-            '@': paths.src,
-        },
+            '@': paths.src
+        }
     };
 }

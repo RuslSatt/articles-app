@@ -10,50 +10,38 @@ import { icons } from '@/shared/assets/icons/types';
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     icon?: icons;
     text?: boolean;
-    label?: string
-    className?: string
+    label?: string;
+    className?: string;
 }
 
 export const Button: FC<ButtonProps> = (props) => {
-    const {
-        className, children, label, text, icon, ...other
-    } = props;
+    const { className, children, label, text, icon, ...other } = props;
 
     let Icon = null;
 
     // eslint-disable-next-line default-case
     switch (icon) {
-    case icons.BURGER:
-        Icon = <BurgerIcon />;
-        break;
-    case icons.MOON:
-        Icon = <MoonIcon />;
-        break;
-    case icons.SUN:
-        Icon = <SunIcon />;
-        break;
-    case icons.LANG:
-        Icon = <LangIcon />;
-        break;
+        case icons.BURGER:
+            Icon = <BurgerIcon />;
+            break;
+        case icons.MOON:
+            Icon = <MoonIcon />;
+            break;
+        case icons.SUN:
+            Icon = <SunIcon />;
+            break;
+        case icons.LANG:
+            Icon = <LangIcon />;
+            break;
     }
 
     return (
         <button
-            type="button"
-            className={classNames(
-                style.button,
-                [className, text && style.text],
-            )}
+            type='button'
+            className={classNames(style.button, [className, text && style.text])}
             {...other}
         >
-            {
-                Icon
-                && (
-                    <span className={style.icon}>
-                        {Icon}
-                    </span>
-                )
-            }
+            {Icon && <span className={style.icon}>{Icon}</span>}
             {label || children}
         </button>
     );
