@@ -10,7 +10,13 @@ module.exports = {
         'plugin:i18next/recommended',
         'plugin:prettier/recommended'
     ],
-
+    'prettier/prettier': [
+        'error',
+        {},
+        {
+            usePrettierrc: false
+        }
+    ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
         ecmaFeatures: {
