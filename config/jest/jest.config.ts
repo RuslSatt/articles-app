@@ -3,9 +3,9 @@
  * https://jestjs.io/docs/configuration
  */
 
-import type { Config } from 'jest';
+import path from 'path';
 
-const config: Config = {
+export default {
     clearMocks: true,
     coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
     coverageProvider: 'v8',
@@ -18,8 +18,9 @@ const config: Config = {
     testPathIgnorePatterns: ['\\\\node_modules\\\\'],
     setupFilesAfterEnv: ['<rootDir>config/jest/jestSetup.ts'],
     moduleNameMapper: {
-        '@/(.*)': '<rootDir>src/$1',
-        '\\.(css|less|scss|sass)$': 'identity-obj-proxy'
+        '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+        '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
+        '@/(.*)': '<rootDir>src/$1'
     },
     transform: {
         '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
@@ -27,5 +28,3 @@ const config: Config = {
         '^.+\\.[t|j]sx?$': 'babel-jest'
     }
 };
-
-export default config;
