@@ -1,5 +1,5 @@
 import { ResolveOptions } from 'webpack';
-import { IBuildOptions } from './types/config';
+import { IBuildOptions } from '../types/config';
 
 export function buildResolvers({ paths }: IBuildOptions): ResolveOptions {
     return {
