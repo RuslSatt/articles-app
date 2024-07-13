@@ -1,5 +1,6 @@
 import path from 'path';
 import type { StorybookConfig } from '@storybook/react-webpack5';
+import { RuleSetRule } from 'webpack';
 import { buildStyleLoader } from '../webpack/loaders/buildStyleLoader';
 import { buildSvgLoader } from '../webpack/loaders/buildSvgLoader';
 
@@ -36,6 +37,15 @@ const config: StorybookConfig = {
             ...config.resolve.alias,
             '@': srcPath
         };
+
+        // eslint-disable-next-line no-param-reassign
+        config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
+            if (/svg/.test(rule.test as string)) {
+                return { ...rule, exclude: /\.svg$/i };
+            }
+
+            return rule;
+        });
 
         config.module.rules.push(buildSvgLoader());
         config.module.rules.push(buildStyleLoader(true));
