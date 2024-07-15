@@ -24,3 +24,9 @@
         justify-content: center;
     }
 }
+
+.sidebar__links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

@@ -1,14 +1,15 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { Sidebar } from './Sidebar';
+import { renderComponent } from '@/shared/lib/renderComponent/renderComponent';
 
 describe('Sidebar component', () => {
     test('should render', () => {
-        render(<Sidebar />);
+        renderComponent(<Sidebar />);
         expect(screen.getByTestId('sidebar')).toBeInTheDocument();
     });
 
     test('sidebar toggle', () => {
-        render(<Sidebar />);
+        renderComponent(<Sidebar />);
 
         const btn = screen.getByTestId('sidebar-toggle');
         btn.click();
