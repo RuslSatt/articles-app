@@ -6,6 +6,8 @@ import { Button } from '@/shared/ui/Button/Button';
 import { icons } from '@/shared/assets/icons/types';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { AppRoutes } from '@/shared/config/router/routerConfig';
+import HomeIcon from '@/shared/assets/icons/home.svg';
+import AboutIcon from '@/shared/assets/icons/about.svg';
 
 export interface SidebarProps {
     className?: string;
@@ -33,8 +35,14 @@ export const Sidebar: FC<SidebarProps> = (props) => {
                 <Button data-testid='sidebar-toggle' text icon={icons.BURGER} onClick={onToggle} />
             </div>
             <nav className={style.sidebar__links}>
-                <AppLink to={AppRoutes.MAIN}>{t('Main')}</AppLink>
-                <AppLink to={AppRoutes.ABOUT}>{t('About')}</AppLink>
+                <AppLink className={style.sidebar__link} to={AppRoutes.MAIN}>
+                    <HomeIcon />
+                    <span className={style.sidebar__link_text}>{t('Main')}</span>
+                </AppLink>
+                <AppLink className={style.sidebar__link} to={AppRoutes.ABOUT}>
+                    <AboutIcon />
+                    <span className={style.sidebar__link_text}>{t('About')}</span>
+                </AppLink>
             </nav>
         </div>
     );
