@@ -47,18 +47,12 @@ export const Modal: FC<ModalProps> = (props) => {
     }, [visible, onKeyDown]);
 
     return (
-        <Portal>
-            <div className={classNames(style.modal, [className], mods)}>
-                <div onClick={onClose} className={style.modal__overlay} aria-hidden='true'>
-                    <div
-                        onClick={clickOnContent}
-                        className={style.modal__content}
-                        aria-hidden='true'
-                    >
-                        {children}
-                    </div>
+        <div className={classNames(style.modal, [className], mods)}>
+            <div onClick={onClose} className={style.modal__overlay} aria-hidden='true'>
+                <div onClick={clickOnContent} className={style.modal__content} aria-hidden='true'>
+                    {children}
                 </div>
             </div>
-        </Portal>
+        </div>
     );
 };

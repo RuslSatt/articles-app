@@ -6,6 +6,7 @@ import { ThemeSwitcher } from '@/feature/ThemeSwitcher';
 import { LangSwitcher } from '@/feature/LangSwitcher';
 import { Button } from '@/shared/ui/Button/Button';
 import { Modal } from '@/shared/ui/Modal/Modal';
+import { Portal } from '@/shared/ui/Portal/Portal';
 
 export interface NavbarProps {
     className?: string;
@@ -28,7 +29,9 @@ export const Navbar: FC<NavbarProps> = (props) => {
                 <ThemeSwitcher />
                 <LangSwitcher />
                 <Button label={t('Войти')} onClick={showModal} />
-                <Modal visible={visible} onHide={() => setVisible(false)} />
+                <Portal>
+                    <Modal visible={visible} onHide={() => setVisible(false)} />
+                </Portal>
             </div>
         </header>
     );
