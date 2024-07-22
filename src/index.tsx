@@ -4,12 +4,15 @@ import App from './app/App';
 import { ThemeProvider } from '@/app/providers/theme';
 
 import './shared/config/i18n/i18n';
+import { StoreProvider } from '@/app/providers/store';
 
 render(
-    <BrowserRouter>
-        <ThemeProvider>
-            <App />
-        </ThemeProvider>
-    </BrowserRouter>,
+    <StoreProvider>
+        <BrowserRouter>
+            <ThemeProvider>
+                <App />
+            </ThemeProvider>
+        </BrowserRouter>
+    </StoreProvider>,
     document.getElementById('root')
 );
