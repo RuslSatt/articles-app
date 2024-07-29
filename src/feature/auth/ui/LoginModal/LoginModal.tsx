@@ -11,7 +11,7 @@ export const LoginModal: FC<LoginModalProps> = (props) => {
     const { visible, onHide } = props;
 
     return (
-        <Modal visible={visible} onHide={onHide}>
+        <Modal lazy visible={visible} onHide={onHide}>
             <LoginForm />
         </Modal>
     );

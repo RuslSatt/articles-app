@@ -7,15 +7,18 @@ export interface ModalProps {
     className?: string;
     visible?: boolean;
     onHide?: () => void;
+    lazy?: boolean;
     children?: ReactNode;
 }
 
 export const Modal: FC<ModalProps> = (props) => {
-    const { className, children, visible, onHide } = props;
+    const { className, children, visible, onHide, lazy } = props;
 
     const mods: Record<string, boolean> = {
         [style.visible]: visible
     };
+
+    const [isMounted, setIsMounted] = React.useState(false);
 
     const onClose = useCallback(() => {
         if (visible) {
@@ -39,12 +42,20 @@ export const Modal: FC<ModalProps> = (props) => {
 
     useEffect(() => {
         if (visible) {
+            setIsMounted(true);
+        }
+    }, [visible]);
+
+    useEffect(() => {
+        if (visible) {
             window.addEventListener('keydown', onKeyDown);
         }
         return () => {
             window.removeEventListener('keydown', onKeyDown);
         };
     }, [visible, onKeyDown]);
+
+    if (lazy && !isMounted) return null;
 
     return (
         <div className={classNames(style.modal, [className], mods)}>
