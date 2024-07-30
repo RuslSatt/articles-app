@@ -7,6 +7,7 @@ import { Button } from '@/shared/ui/Button/Button';
 import { Input } from '@/shared/ui/Input/Input';
 import { getLoginState } from '../../model/selectors/getLoginState';
 import { loginActions } from '../../model/slice/loginSlice';
+import { loginByUsername } from '../../model/services/loginByUsername';
 
 export interface LoginFormProps {
     className?: string;
@@ -28,11 +29,15 @@ export const LoginForm: FC<LoginFormProps> = (props) => {
         dispatch(loginActions.setPassword(value));
     };
 
+    const handlerLogin = () => {
+        dispatch(loginByUsername());
+    };
+
     return (
         <div className={classNames(style.loginForm, [className])}>
             <Input autofocus type='text' value={username} onChange={handlerChangeUsername} />
             <Input type='password' value={password} onChange={handlerChangePassword} />
-            <Button disabled={isLoading} label={t('Войти')} />
+            <Button disabled={isLoading} label={t('Войти')} onClick={handlerLogin} />
         </div>
     );
 };
