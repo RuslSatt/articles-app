@@ -43,7 +43,8 @@ module.exports = {
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'warn',
         'click-events-have-key-events': 'off',
-        'no-noninteractive-element-interactions': 'off'
+        'no-noninteractive-element-interactions': 'off',
+        'no-param-reassign': 'off'
     },
     globals: {
         __IS_DEV__: true

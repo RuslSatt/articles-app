@@ -6,7 +6,7 @@ import { ThemeSwitcher } from '@/feature/ThemeSwitcher';
 import { LangSwitcher } from '@/feature/LangSwitcher';
 import { Button } from '@/shared/ui/Button/Button';
 import { Portal } from '@/shared/ui/Portal/Portal';
-import { LoginModal } from '@/feature/auth';
+import { LoginModal } from '@/feature/login';
 
 export interface NavbarProps {
     className?: string;
