@@ -1,6 +1,6 @@
 import path from 'path';
 import type { StorybookConfig } from '@storybook/react-webpack5';
-import { RuleSetRule } from 'webpack';
+import { DefinePlugin, RuleSetRule } from 'webpack';
 import { buildStyleLoader } from '../webpack/loaders/buildStyleLoader';
 import { buildSvgLoader } from '../webpack/loaders/buildSvgLoader';
 
@@ -31,6 +31,12 @@ const config: StorybookConfig = {
         const srcPath = path.resolve(__dirname, '..', '..', 'src');
         config.resolve.modules.push(srcPath);
         config.resolve.extensions.push('.ts', '.tsx');
+
+        config.plugins.push(
+            new DefinePlugin({
+                __IS_DEV__: true
+            })
+        );
 
         // eslint-disable-next-line no-param-reassign
         config.resolve.alias = {
