@@ -3,5 +3,7 @@ import { LoginSchema } from '@/feature/login';
 
 export interface StateSchema {
     user: UserSchema;
-    login: LoginSchema;
+    login?: LoginSchema;
 }
+
+export type StateSchemaKey = keyof StateSchema;
