@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { api } from '@/shared/api/base';
-import { User } from '@/entities/user';
+import { User, userActions } from '@/entities/user';
 import { StateSchema } from '@/app/providers/store';
 
 export const loginByUsername = createAsyncThunk<
@@ -19,6 +19,8 @@ export const loginByUsername = createAsyncThunk<
         if (!response) {
             throw new Error();
         }
+
+        thunkApi.dispatch(userActions.setUser(response.data));
 
         return response.data;
     } catch (e) {

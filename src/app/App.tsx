@@ -1,14 +1,21 @@
 import './styles/index.scss';
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useTheme } from '@/app/providers/theme';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppRouter } from './providers/router';
 import { Navbar } from '@/widgets/Navbar';
 import { Sidebar } from '@/widgets/Sidebar';
 import ErrorBoundary from '@/app/providers/ErrorBoundary';
+import { userActions } from '@/entities/user';
 
 const App = () => {
     const { theme } = useTheme();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(userActions.initUser());
+    }, [dispatch]);
 
     return (
         <div className={classNames('app', [theme])}>
