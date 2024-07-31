@@ -1,6 +1,6 @@
-import { FC } from 'react';
+import { FC, Suspense } from 'react';
 import { Modal } from '@/shared/ui/Modal/Modal';
-import { LoginForm } from '../LoginForm/LoginForm';
+import { LoginFormLazy } from '../LoginForm/LoginForm.lazy';
 
 export interface LoginModalProps {
     visible?: boolean;
@@ -12,7 +12,9 @@ export const LoginModal: FC<LoginModalProps> = (props) => {
 
     return (
         <Modal lazy visible={visible} onHide={onHide}>
-            <LoginForm />
+            <Suspense fallback={null}>
+                <LoginFormLazy />
+            </Suspense>
         </Modal>
     );
 };

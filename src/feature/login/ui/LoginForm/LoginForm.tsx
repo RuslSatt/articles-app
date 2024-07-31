@@ -14,7 +14,7 @@ export interface LoginFormProps {
     className?: string;
 }
 
-export const LoginForm: FC<LoginFormProps> = (props) => {
+const LoginForm: FC<LoginFormProps> = (props) => {
     const { className } = props;
 
     const { username, password, isLoading, error } = useSelector(getLoginState);
@@ -43,3 +43,5 @@ export const LoginForm: FC<LoginFormProps> = (props) => {
         </div>
     );
 };
+
+export default LoginForm;
