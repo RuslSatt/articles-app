@@ -8,6 +8,7 @@ import { Input } from '@/shared/ui/Input/Input';
 import { getLoginState } from '../../model/selectors/getLoginState';
 import { loginActions } from '../../model/slice/loginSlice';
 import { loginByUsername } from '../../model/services/loginByUsername';
+import { Message, Severity } from '@/shared/ui/Message/Message';
 
 export interface LoginFormProps {
     className?: string;
@@ -35,6 +36,7 @@ export const LoginForm: FC<LoginFormProps> = (props) => {
 
     return (
         <div className={classNames(style.loginForm, [className])}>
+            {error && <Message severity={Severity.ERROR} text={error} />}
             <Input autofocus type='text' value={username} onChange={handlerChangeUsername} />
             <Input type='password' value={password} onChange={handlerChangePassword} />
             <Button disabled={isLoading} label={t('Войти')} onClick={handlerLogin} />

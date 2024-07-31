@@ -1,8 +1,17 @@
 :root {
-    --font-family: "Inter var", sans-serif;
+    --font-family: 'Inter var', sans-serif;
     --font-size-base: 16px;
     --font-size-h1: 24px;
     --navbar-height: 40px;
     --sidebar-width: 250px;
     --sidebar-width-collapsed: 64px;
+
+    --gray-color: #6b7280;
+    --gray-bg-color: #6b728046;
+    --success-color: #22c55e;
+    --success-bg-color: #22c55e46;
+    --error-color: #ef4444;
+    --error-bg-color: #ef444446;
+    --warning-color: #eab208;
+    --warning-bg-color: #eab20846;
 }
