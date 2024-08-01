@@ -44,7 +44,8 @@ module.exports = {
         'react-hooks/exhaustive-deps': 'warn',
         'click-events-have-key-events': 'off',
         'no-noninteractive-element-interactions': 'off',
-        'no-param-reassign': 'off'
+        'no-param-reassign': 'off',
+        'react/jsx-no-useless-fragment': 'warn'
     },
     globals: {
         __IS_DEV__: true
