@@ -32,10 +32,10 @@ export const Login: Story = {
     args: {}
 };
 
-Login.decorators = [StoreDecorator(store)];
+Login.decorators = [StoreDecorator({ initialState: store })];
 
 export const LoginDark: Story = {
     args: {}
 };
 
-LoginDark.decorators = [StoreDecorator(store), ThemeDecorator(Theme.DARK)];
+LoginDark.decorators = [StoreDecorator({ initialState: store }), ThemeDecorator(Theme.DARK)];

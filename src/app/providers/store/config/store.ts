@@ -1,10 +1,17 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
 import { StateSchema } from './schema';
 import { userReducer } from '@/entities/user';
 import { createReducerManager } from './reducerManager';
 
-export function createReduxStore(initialState?: StateSchema) {
+export interface CreateReduxStoreProps {
+    initialState?: StateSchema;
+    dynamicReducers?: ReducersMapObject<StateSchema>;
+}
+export function createReduxStore(props: CreateReduxStoreProps) {
+    const { initialState, dynamicReducers } = props;
+
     const rootReducers = {
+        ...dynamicReducers,
         user: userReducer
     };
 
