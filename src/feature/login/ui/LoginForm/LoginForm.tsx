@@ -1,14 +1,15 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, useStore } from 'react-redux';
 import style from './LoginForm.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button } from '@/shared/ui/Button/Button';
 import { Input } from '@/shared/ui/Input/Input';
 import { getLoginState } from '../../model/selectors/getLoginState';
-import { loginActions } from '../../model/slice/loginSlice';
+import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { loginByUsername } from '../../model/services/loginByUsername';
 import { Message, Severity } from '@/shared/ui/Message/Message';
+import { ReduxStoreWithManager } from '@/app/providers/store';
 
 export interface LoginFormProps {
     className?: string;
@@ -19,6 +20,7 @@ const LoginForm: FC<LoginFormProps> = (props) => {
 
     const { username, password, isLoading, error } = useSelector(getLoginState);
     const dispatch = useDispatch();
+    const store = useStore() as ReduxStoreWithManager;
 
     const { t } = useTranslation();
 
@@ -33,6 +35,16 @@ const LoginForm: FC<LoginFormProps> = (props) => {
     const handlerLogin = () => {
         dispatch(loginByUsername());
     };
+
+    useEffect(() => {
+        store.reducerManager.add('login', loginReducer);
+        dispatch({ type: '@ADD login reducer' });
+
+        return () => {
+            store.reducerManager.remove('login');
+            dispatch({ type: '@DESTROY login reducer' });
+        };
+    }, []);
 
     return (
         <div className={classNames(style.loginForm, [className])}>

@@ -1,19 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { StateSchema } from './schema';
 import { userReducer } from '@/entities/user';
-import { authReducer } from '@/feature/login';
 import { createReducerManager } from './reducerManager';
 
 export function createReduxStore(initialState?: StateSchema) {
     const rootReducers = {
-        user: userReducer,
-        login: authReducer
+        user: userReducer
     };
 
     const reducerManager = createReducerManager(rootReducers);
 
     const store = configureStore<StateSchema>({
-        reducer: rootReducers,
+        reducer: reducerManager.reduce,
         devTools: __IS_DEV__,
         preloadedState: initialState
     });
