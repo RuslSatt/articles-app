@@ -1,0 +1,29 @@
+.sidebar__link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    cursor: pointer;
+
+    &:hover {
+        color: var(--highlight-text-color);
+        background-color: var(--highlight-bg);
+    }
+
+    & svg {
+        flex: 0 0 24px;
+    }
+
+    & svg g {
+        stroke: var(--icon-color);
+    }
+
+    &.collapsed .sidebar__link_text {
+        opacity: 0;
+        width: 0;
+        transition: opacity 0.2s ease-in-out;
+    }
+}
