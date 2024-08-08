@@ -30,7 +30,6 @@ export const Navbar: FC<NavbarProps> = (props) => {
     };
 
     const logout = () => {
-        setVisible(false);
         dispatch(userActions.logout());
     };
 

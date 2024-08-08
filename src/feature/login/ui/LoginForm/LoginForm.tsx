@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import style from './LoginForm.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button } from '@/shared/ui/Button/Button';
@@ -13,9 +13,11 @@ import {
     DynamicReducerLoader,
     ReducersList
 } from '@/shared/lib/DynamicReducerLoader/DynamicReducerLoader';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 export interface LoginFormProps {
     className?: string;
+    onSuccess: () => void;
 }
 
 const reducersList: ReducersList = {
@@ -23,10 +25,10 @@ const reducersList: ReducersList = {
 };
 
 const LoginForm: FC<LoginFormProps> = (props) => {
-    const { className } = props;
+    const { className, onSuccess } = props;
 
     const { username, password, isLoading, error } = useSelector(getLoginState);
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const { t } = useTranslation();
 
@@ -38,8 +40,11 @@ const LoginForm: FC<LoginFormProps> = (props) => {
         dispatch(loginActions.setPassword(value));
     };
 
-    const handlerLogin = () => {
-        dispatch(loginByUsername());
+    const handlerLogin = async () => {
+        const result = await dispatch(loginByUsername());
+        if (result.meta.requestStatus === 'fulfilled') {
+            onSuccess?.();
+        }
     };
 
     return (

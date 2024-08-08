@@ -13,7 +13,7 @@ export const LoginModal: FC<LoginModalProps> = (props) => {
     return (
         <Modal lazy visible={visible} onHide={onHide}>
             <Suspense fallback={null}>
-                <LoginFormLazy />
+                <LoginFormLazy onSuccess={onHide} />
             </Suspense>
         </Modal>
     );
