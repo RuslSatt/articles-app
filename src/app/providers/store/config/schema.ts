@@ -2,10 +2,12 @@ import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 import { AnyAction, CombinedState, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 import { UserSchema } from '@/entities/user';
 import { LoginSchema } from '@/feature/login';
+import { ProfileSchema } from '@/entities/profile';
 
 export interface StateSchema {
     user: UserSchema;
     login?: LoginSchema;
+    profile?: ProfileSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
