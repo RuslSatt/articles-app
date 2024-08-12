@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './Navbar.module.scss';
@@ -14,7 +14,7 @@ export interface NavbarProps {
     className?: string;
 }
 
-export const Navbar: FC<NavbarProps> = (props) => {
+export const Navbar = memo((props: NavbarProps) => {
     const { className } = props;
 
     const { t } = useTranslation();
@@ -51,4 +51,4 @@ export const Navbar: FC<NavbarProps> = (props) => {
             </div>
         </header>
     );
-};
+});

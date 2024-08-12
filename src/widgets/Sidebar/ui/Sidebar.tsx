@@ -1,5 +1,4 @@
-import { FC, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { memo, useState } from 'react';
 import style from './Sidebar.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button } from '@/shared/ui/Button/Button';
@@ -11,12 +10,10 @@ export interface SidebarProps {
     className?: string;
 }
 
-export const Sidebar: FC<SidebarProps> = (props) => {
+export const Sidebar = memo((props: SidebarProps) => {
     const { className } = props;
 
     const [collapsed, setCollapsed] = useState(false);
-
-    const { t } = useTranslation();
 
     const onToggle = () => {
         setCollapsed((collapsed) => !collapsed);
@@ -39,4 +36,4 @@ export const Sidebar: FC<SidebarProps> = (props) => {
             <nav className={style.sidebar__links}>{items}</nav>
         </div>
     );
-};
+});

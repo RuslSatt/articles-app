@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, FC } from 'react';
+import { ButtonHTMLAttributes, memo, ReactNode } from 'react';
 import style from './Button.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import BurgerIcon from '@/shared/assets/icons/burger.svg';
@@ -12,9 +12,10 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     text?: boolean;
     label?: string;
     className?: string;
+    children?: ReactNode;
 }
 
-export const Button: FC<ButtonProps> = (props) => {
+export const Button = memo((props: ButtonProps) => {
     const { className, children, label, text, icon, ...other } = props;
 
     let Icon = null;
@@ -45,4 +46,4 @@ export const Button: FC<ButtonProps> = (props) => {
             {label || children}
         </button>
     );
-};
+});
