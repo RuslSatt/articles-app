@@ -28,6 +28,7 @@ export default {
         '^.+\\.[t|j]sx?$': 'babel-jest'
     },
     globals: {
-        __IS_DEV__: true
+        __IS_DEV__: true,
+        __API__: ''
     }
 };
