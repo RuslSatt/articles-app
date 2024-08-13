@@ -5,7 +5,7 @@ import {
     DynamicReducerLoader,
     ReducersList
 } from '@/shared/lib/DynamicReducerLoader/DynamicReducerLoader';
-import { fetchProfileData, Profile, profileReducer } from '@/entities/profile';
+import { fetchProfileData, ProfileCard, profileReducer } from '@/entities/profile';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 export interface ProfilePageProps {
@@ -28,7 +28,7 @@ const ProfilePage: FC<ProfilePageProps> = (props) => {
     return (
         <DynamicReducerLoader reducers={reducersList}>
             <div className={classNames(style.profilePage, [className])}>
-                <Profile />
+                <ProfileCard />
             </div>
         </DynamicReducerLoader>
     );

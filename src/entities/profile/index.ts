@@ -2,6 +2,6 @@ export { ProfileSchema } from './model/types/profile';
 
 export { profileReducer, profileActions } from './model/slice/profileSlice';
 
-export { Profile } from './ui/Profile';
+export { ProfileCard } from './ui/ProfileCard';
 
 export { fetchProfileData } from './model/services/fetchProfileData';
