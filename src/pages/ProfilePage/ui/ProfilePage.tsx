@@ -1,11 +1,12 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import style from './ProfilePage.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import {
     DynamicReducerLoader,
     ReducersList
 } from '@/shared/lib/DynamicReducerLoader/DynamicReducerLoader';
-import { Profile, profileReducer } from '@/entities/profile';
+import { fetchProfileData, Profile, profileReducer } from '@/entities/profile';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 export interface ProfilePageProps {
     className?: string;
@@ -17,6 +18,12 @@ const reducersList: ReducersList = {
 
 const ProfilePage: FC<ProfilePageProps> = (props) => {
     const { className } = props;
+
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(fetchProfileData());
+    }, [dispatch]);
 
     return (
         <DynamicReducerLoader reducers={reducersList}>
