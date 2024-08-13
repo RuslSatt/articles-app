@@ -2,6 +2,7 @@ import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
 import { StateSchema } from './schema';
 import { userReducer } from '@/entities/user';
 import { createReducerManager } from './reducerManager';
+import { api } from '@/shared/api/base';
 
 export interface CreateReduxStoreProps {
     initialState?: StateSchema;
@@ -17,10 +18,18 @@ export function createReduxStore(props: CreateReduxStoreProps) {
 
     const reducerManager = createReducerManager(rootReducers);
 
-    const store = configureStore<StateSchema>({
+    const store = configureStore({
         reducer: reducerManager.reduce,
         devTools: __IS_DEV__,
-        preloadedState: initialState
+        preloadedState: initialState,
+        middleware: (getDefaultMiddleware) =>
+            getDefaultMiddleware({
+                thunk: {
+                    extraArgument: {
+                        api
+                    }
+                }
+            })
     });
 
     // @ts-ignore
