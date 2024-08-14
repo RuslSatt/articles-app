@@ -39,7 +39,7 @@ export const Button = memo((props: ButtonProps) => {
     return (
         <button
             type='button'
-            className={classNames(style.button, [className, text && style.text])}
+            className={classNames(style.button, [className], { [style.text]: text })}
             {...other}
         >
             {Icon && <span className={style.icon}>{Icon}</span>}

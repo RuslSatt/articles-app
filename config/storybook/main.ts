@@ -29,10 +29,10 @@ const config: StorybookConfig = {
     }),
     webpackFinal: async (config) => {
         const srcPath = path.resolve(__dirname, '..', '..', 'src');
-        config.resolve.modules.push(srcPath);
-        config.resolve.extensions.push('.ts', '.tsx');
+        config.resolve?.modules?.push(srcPath);
+        config.resolve?.extensions?.push('.ts', '.tsx');
 
-        config.plugins.push(
+        config.plugins?.push(
             new DefinePlugin({
                 __IS_DEV__: true,
                 __API__: JSON.stringify('')
@@ -40,22 +40,29 @@ const config: StorybookConfig = {
         );
 
         // eslint-disable-next-line no-param-reassign
-        config.resolve.alias = {
-            ...config.resolve.alias,
-            '@': srcPath
-        };
+        if (config.resolve) {
+            config.resolve.alias = {
+                ...config.resolve.alias,
+                '@': srcPath
+            };
+        }
 
-        // eslint-disable-next-line no-param-reassign
-        config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
-            if (/svg/.test(rule.test as string)) {
-                return { ...rule, exclude: /\.svg$/i };
-            }
+        if (config.module) {
+            // eslint-disable-next-line no-param-reassign
+            const rules = config.module.rules as RuleSetRule[];
 
-            return rule;
-        });
+            config.module.rules = rules?.map((rule: RuleSetRule) => {
+                if (/svg/.test(rule.test as string)) {
+                    return { ...rule, exclude: /\.svg$/i };
+                }
 
-        config.module.rules.push(buildSvgLoader());
-        config.module.rules.push(buildStyleLoader(true));
+                return rule;
+            });
+
+            config.module.rules?.push(buildSvgLoader());
+            config.module.rules?.push(buildStyleLoader(true));
+        }
+
         return config;
     }
 };

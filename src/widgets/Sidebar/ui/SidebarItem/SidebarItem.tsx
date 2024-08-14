@@ -6,7 +6,7 @@ import { ISidebarItem } from '../../types/sidebar';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
 export interface SidebarItemProps {
-    item?: ISidebarItem;
+    item: ISidebarItem;
     collapsed?: boolean;
 }
 

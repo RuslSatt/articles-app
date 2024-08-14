@@ -1,5 +1,4 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { userActions } from '@/entities/user';
 import { ThunkConfig } from '@/app/providers/store';
 import { IProfile } from '../types/profile';
 
@@ -12,7 +11,7 @@ export const fetchProfileData = createAsyncThunk<IProfile, void, ThunkConfig<str
             const response = await extra.api.get<IProfile>('/profile');
 
             return response.data;
-        } catch (e) {
+        } catch (e: any) {
             return rejectWithValue(e.message);
         }
     }

@@ -1,7 +1,6 @@
 import React, { FC, ReactNode, useCallback, useEffect } from 'react';
 import style from './Modal.module.scss';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { Portal } from '../Portal/Portal';
+import { classNames, ClassNamesMods } from '@/shared/lib/classNames/classNames';
 
 export interface ModalProps {
     className?: string;
@@ -14,7 +13,7 @@ export interface ModalProps {
 export const Modal: FC<ModalProps> = (props) => {
     const { className, children, visible, onHide, lazy } = props;
 
-    const mods: Record<string, boolean> = {
+    const mods: ClassNamesMods = {
         [style.visible]: visible
     };
 

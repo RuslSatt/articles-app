@@ -1,4 +1,4 @@
-export type ClassNamesMods = Record<string, boolean | string>;
+export type ClassNamesMods = Record<string, boolean | string | undefined>;
 
 /**
  * Generates a CSS class string based on the provided parameters.
@@ -11,7 +11,7 @@ export type ClassNamesMods = Record<string, boolean | string>;
 
 export function classNames(
     className: string,
-    additional: string[] = [],
+    additional: Array<string | undefined> = [],
     mods: ClassNamesMods = {}
 ): string {
     return [className, ...additional, ...Object.keys(mods).filter((key) => mods[key])].join(' ');

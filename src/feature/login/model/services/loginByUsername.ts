@@ -8,7 +8,7 @@ export const loginByUsername = createAsyncThunk<User, undefined, ThunkConfig<str
         const { getState, dispatch, rejectWithValue, extra } = thunkApi;
 
         try {
-            const { username, password } = getState().login;
+            const { username, password } = getState().login || {};
 
             const response = await extra.api.post('/login', {
                 username,
@@ -22,7 +22,7 @@ export const loginByUsername = createAsyncThunk<User, undefined, ThunkConfig<str
             dispatch(userActions.setUser(response.data));
 
             return response.data;
-        } catch (e) {
+        } catch (e: any) {
             return rejectWithValue(e.message);
         }
     }
