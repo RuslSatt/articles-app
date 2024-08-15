@@ -1,7 +1,7 @@
 import { StoryFn } from '@storybook/react/*';
 import { DeepPartial, ReducersMapObject } from '@reduxjs/toolkit';
 import { StateSchema, StoreProvider } from '@/app/providers/store';
-import { loginReducer } from '@/feature/login/model/slice/loginSlice';
+import { loginReducer } from '@/features/login/model/slice/loginSlice';
 import { ReducersList } from '@/shared/lib/DynamicReducerLoader/DynamicReducerLoader';
 
 const defaultDynamicReducers: ReducersList = {

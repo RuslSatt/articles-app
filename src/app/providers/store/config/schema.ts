@@ -2,7 +2,7 @@ import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 import { AnyAction, CombinedState, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
 import { UserSchema } from '@/entities/user';
-import { LoginSchema } from '@/feature/login';
+import { LoginSchema } from '@/features/login';
 import { ProfileSchema } from '@/entities/profile';
 
 export interface StateSchema {

@@ -3,11 +3,11 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './Navbar.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { ThemeSwitcher } from '@/feature/ThemeSwitcher';
-import { LangSwitcher } from '@/feature/LangSwitcher';
+import { ThemeSwitcher } from '@/features/ThemeSwitcher';
+import { LangSwitcher } from '@/features/LangSwitcher';
 import { Button } from '@/shared/ui/Button/Button';
 import { Portal } from '@/shared/ui/Portal/Portal';
-import { LoginModal } from '@/feature/login';
+import { LoginModal } from '@/features/login';
 import { getUserData, userActions } from '@/entities/user';
 
 export interface NavbarProps {
