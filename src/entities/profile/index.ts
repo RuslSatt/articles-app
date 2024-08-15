@@ -5,3 +5,5 @@ export { profileReducer, profileActions } from './model/slice/profileSlice';
 export { ProfileCard } from './ui/ProfileCard';
 
 export { fetchProfileData } from './model/services/fetchProfileData';
+
+export { getProfileData } from './model/selectors/getProfileData';
