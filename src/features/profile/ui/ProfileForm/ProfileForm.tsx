@@ -3,18 +3,18 @@ import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import style from './ProfileForm.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { getProfileForm, getProfileReadonly, profileActions } from '@/entities/profile';
+import { getProfileReadonly, IProfile, profileActions } from '@/entities/profile';
 import { Input } from '@/shared/ui/Input/Input';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 export interface ProfileFormProps {
     className?: string;
+    data?: IProfile;
 }
 
 export const ProfileForm: FC<ProfileFormProps> = (props) => {
-    const { className } = props;
+    const { className, data } = props;
 
-    const data = useSelector(getProfileForm);
     const readonly = useSelector(getProfileReadonly);
     const dispatch = useAppDispatch();
 

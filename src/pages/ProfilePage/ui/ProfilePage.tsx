@@ -9,6 +9,7 @@ import {
 import {
     fetchProfileData,
     getProfileError,
+    getProfileForm,
     getProfileLoading,
     ProfileCard,
     profileReducer
@@ -33,6 +34,7 @@ const ProfilePage: FC<ProfilePageProps> = (props) => {
 
     const isLoading = useSelector(getProfileLoading);
     const error = useSelector(getProfileError);
+    const data = useSelector(getProfileForm);
 
     useEffect(() => {
         dispatch(fetchProfileData());
@@ -50,7 +52,11 @@ const ProfilePage: FC<ProfilePageProps> = (props) => {
                 )}
 
                 {!isLoading && !error && (
-                    <ProfileCard form={<ProfileForm />} editButton={<ProfileEditButton />} />
+                    <ProfileCard
+                        data={data}
+                        form={<ProfileForm data={data} />}
+                        editButton={<ProfileEditButton />}
+                    />
                 )}
             </div>
         </DynamicReducerLoader>
