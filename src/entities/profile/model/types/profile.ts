@@ -1,5 +1,5 @@
-import { Currency } from '@/shared/const/common';
-import { Country } from '@/shared/const/country';
+import { Country } from '@/entities/countries';
+import { Currency } from '@/entities/currency';
 
 export interface IProfile {
     first?: string;

@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import style from './ProfileForm.module.scss';
@@ -6,6 +6,8 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { getProfileReadonly, IProfile, profileActions } from '@/entities/profile';
 import { Input } from '@/shared/ui/Input/Input';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Currency, CurrencySelect } from '@/entities/currency';
+import { Country, CountrySelect } from '@/entities/countries';
 
 export interface ProfileFormProps {
     className?: string;
@@ -36,13 +38,13 @@ export const ProfileForm: FC<ProfileFormProps> = (props) => {
         dispatch(profileActions.setProfileData({ city: value }));
     };
 
-    // const handlerChangeCountry = (value: string) => {
-    //     dispatch(profileActions.setProfileData({ country: value }));
-    // };
+    const onChangeCurrency = (value: string) => {
+        dispatch(profileActions.setProfileData({ currency: value as Currency }));
+    };
 
-    // const handlerChangeCurrency = (value: string) => {
-    //     dispatch(profileActions.setProfileData({ currency: value }));
-    // };
+    const onChangeCountry = (value: string) => {
+        dispatch(profileActions.setProfileData({ country: value as Country }));
+    };
 
     return (
         <div className={classNames(style.profileForm, [className])}>
@@ -71,8 +73,12 @@ export const ProfileForm: FC<ProfileFormProps> = (props) => {
                 onChange={handlerChangeCity}
                 placeholder={t('Ваш город')}
             />
-            <Input readOnly={readonly} value={data?.country} placeholder={t('Ваша страна')} />
-            <Input readOnly={readonly} value={data?.currency} placeholder={t('Валюта')} />
+            <CurrencySelect
+                readonly={readonly}
+                value={data?.currency}
+                onChange={onChangeCurrency}
+            />
+            <CountrySelect readonly={readonly} value={data?.country} onChange={onChangeCountry} />
         </div>
     );
 };

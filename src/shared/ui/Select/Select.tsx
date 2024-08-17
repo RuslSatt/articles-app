@@ -10,7 +10,7 @@ export interface SelectProps {
     className?: string;
     value?: string;
     onChange?: (value: string) => void;
-    readonly?: boolean;
+    disabled?: boolean;
     options?: Option[];
     optionLabel?: string;
 }
@@ -20,7 +20,7 @@ export const Select = memo((props: SelectProps) => {
         className,
         value,
         onChange = (value) => {},
-        readonly,
+        disabled,
         options = [],
         optionLabel = 'name'
     } = props;
@@ -44,6 +44,7 @@ export const Select = memo((props: SelectProps) => {
             value={value}
             onChange={handlerChange}
             className={classNames(style.select, [className])}
+            disabled={disabled}
         >
             {data}
         </select>
