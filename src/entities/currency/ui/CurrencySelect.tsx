@@ -1,5 +1,5 @@
-import { Select } from '@/shared/ui/Select/Select';
 import { memo } from 'react';
+import { Select } from '@/shared/ui/Select/Select';
 
 export enum Currency {
     RUB = 'RUB',
@@ -24,7 +24,7 @@ export const CurrencySelect = memo((props: CurrencySelectProps) => {
             disabled={readonly}
             value={value}
             options={currencyItems}
-            optionLabel={'name'}
+            optionLabel='name'
             onChange={onChange}
         />
     );

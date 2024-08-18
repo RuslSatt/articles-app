@@ -27,7 +27,7 @@ describe('getProfileData', () => {
     test('should return filled state', () => {
         const state: DeepPartial<StateSchema> = {
             profile: {
-                data: data
+                data
             }
         };
 

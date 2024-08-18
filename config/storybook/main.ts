@@ -1,9 +1,9 @@
 import path from 'path';
 import type { StorybookConfig } from '@storybook/react-webpack5';
 import { DefinePlugin, RuleSetRule } from 'webpack';
+import { buildFileLoader } from 'config/webpack/loaders/buildFileLoader';
 import { buildStyleLoader } from '../webpack/loaders/buildStyleLoader';
 import { buildSvgLoader } from '../webpack/loaders/buildSvgLoader';
-import { buildFileLoader } from 'config/webpack/loaders/buildFileLoader';
 
 const config: StorybookConfig = {
     stories: ['../../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
@@ -63,7 +63,6 @@ const config: StorybookConfig = {
 
             config.module.rules?.push(buildSvgLoader());
             config.module.rules?.push(buildStyleLoader(true));
-            config.module.rules?.push(buildFileLoader());
         }
 
         return config;

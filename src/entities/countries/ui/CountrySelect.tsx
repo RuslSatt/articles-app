@@ -1,5 +1,5 @@
-import { Select } from '@/shared/ui/Select/Select';
 import { memo } from 'react';
+import { Select } from '@/shared/ui/Select/Select';
 
 export enum Country {
     RUSSIA = 'RU',
@@ -25,7 +25,7 @@ export const CountrySelect = memo((props: CountrySelectProps) => {
             disabled={readonly}
             value={value}
             options={countryItems}
-            optionLabel={'name'}
+            optionLabel='name'
             onChange={onChange}
         />
     );

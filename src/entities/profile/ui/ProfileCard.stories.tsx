@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { DeepPartial } from '@reduxjs/toolkit';
 import { ProfileCard } from './ProfileCard';
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator';
 import { Country } from '@/entities/countries';
 import { Currency } from '@/entities/currency';
 import { ProfileEditButton, ProfileForm } from '@/features/profile';
-import { DeepPartial } from '@reduxjs/toolkit';
 import { StateSchema } from '@/app/providers/store';
 import { ValidateProfileError } from '../model/types/profile';
 

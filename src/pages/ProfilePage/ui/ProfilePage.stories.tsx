@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { DeepPartial } from '@reduxjs/toolkit';
 import ProfilePage from './ProfilePage';
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator';
-import { DeepPartial } from '@reduxjs/toolkit';
 import { StateSchema } from '@/app/providers/store';
 import { Country } from '@/entities/countries';
 import { Currency } from '@/entities/currency';

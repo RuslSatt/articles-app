@@ -2,7 +2,7 @@ import { DeepPartial } from '@reduxjs/toolkit';
 import { LoginSchema } from '../types/login';
 import { loginActions, loginReducer } from './loginSlice';
 
-describe('getLoginState', () => {
+describe('loginSlice', () => {
     test('should change username', () => {
         const state: DeepPartial<LoginSchema> = {
             username: 'admin'

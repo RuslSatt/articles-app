@@ -2,8 +2,6 @@ import { updateProfileData } from './updateProfileData';
 import { TestAsyncThunk } from '@/shared/lib/tests/testAsyncThunk/testAsyncThunk';
 import { Country } from '@/entities/countries';
 import { Currency } from '@/entities/currency';
-import { DeepPartial } from '@reduxjs/toolkit';
-import { StateSchema } from '@/app/providers/store';
 import { ValidateProfileError } from '../../types/profile';
 
 const data = {
@@ -15,12 +13,6 @@ const data = {
     city: 'Minsk',
     currency: Currency.USD,
     avatar: ''
-};
-
-const state: DeepPartial<StateSchema> = {
-    profile: {
-        form: data
-    }
 };
 
 describe('updateProfileData', () => {
