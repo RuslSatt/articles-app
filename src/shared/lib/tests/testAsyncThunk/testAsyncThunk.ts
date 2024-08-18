@@ -22,7 +22,7 @@ export class TestAsyncThunk<Return, Arg, RejectedValue> {
 
     constructor(
         actionCreator: ActionCreatorType<Return, Arg, RejectedValue>,
-        state: DeepPartial<StateSchema>
+        state?: DeepPartial<StateSchema>
     ) {
         this.dispatch = jest.fn();
         this.getState = jest.fn().mockReturnValue(state);
