@@ -1,19 +1,21 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import ProfilePage from './ProfilePage';
+import { ProfileCard } from './ProfileCard';
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator';
-import { DeepPartial } from '@reduxjs/toolkit';
-import { StateSchema } from '@/app/providers/store';
 import { Country } from '@/entities/countries';
 import { Currency } from '@/entities/currency';
+import { ProfileEditButton, ProfileForm } from '@/features/profile';
+import { DeepPartial } from '@reduxjs/toolkit';
+import { StateSchema } from '@/app/providers/store';
+import { ValidateProfileError } from '../model/types/profile';
 
 const meta = {
-    title: 'pages/ProfilePage',
-    component: ProfilePage,
+    title: 'entities/ProfileCard',
+    component: ProfileCard,
     parameters: {
         layout: 'centered'
     },
     tags: ['autodocs']
-} satisfies Meta<typeof ProfilePage>;
+} satisfies Meta<typeof ProfileCard>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -32,12 +34,17 @@ const store: DeepPartial<StateSchema> = {
         },
         isLoading: false,
         error: undefined,
-        readonly: false
+        readonly: true,
+        validateErrors: [ValidateProfileError.INCORRECT_USER_DATA]
     }
 };
 
-export const Profile: Story = {
-    args: {}
+export const Default: Story = {
+    args: {
+        data: store.profile?.form,
+        form: <ProfileForm data={store.profile?.form} />,
+        editButton: <ProfileEditButton />
+    }
 };
 
-Profile.decorators = [StoreDecorator({ initialState: store })];
+Default.decorators = [StoreDecorator({ initialState: store })];

@@ -1,5 +1,7 @@
 export type BuildMode = 'production' | 'development';
 
+type Project = 'storybook' | 'frontend' | 'jest';
+
 export interface IBuildPaths {
     entry: string;
     build: string;
@@ -13,10 +15,12 @@ export interface IBuildOptions {
     isDev: boolean;
     port: number;
     apiUrl: string;
+    project: Project;
 }
 
 export interface IBuildEnv {
     mode: BuildMode;
     port: number;
     apiUrl: string;
+    project: Project;
 }

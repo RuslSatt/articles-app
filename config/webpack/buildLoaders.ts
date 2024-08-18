@@ -1,4 +1,5 @@
 import { IBuildOptions } from '../types/config';
+import { buildFileLoader } from './loaders/buildFileLoader';
 import { buildStyleLoader } from './loaders/buildStyleLoader';
 import { buildSvgLoader } from './loaders/buildSvgLoader';
 
@@ -13,14 +14,7 @@ export function buildLoaders({ isDev }: IBuildOptions) {
 
     const svgLoader = buildSvgLoader();
 
-    const fileLoader = {
-        test: /\.(png|jpe?g|gif)$/i,
-        use: [
-            {
-                loader: 'file-loader'
-            }
-        ]
-    };
+    const fileLoader = buildFileLoader();
 
     const babelLoader = {
         test: /\.m?js$/,

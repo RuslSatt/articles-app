@@ -34,10 +34,12 @@ const ProfilePage: FC<ProfilePageProps> = (props) => {
 
     const isLoading = useSelector(getProfileLoading);
     const error = useSelector(getProfileError);
-    const data = useSelector(getProfileForm);
+    const formData = useSelector(getProfileForm);
 
     useEffect(() => {
-        dispatch(fetchProfileData());
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(fetchProfileData());
+        }
     }, [dispatch]);
 
     return (
@@ -53,8 +55,8 @@ const ProfilePage: FC<ProfilePageProps> = (props) => {
 
                 {!isLoading && !error && (
                     <ProfileCard
-                        data={data}
-                        form={<ProfileForm data={data} />}
+                        data={formData}
+                        form={<ProfileForm data={formData} />}
                         editButton={<ProfileEditButton />}
                     />
                 )}

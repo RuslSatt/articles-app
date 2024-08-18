@@ -29,6 +29,7 @@ export default {
     },
     globals: {
         __IS_DEV__: true,
-        __API__: ''
+        __API__: '',
+        __PROJECT__: 'jest'
     }
 };
