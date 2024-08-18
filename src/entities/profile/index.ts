@@ -8,8 +8,8 @@ export { fetchProfileData } from './model/services/fetchProfileData';
 export { updateProfileData } from './model/services/updateProfileData';
 
 export { getProfileData } from './model/selectors/getProfileData';
-export { getProfileForm } from './model/selectors/getProfileForm';
-export { getProfileLoading } from './model/selectors/getProfileLoading';
-export { getProfileError } from './model/selectors/getProfileError';
-export { getProfileReadonly } from './model/selectors/getProfileReadonly';
-export { getProfileValidateErrors } from './model/selectors/getProfileValidateErrors';
+export { getProfileForm } from './model/selectors/getProfileData';
+export { getProfileLoading } from './model/selectors/getProfileData';
+export { getProfileError } from './model/selectors/getProfileData';
+export { getProfileReadonly } from './model/selectors/getProfileData';
+export { getProfileValidateErrors } from './model/selectors/getProfileData';
