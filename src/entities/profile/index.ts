@@ -12,3 +12,4 @@ export { getProfileForm } from './model/selectors/getProfileForm';
 export { getProfileLoading } from './model/selectors/getProfileLoading';
 export { getProfileError } from './model/selectors/getProfileError';
 export { getProfileReadonly } from './model/selectors/getProfileReadonly';
+export { getProfileValidateErrors } from './model/selectors/getProfileValidateErrors';
