@@ -7,7 +7,11 @@ import { ProfilePage } from '@/pages/ProfilePage';
 const MainPage = lazy(() => import('@/pages/MainPage'));
 const AboutPage = lazy(() => import('@/pages/AboutPage'));
 
-export const router: Array<RouteProps> = [
+export type IRouteProps = RouteProps & {
+    authOnly?: boolean;
+};
+
+export const router: Array<IRouteProps> = [
     {
         path: routesPath[AppRoutes.MAIN],
         element: <MainPage />
@@ -18,7 +22,8 @@ export const router: Array<RouteProps> = [
     },
     {
         path: routesPath[AppRoutes.PROFILE],
-        element: <ProfilePage />
+        element: <ProfilePage />,
+        authOnly: true
     },
     {
         path: routesPath[AppRoutes.NOT_FOUND],

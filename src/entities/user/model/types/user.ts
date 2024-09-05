@@ -8,4 +8,5 @@ export interface User {
 
 export interface UserSchema {
     user?: User;
+    _mounted?: boolean;
 }
