@@ -16,11 +16,15 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-    args: {}
+    args: {
+        id: '1'
+    }
 };
 
 export const Dark: Story = {
-    args: {}
+    args: {
+        id: '1'
+    }
 };
 
 Dark.decorators = [ThemeDecorator(Theme.DARK)];

@@ -44,3 +44,9 @@ export interface IArticle {
     type: ArticleType[];
     blocks: ArticleBlock[];
 }
+
+export interface ArticleDetailsSchema {
+    data?: IArticle;
+    isLoading?: boolean;
+    error?: string;
+}

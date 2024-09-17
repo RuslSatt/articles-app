@@ -4,11 +4,13 @@ import { AxiosInstance } from 'axios';
 import { UserSchema } from '@/entities/user';
 import { LoginSchema } from '@/features/login';
 import { ProfileSchema } from '@/entities/profile';
+import { ArticleSchema } from '@/entities/article';
 
 export interface StateSchema {
     user: UserSchema;
     login?: LoginSchema;
     profile?: ProfileSchema;
+    articleDetails?: ArticleSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
