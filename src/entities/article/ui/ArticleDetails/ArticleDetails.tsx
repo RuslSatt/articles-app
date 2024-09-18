@@ -15,8 +15,8 @@ import {
     getArticleDetailsError,
     getArticleDetailsIsLoading
 } from '../../model/selectors/articleDetails';
-import { Loader } from '@/shared/ui/Loader/Loader';
 import { Message, Severity } from '@/shared/ui/Message/Message';
+import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 
 export interface ArticleDetailsProps {
     className?: string;
@@ -45,7 +45,15 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     let content;
 
     if (isLoading) {
-        content = <Loader />;
+        content = (
+            <div className={style.skeleton}>
+                <Skeleton width={200} height={200} borderRadius='50%' />
+                <Skeleton width={300} height={32} />
+                <Skeleton width={300} height={32} />
+                <Skeleton width={600} height={32} />
+                <Skeleton width={600} height={32} />
+            </div>
+        );
     } else if (error) {
         content = (
             <Message severity={Severity.ERROR} text={t('Произошла ошибка при загрузке статьи')} />

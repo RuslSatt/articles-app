@@ -10,4 +10,12 @@
     --border-color: rgb(255 255 255 / 60%);
     --bar-color: #293849;
     --icon-color: #f9fafb;
+
+    --skeleton-bg-color: rgba(255, 255, 255, 0.06);
+    --skeleton-border-color: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0.04),
+        rgba(255, 255, 255, 0)
+    );
 }

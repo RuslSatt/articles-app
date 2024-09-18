@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import style from './ArticleCodeBlock.module.scss';
+import style from './ArticleTextBlock.module.scss';
 
 export interface ArticleTextBlockProps {
     className?: string;
