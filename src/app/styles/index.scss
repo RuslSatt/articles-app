@@ -3,23 +3,22 @@
 @import 'themes/light';
 @import 'variables/global';
 
-body {
-    min-height: 100vh;
-}
-
 .app {
     font-family: var(--font-family);
     font-size: var(--font-size-base);
     color: var(--text-color);
     background-color: var(--bg-color);
+    min-height: 100vh;
 }
 
 .content-page {
     display: flex;
-    height: 100%;
 }
 
 .page-wrapper {
-    flex: 1 1 auto;
+    flex-grow: 1;
     padding: 20px;
+    width: 100%;
+    height: calc(100vh - var(--navbar-height));
+    overflow-y: auto;
 }

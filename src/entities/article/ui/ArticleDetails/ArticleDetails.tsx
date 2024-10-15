@@ -1,5 +1,6 @@
+/* eslint-disable react/jsx-no-useless-fragment */
 import { useTranslation } from 'react-i18next';
-import { memo, useEffect } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import style from './ArticleDetails.module.scss';
@@ -17,6 +18,13 @@ import {
 } from '../../model/selectors/articleDetails';
 import { Message, Severity } from '@/shared/ui/Message/Message';
 import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
+import { Avatar, AvatarSize } from '@/shared/ui/Avatar/Avatar';
+import EyeIcon from '@/shared/assets/icons/eye.svg';
+import CalendarIcon from '@/shared/assets/icons/calendar.svg';
+import { ArticleBlock } from '../../model/types/article';
+import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock';
+import { ArticleCodeBlock } from '../ArticleCodeBlock/ArticleCodeBlock';
+import { ArticleImageBlock } from '../ArticleImageBlock/ArticleImageBlock';
 
 export interface ArticleDetailsProps {
     className?: string;
@@ -42,6 +50,37 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
         dispatch(fetchArticleById(id));
     }, [dispatch, id]);
 
+    const contentBlock = useCallback((block: ArticleBlock) => {
+        switch (block.type) {
+            case 'TEXT':
+                return (
+                    <ArticleTextBlock
+                        key={block.id}
+                        className={style.article_block}
+                        content={block}
+                    />
+                );
+            case 'CODE':
+                return (
+                    <ArticleCodeBlock
+                        key={block.id}
+                        className={style.article_block}
+                        content={block}
+                    />
+                );
+            case 'IMAGE':
+                return (
+                    <ArticleImageBlock
+                        key={block.id}
+                        className={style.article_block}
+                        content={block}
+                    />
+                );
+            default:
+                return null;
+        }
+    }, []);
+
     let content;
 
     if (isLoading) {
@@ -59,7 +98,39 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
             <Message severity={Severity.ERROR} text={t('Произошла ошибка при загрузке статьи')} />
         );
     } else {
-        content = <div>{t('ARTICLE DETAILS')}</div>;
+        content = (
+            <>
+                <div className={style.article_avatar}>
+                    <Avatar
+                        size={AvatarSize.LARGE}
+                        image={data?.img || ''}
+                        width='200px'
+                        height='200px'
+                        borderRadius='50%'
+                    />
+                </div>
+
+                <h1 className={style.title}>{data?.title}</h1>
+
+                <p className={style.subtitle}>{data?.subtitle}</p>
+
+                <div className={style.article_info}>
+                    <div className={style.article_details__info}>
+                        <EyeIcon className={style.article_details__icon} />
+                        <span className={style.views}>{data?.views}</span>
+                    </div>
+
+                    <div className={style.article_details__info}>
+                        <CalendarIcon className={style.article_details__icon} />
+                        <span className={style.date}>{data?.createdAt}</span>
+                    </div>
+                </div>
+
+                <div className={style.article_block_wrapper}>
+                    {data?.blocks.map((block) => contentBlock(block))}
+                </div>
+            </>
+        );
     }
 
     return (
