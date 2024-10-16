@@ -1,38 +1,36 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { Code } from './Code';
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator';
 import { Theme } from '@/app/providers/theme';
-import { ArticleTextBlock } from './ArticleTextBlock';
-import { ArticleBlockType } from '../../model/types/article';
 
 const meta = {
-    title: 'entities/ArticleTextBlock',
-    component: ArticleTextBlock,
+    title: 'shared/Code',
+    component: Code,
     parameters: {
         layout: 'centered'
     },
+
     tags: ['autodocs']
-} satisfies Meta<typeof ArticleTextBlock>;
+} satisfies Meta<typeof Code>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     args: {
-        content: {
-            id: '1',
-            paragraphs: ['text'],
-            type: ArticleBlockType.TEXT
-        }
+        text: '<!DOCTYPE html>\n<html>\n  <body>\n    <p id="hello"></p>\n\n;'
+    }
+};
+
+export const Text: Story = {
+    args: {
+        text: '<!DOCTYPE html>\n<html>\n  <body>\n    <p id="hello"></p>\n\n;'
     }
 };
 
 export const Dark: Story = {
     args: {
-        content: {
-            id: '1',
-            paragraphs: ['text'],
-            type: ArticleBlockType.TEXT
-        }
+        text: '<!DOCTYPE html>\n<html>\n  <body>\n    <p id="hello"></p>\n\n;'
     }
 };
 

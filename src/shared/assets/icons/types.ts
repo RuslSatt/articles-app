@@ -2,5 +2,9 @@ export enum icons {
     BURGER = 'burger',
     MOON = 'moon',
     SUN = 'sun',
-    LANG = 'lang'
+    LANG = 'lang',
+    EYE = 'eye',
+    CALENDAR = 'calendar',
+    CHECK = 'check',
+    COPY = 'copy'
 }

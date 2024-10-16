@@ -1,0 +1,23 @@
+.codeBlock {
+    width: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+    padding: 5px;
+    position: relative;
+}
+
+.code {
+    width: 100%;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    overflow: auto;
+}
+
+.button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
