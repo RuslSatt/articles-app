@@ -1,3 +1,13 @@
 .articleCodeBlock {
     width: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+    padding: 5px;
+}
+
+.code {
+    width: 100%;
+    font-size: 14px;
+    line-height: 20px;
 }

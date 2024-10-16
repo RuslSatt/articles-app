@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import style from './ArticleCodeBlock.module.scss';
@@ -12,11 +11,9 @@ export interface ArticleCodeBlockProps {
 export const ArticleCodeBlock = memo((props: ArticleCodeBlockProps) => {
     const { className, content } = props;
 
-    const { t } = useTranslation();
-
     return (
         <div className={classNames(style.articleCodeBlock, [className])}>
-            <div>{content.code}</div>
+            <code className={style.code}>{content.code}</code>
         </div>
     );
 });
