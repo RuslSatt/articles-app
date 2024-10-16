@@ -16,7 +16,8 @@ export const ArticleImageBlock = memo((props: ArticleImageBlockProps) => {
 
     return (
         <div className={classNames(style.articleImageBlock, [className])}>
-            <div>{content?.title}</div>
+            <img className={style.img} src={content?.src} alt={content?.title} />
+            <div className={style.title}>{content?.title}</div>
         </div>
     );
 });
