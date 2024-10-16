@@ -14,7 +14,14 @@ export const ArticleTextBlock = memo((props: ArticleTextBlockProps) => {
 
     return (
         <div className={classNames(style.articleTextBlock, [className])}>
-            <div>{content?.paragraphs?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
+            {content?.title && <h3 className={style.title}>{content?.title}</h3>}
+            <div>
+                {content?.paragraphs?.map((paragraph) => (
+                    <p className={style.paragraph} key={paragraph}>
+                        {paragraph}
+                    </p>
+                ))}
+            </div>
         </div>
     );
 });

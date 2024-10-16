@@ -11,6 +11,7 @@ export interface IArticleBlockBase {
 
 export interface IArticleTextBlock extends IArticleBlockBase {
     type: ArticleBlockType.TEXT;
+    title?: string;
     paragraphs: string[];
 }
 
