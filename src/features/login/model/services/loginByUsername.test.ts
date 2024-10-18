@@ -17,7 +17,7 @@ describe('loginByUsername', () => {
 
         const TestThunk = new TestAsyncThunk(loginByUsername, state);
         TestThunk.api.post.mockReturnValue(Promise.resolve({ data: user }));
-        const action = await TestThunk.callThunk();
+        const action = await TestThunk.callThunk(undefined);
 
         expect(TestThunk.dispatch).toHaveBeenCalledWith(userActions.setUser(user));
         expect(TestThunk.dispatch).toHaveBeenCalledTimes(3);
@@ -28,7 +28,7 @@ describe('loginByUsername', () => {
     test('error login', async () => {
         const TestThunk = new TestAsyncThunk(loginByUsername, state);
         TestThunk.api.post.mockReturnValue(Promise.reject(new Error('user not found')));
-        const action = await TestThunk.callThunk();
+        const action = await TestThunk.callThunk(undefined);
 
         expect(TestThunk.dispatch).toHaveBeenCalledTimes(2);
         expect(action.meta.requestStatus).toBe('rejected');
