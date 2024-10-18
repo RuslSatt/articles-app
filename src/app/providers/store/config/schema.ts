@@ -5,12 +5,14 @@ import { UserSchema } from '@/entities/user';
 import { LoginSchema } from '@/features/login';
 import { ProfileSchema } from '@/entities/profile';
 import { ArticleSchema } from '@/entities/article';
+import { IArticleDetailCommentsSchema } from '@/pages/ArticleDetailPage';
 
 export interface StateSchema {
     user: UserSchema;
     login?: LoginSchema;
     profile?: ProfileSchema;
     articleDetails?: ArticleSchema;
+    articleDetailCommentsSchema?: IArticleDetailCommentsSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
