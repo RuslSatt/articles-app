@@ -12,13 +12,18 @@ import {
     DynamicReducerLoader,
     ReducersList
 } from '@/shared/lib/DynamicReducerLoader/DynamicReducerLoader';
+// eslint-disable-next-line max-len
 import {
-    getArticleDetailCommentsData,
+    getArticleDetailCommentsError,
     getArticleDetailCommentsIsLoading
 } from '../model/selectors/getArticleDetailsCommentsData';
 // eslint-disable-next-line max-len
 import { fetchArticleDetailComments } from '../model/services/fetchArticleDetailComments/fetchArticleDetailComments';
-import { articleDetailCommentsReducer } from '../model/slice/articleDetailcommentsSlice';
+import {
+    articleDetailCommentsReducer,
+    getArticleComments
+} from '../model/slice/articleDetailcommentsSlice';
+import { useInitialEffect } from '@/shared/lib/hooks/useInitailEffect';
 
 export interface ArticleDetailPageProps {
     className?: string;
@@ -37,14 +42,13 @@ const ArticleDetailPage = (props: ArticleDetailPageProps) => {
 
     const dispatch = useAppDispatch();
 
-    const comments = useSelector(getArticleDetailCommentsData);
+    const comments = useSelector(getArticleComments.selectAll);
     const isLoading = useSelector(getArticleDetailCommentsIsLoading);
+    const error = useSelector(getArticleDetailCommentsError);
 
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook' && id) {
-            dispatch(fetchArticleDetailComments(id));
-        }
-    }, [dispatch, id]);
+    useInitialEffect(() => {
+        dispatch(fetchArticleDetailComments(id));
+    });
 
     if (!id) {
         return (

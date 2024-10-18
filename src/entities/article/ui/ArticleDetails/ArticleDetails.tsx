@@ -25,6 +25,7 @@ import { ArticleBlock } from '../../model/types/article';
 import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock';
 import { ArticleCodeBlock } from '../ArticleCodeBlock/ArticleCodeBlock';
 import { ArticleImageBlock } from '../ArticleImageBlock/ArticleImageBlock';
+import { useInitialEffect } from '@/shared/lib/hooks/useInitailEffect';
 
 export interface ArticleDetailsProps {
     className?: string;
@@ -45,6 +46,10 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     const data = useSelector(getArticleDetailsData);
     const isLoading = useSelector(getArticleDetailsIsLoading);
     const error = useSelector(getArticleDetailsError);
+
+    useInitialEffect(() => {
+        dispatch(fetchArticleById(id));
+    });
 
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
