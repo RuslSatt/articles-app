@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import style from './ArticleDetailPage.module.scss';
@@ -14,23 +13,21 @@ import {
 } from '@/shared/lib/DynamicReducerLoader/DynamicReducerLoader';
 // eslint-disable-next-line max-len
 import {
-    getArticleDetailCommentsError,
-    getArticleDetailCommentsIsLoading
-} from '../model/selectors/getArticleDetailsCommentsData';
+    getArticleCommentsError,
+    getArticleCommentsIsLoading
+} from '../model/selectors/getArticleCommentsData';
 // eslint-disable-next-line max-len
-import { fetchArticleDetailComments } from '../model/services/fetchArticleDetailComments/fetchArticleDetailComments';
-import {
-    articleDetailCommentsReducer,
-    getArticleComments
-} from '../model/slice/articleDetailcommentsSlice';
+import { fetchArticleComments } from '../model/services/fetchArticleComments/fetchArticleComments';
+
 import { useInitialEffect } from '@/shared/lib/hooks/useInitailEffect';
+import { articleCommentsReducer, getArticleComments } from '../model/slice/articleCommentsSlice';
 
 export interface ArticleDetailPageProps {
     className?: string;
 }
 
 const reducersList: ReducersList = {
-    articleDetailCommentsSchema: articleDetailCommentsReducer
+    articleDetailCommentsSchema: articleCommentsReducer
 };
 
 const ArticleDetailPage = (props: ArticleDetailPageProps) => {
@@ -43,11 +40,11 @@ const ArticleDetailPage = (props: ArticleDetailPageProps) => {
     const dispatch = useAppDispatch();
 
     const comments = useSelector(getArticleComments.selectAll);
-    const isLoading = useSelector(getArticleDetailCommentsIsLoading);
-    const error = useSelector(getArticleDetailCommentsError);
+    const isLoading = useSelector(getArticleCommentsIsLoading);
+    const error = useSelector(getArticleCommentsError);
 
     useInitialEffect(() => {
-        dispatch(fetchArticleDetailComments(id));
+        dispatch(fetchArticleComments(id));
     });
 
     if (!id) {
