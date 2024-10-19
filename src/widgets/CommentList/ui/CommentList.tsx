@@ -4,22 +4,33 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import style from './CommentList.module.scss';
 import { IComment } from '@/entities/comment';
 import { CommentCard } from '@/entities/comment/ui/CommentCard';
+import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 
 export interface CommentListProps {
     className?: string;
     comments: IComment[];
+    isLoading?: boolean;
 }
 
 export const CommentList = memo((props: CommentListProps) => {
-    const { className, comments } = props;
+    const { className, comments, isLoading } = props;
 
     const { t } = useTranslation();
 
     let content;
 
-    console.log(comments);
-
-    if (!comments?.length) {
+    if (isLoading) {
+        content = (
+            <div className={style.skeleton}>
+                <div className={style.skeleton_user}>
+                    <Skeleton width={32} height={32} />
+                    <Skeleton width={100} height={32} />
+                </div>
+                <Skeleton width='100%' height={32} />
+                <Skeleton width='100%' height={32} />
+            </div>
+        );
+    } else if (!comments?.length) {
         content = <p>{t('Комментарии отсутствуют')}</p>;
     } else {
         content = (
@@ -29,15 +40,5 @@ export const CommentList = memo((props: CommentListProps) => {
         );
     }
 
-    return (
-        <div className={classNames(style.commentList, [className])}>
-            {comments?.length > 0 ? (
-                <ul className={style.list}>
-                    {comments?.map((comment) => <CommentCard key={comment.id} comment={comment} />)}
-                </ul>
-            ) : (
-                <p>{t('Комментарии отсутствуют')}</p>
-            )}
-        </div>
-    );
+    return <div className={classNames(style.commentList, [className])}>{content}</div>;
 });

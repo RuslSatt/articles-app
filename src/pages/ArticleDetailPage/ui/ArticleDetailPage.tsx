@@ -59,7 +59,7 @@ const ArticleDetailPage = (props: ArticleDetailPageProps) => {
         <div className={classNames(style.articleDetailPage, [className])}>
             <ArticleDetails id={id} />
             <DynamicReducerLoader reducers={reducersList}>
-                <CommentList comments={comments ?? []} />
+                <CommentList comments={comments ?? []} isLoading={isLoading} />
             </DynamicReducerLoader>
         </div>
     );
