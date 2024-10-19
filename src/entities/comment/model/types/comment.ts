@@ -4,7 +4,7 @@ export interface IComment {
     id: string;
     text: string;
     user: User;
-    taskId: string;
+    articleId: string;
     createdAt?: Date;
     updatedAt?: Date;
 }

@@ -27,7 +27,7 @@ export interface ArticleDetailPageProps {
 }
 
 const reducersList: ReducersList = {
-    articleDetailCommentsSchema: articleCommentsReducer
+    articleDetailComments: articleCommentsReducer
 };
 
 const ArticleDetailPage = (props: ArticleDetailPageProps) => {

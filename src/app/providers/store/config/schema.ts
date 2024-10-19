@@ -12,7 +12,7 @@ export interface StateSchema {
     login?: LoginSchema;
     profile?: ProfileSchema;
     articleDetails?: ArticleSchema;
-    articleDetailCommentsSchema?: IArticleCommentsSchema;
+    articleDetailComments?: IArticleCommentsSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
