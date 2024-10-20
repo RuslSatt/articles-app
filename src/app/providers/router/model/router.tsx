@@ -23,7 +23,7 @@ export const router: Array<IRouteProps> = [
         element: <AboutPage />
     },
     {
-        path: RoutePath[AppRoutes.PROFILE],
+        path: `${RoutePath[AppRoutes.PROFILE]}:id`,
         element: <ProfilePage />,
         authOnly: true
     },

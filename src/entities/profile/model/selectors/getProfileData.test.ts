@@ -13,6 +13,7 @@ import {
 import { ValidateProfileError } from '../types/profile';
 
 const data = {
+    id: '1',
     username: 'admin',
     age: 22,
     country: Country.UZBEKISTAN,

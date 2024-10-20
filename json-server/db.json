@@ -118,14 +118,28 @@
       "avatar": "https://img.kupigolos.ru/hero/5f40c310ab69d.png?p=bh&s=67737a924da032027fdf8f9d7a897e6b"
     }
   ],
-  "profile": {
-    "first": "Руслан",
-    "lastname": "Саттаров",
-    "age": 25,
-    "currency": "RUB",
-    "country": "RU",
-    "city": "Москва",
-    "username": "admin",
-    "avatar": "https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg"
-  }
+  "profile": [
+    {
+      "id": "1",
+      "first": "Руслан",
+      "lastname": "Саттаров",
+      "age": 26,
+      "currency": "RUB",
+      "country": "RU",
+      "city": "Уфа",
+      "username": "admin",
+      "avatar": "https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg"
+    },
+    {
+      "id": "2",
+      "first": "Аарон",
+      "lastname": "Саттаров",
+      "age": 1,
+      "currency": "RUB",
+      "country": "RU",
+      "city": "Уфа",
+      "username": "Aaron_01",
+      "avatar": "https://img.kupigolos.ru/hero/5f40c310ab69d.png?p=bh&s=67737a924da032027fdf8f9d7a897e6b"
+    }
+  ]
 }
