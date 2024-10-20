@@ -21,6 +21,8 @@ import { fetchArticleComments } from '../model/services/fetchArticleComments/fet
 
 import { useInitialEffect } from '@/shared/lib/hooks/useInitailEffect';
 import { articleCommentsReducer, getArticleComments } from '../model/slice/articleCommentsSlice';
+import { AddCommentForm } from '@/features/addComment';
+import { addArticleComment } from '../model/services/addArticleComment/addArticleComment';
 
 export interface ArticleDetailPageProps {
     className?: string;
@@ -55,10 +57,15 @@ const ArticleDetailPage = (props: ArticleDetailPageProps) => {
         );
     }
 
+    const onSendComment = (text: string) => {
+        dispatch(addArticleComment(text));
+    };
+
     return (
         <div className={classNames(style.articleDetailPage, [className])}>
             <ArticleDetails id={id} />
             <DynamicReducerLoader reducers={reducersList}>
+                <AddCommentForm onSendComment={onSendComment} />
                 <CommentList comments={comments ?? []} isLoading={isLoading} />
             </DynamicReducerLoader>
         </div>

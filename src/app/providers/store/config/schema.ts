@@ -6,6 +6,7 @@ import { LoginSchema } from '@/features/login';
 import { ProfileSchema } from '@/entities/profile';
 import { ArticleSchema } from '@/entities/article';
 import { IArticleCommentsSchema } from '@/pages/ArticleDetailPage';
+import { IAddCommentFormSchema } from '@/features/addComment';
 
 export interface StateSchema {
     user: UserSchema;
@@ -13,6 +14,7 @@ export interface StateSchema {
     profile?: ProfileSchema;
     articleDetails?: ArticleSchema;
     articleDetailComments?: IArticleCommentsSchema;
+    addCommentForm?: IAddCommentFormSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
