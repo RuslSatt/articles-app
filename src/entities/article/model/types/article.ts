@@ -51,3 +51,8 @@ export interface ArticleDetailsSchema {
     isLoading?: boolean;
     error?: string;
 }
+
+export enum ArticleView {
+    LIST = 'list',
+    GRID = 'grid'
+}
