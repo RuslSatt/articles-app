@@ -3,6 +3,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import style from './ArticleListItem.module.scss';
 import { ArticleView, IArticle } from '../../model/types/article';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
+import { Card } from '@/shared/ui/Card/Card';
 
 export interface ArticleTextBlockProps {
     className?: string;
@@ -18,21 +19,23 @@ export const ArticleListItem = memo((props: ArticleTextBlockProps) => {
     if (view === ArticleView.GRID) {
         renderItem = () => {
             return (
-                <div className={classNames(style.item, [className])}>
-                    <div className={style.img__container}>
-                        <img className={style.img} src={article?.img} alt={article?.title} />
-                    </div>
-                    <div className={style.info__container}>
-                        <div className={style.info}>
-                            <div className={style.info__type}>{article?.type}</div>
-                            <div className={style.info__views}>
-                                <div className={style.info__views_count}>{article.views}</div>
-                                <EyeIcon className={style.info__views_icon} />
-                            </div>
+                <Card>
+                    <div className={classNames(style.item, [className])}>
+                        <div className={style.img__container}>
+                            <img className={style.img} src={article?.img} alt={article?.title} />
                         </div>
-                        <div className={style.title}>{article?.title}</div>
+                        <div className={style.info__container}>
+                            <div className={style.info}>
+                                <div className={style.info__type}>{article?.type}</div>
+                                <div className={style.info__views}>
+                                    <div className={style.info__views_count}>{article.views}</div>
+                                    <EyeIcon className={style.info__views_icon} />
+                                </div>
+                            </div>
+                            <div className={style.title}>{article?.title}</div>
+                        </div>
                     </div>
-                </div>
+                </Card>
             );
         };
     } else {
