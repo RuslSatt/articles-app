@@ -1,5 +1,6 @@
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import style from './ArticleListItem.module.scss';
 import {
@@ -13,6 +14,7 @@ import { Card } from '@/shared/ui/Card/Card';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
 import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock';
 import { Button } from '@/shared/ui/Button/Button';
+import { AppRoutes, RoutePath } from '@/shared/config/router/routerConfig';
 
 export interface ArticleTextBlockProps {
     className?: string;
@@ -37,6 +39,12 @@ export const ArticleListItem = memo((props: ArticleTextBlockProps) => {
             <EyeIcon />
         </div>
     );
+
+    const navigate = useNavigate();
+
+    const openArticleDetails = useCallback(() => {
+        navigate(`${RoutePath[AppRoutes.ARTICLES_DETAILS]}${article.id}`);
+    }, [article.id, navigate]);
 
     if (view === ArticleView.LIST) {
         const contentBlock = article?.blocks?.find((block) => block.type === ArticleBlockType.TEXT);
@@ -73,7 +81,7 @@ export const ArticleListItem = memo((props: ArticleTextBlockProps) => {
                         </div>
 
                         <div className={style.footer}>
-                            <Button label={t('Читать далее...')} />
+                            <Button label={t('Читать далее...')} onClick={openArticleDetails} />
 
                             {Views}
                         </div>
@@ -85,7 +93,7 @@ export const ArticleListItem = memo((props: ArticleTextBlockProps) => {
 
     return (
         <div className={classNames(style.item, [className, style[view]])}>
-            <Card>
+            <Card onClick={openArticleDetails}>
                 <div className={style.item__container}>
                     <div className={style.img__container}>
                         <img className={style.img} src={article?.img} alt={article?.title} />

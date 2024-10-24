@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useCallback } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import style from './ArticleDetailPage.module.scss';
 import { ArticleDetails } from '@/entities/article';
@@ -11,18 +12,17 @@ import {
     DynamicReducerLoader,
     ReducersList
 } from '@/shared/lib/DynamicReducerLoader/DynamicReducerLoader';
-// eslint-disable-next-line max-len
 import {
     getArticleCommentsError,
     getArticleCommentsIsLoading
 } from '../model/selectors/getArticleCommentsData';
-// eslint-disable-next-line max-len
 import { fetchArticleComments } from '../model/services/fetchArticleComments/fetchArticleComments';
-
 import { useInitialEffect } from '@/shared/lib/hooks/useInitailEffect';
 import { articleCommentsReducer, getArticleComments } from '../model/slice/articleCommentsSlice';
 import { AddCommentForm } from '@/features/addComment';
 import { addArticleComment } from '../model/services/addArticleComment/addArticleComment';
+import { Button } from '@/shared/ui/Button/Button';
+import { AppRoutes, RoutePath } from '@/shared/config/router/routerConfig';
 
 export interface ArticleDetailPageProps {
     className?: string;
@@ -49,6 +49,12 @@ const ArticleDetailPage = (props: ArticleDetailPageProps) => {
         dispatch(fetchArticleComments(id));
     });
 
+    const navigate = useNavigate();
+
+    const onBackToList = useCallback(() => {
+        navigate(RoutePath[AppRoutes.ARTICLES]);
+    }, [navigate]);
+
     if (!id) {
         return (
             <div className={classNames(style.articleDetailPage, [className])}>
@@ -63,6 +69,7 @@ const ArticleDetailPage = (props: ArticleDetailPageProps) => {
 
     return (
         <div className={classNames(style.articleDetailPage, [className])}>
+            <Button className={style.button} label={t('Назад к списку')} onClick={onBackToList} />
             <ArticleDetails id={id} />
             <DynamicReducerLoader reducers={reducersList}>
                 <AddCommentForm onSendComment={onSendComment} />
