@@ -16,14 +16,15 @@ import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock';
 import { Button } from '@/shared/ui/Button/Button';
 import { AppRoutes, RoutePath } from '@/shared/config/router/routerConfig';
 
-export interface ArticleTextBlockProps {
+export interface ArticleListItemProps {
     className?: string;
     article: IArticle;
     view?: ArticleView;
+    isLoading?: boolean;
 }
 
-export const ArticleListItem = memo((props: ArticleTextBlockProps) => {
-    const { className, article, view = ArticleView.LIST } = props;
+export const ArticleListItem = memo((props: ArticleListItemProps) => {
+    const { className, article, isLoading, view = ArticleView.LIST } = props;
 
     const { t } = useTranslation();
 

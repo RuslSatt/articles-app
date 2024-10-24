@@ -2,8 +2,13 @@ import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import style from './ArticleList.module.scss';
-import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
-import { IArticle, ArticleListItem, ArticleView } from '@/entities/article';
+import {
+    IArticle,
+    ArticleListItem,
+    ArticleView,
+    ArticleListItemSkeleton
+} from '@/entities/article';
+// eslint-disable-next-line max-len
 
 export interface ArticleListProps {
     className?: string;
@@ -13,23 +18,18 @@ export interface ArticleListProps {
 }
 
 export const ArticleList = memo((props: ArticleListProps) => {
-    const { className, articles, isLoading, view = ArticleView.LIST } = props;
+    const { className, articles, isLoading = true, view = ArticleView.LIST } = props;
 
     const { t } = useTranslation();
 
     let content;
 
     if (isLoading) {
-        // content = (
-        //     <div className={style.skeleton}>
-        //         <div className={style.skeleton_user}>
-        //             <Skeleton width={32} height={32} />
-        //             <Skeleton width={100} height={32} />
-        //         </div>
-        //         <Skeleton width='100%' height={32} />
-        //         <Skeleton width='100%' height={32} />
-        //     </div>
-        // );
+        content = (
+            <ul className={style[view]}>
+                <ArticleListItemSkeleton view={view} />
+            </ul>
+        );
     } else if (!articles?.length) {
         content = <p>{t('Статьи отсутствуют')}</p>;
     } else {

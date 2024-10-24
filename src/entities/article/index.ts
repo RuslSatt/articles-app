@@ -5,3 +5,4 @@ export { articleDetailsReducer } from './model/slice/articleDetailsSlice';
 export { ArticleType, ArticleBlockType } from './model/types/article';
 export { getArticleDetailsData } from './model/selectors/articleDetails';
 export { ArticleListItem } from './ui/ArticleListItem/ArticleListItem';
+export { ArticleListItemSkeleton } from './ui/ArticleListItemSkeleton/ArticleListItemSkeleton';
