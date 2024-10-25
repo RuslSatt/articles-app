@@ -7,6 +7,7 @@ import { ProfileSchema } from '@/entities/profile';
 import { ArticleSchema } from '@/entities/article';
 import { IArticleCommentsSchema } from '@/pages/ArticleDetailPage';
 import { IAddCommentFormSchema } from '@/features/addComment';
+import { IArticlePageSchema } from '@/pages/ArticlesPage';
 
 export interface StateSchema {
     user: UserSchema;
@@ -15,6 +16,7 @@ export interface StateSchema {
     articleDetails?: ArticleSchema;
     articleDetailComments?: IArticleCommentsSchema;
     addCommentForm?: IAddCommentFormSchema;
+    articlesPage?: IArticlePageSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
