@@ -6,5 +6,7 @@ export enum icons {
     EYE = 'eye',
     CALENDAR = 'calendar',
     CHECK = 'check',
-    COPY = 'copy'
+    COPY = 'copy',
+    GRID = 'grid',
+    LIST = 'list'
 }

@@ -9,6 +9,8 @@ import CalendarIcon from '@/shared/assets/icons/calendar.svg';
 import CheckIcon from '@/shared/assets/icons/check.svg';
 import CopyIcon from '@/shared/assets/icons/copy.svg';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
+import GridIcon from '@/shared/assets/icons/grid.svg';
+import ListIcon from '@/shared/assets/icons/list.svg';
 import { icons } from '@/shared/assets/icons/types';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -49,6 +51,12 @@ export const Button = memo((props: ButtonProps) => {
             break;
         case icons.EYE:
             Icon = <EyeIcon />;
+            break;
+        case icons.GRID:
+            Icon = <GridIcon />;
+            break;
+        case icons.LIST:
+            Icon = <ListIcon />;
             break;
     }
 

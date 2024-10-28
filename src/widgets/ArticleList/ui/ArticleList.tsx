@@ -18,7 +18,7 @@ export interface ArticleListProps {
 }
 
 export const ArticleList = memo((props: ArticleListProps) => {
-    const { className, articles, isLoading = true, view = ArticleView.LIST } = props;
+    const { className, articles, isLoading = false, view = ArticleView.LIST } = props;
 
     const { t } = useTranslation();
 

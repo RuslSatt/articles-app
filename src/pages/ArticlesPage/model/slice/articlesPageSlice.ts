@@ -3,6 +3,7 @@ import { StateSchema } from '@/app/providers/store';
 import { IArticlePageSchema } from '../types/articlesPage';
 import { ArticleView, IArticle } from '@/entities/article';
 import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList';
+import { ARTICLE_VIEW_KEY } from '@/shared/const/storage';
 
 const initialState: IArticlePageSchema = {
     ids: [],
@@ -26,6 +27,10 @@ export const articlesPageSlice = createSlice({
     reducers: {
         setView: (state, action: PayloadAction<ArticleView>) => {
             state.view = action.payload;
+            localStorage.setItem(ARTICLE_VIEW_KEY, action.payload);
+        },
+        init(state) {
+            state.view = localStorage.getItem(ARTICLE_VIEW_KEY) as ArticleView;
         }
     },
     extraReducers: (builder) => {
