@@ -35,13 +35,17 @@ export const articlesPageSlice = createSlice({
             const view = localStorage.getItem(ARTICLE_VIEW_KEY) as ArticleView;
             state.view = view;
             state.limit = view === ArticleView.LIST ? 5 : 10;
+        },
+        setPage: (state, action: PayloadAction<number>) => {
+            state.page = action.payload;
         }
     },
     extraReducers: (builder) => {
         builder.addCase(fetchArticlesList.fulfilled, (state, action: PayloadAction<IArticle[]>) => {
             state.isLoading = false;
-            commentsAdapter.setAll(state, action.payload);
+            commentsAdapter.addMany(state, action.payload);
             state.error = undefined;
+            state.hasMore = action.payload.length > 0;
         });
         builder.addCase(fetchArticlesList.pending, (state) => {
             state.isLoading = true;

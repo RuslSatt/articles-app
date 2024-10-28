@@ -6,7 +6,9 @@ import { ArticleList } from '@/widgets/ArticleList';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { fetchArticlesList } from '../model/services/fetchArticlesList/fetchArticlesList';
 import {
+    getArticlesPageHasMore,
     getArticlesPageIsLoading,
+    getArticlesPagePage,
     getArticlesPageView
 } from '../model/selectors/getArticlesPageData';
 import {
@@ -36,6 +38,22 @@ const ArticlesPage = (props: ArticlesPageProps) => {
 
     const dispatch = useAppDispatch();
 
+    const isLoading = useSelector(getArticlesPageIsLoading);
+    const articles = useSelector(getArticlesList.selectAll);
+    const view = useSelector(getArticlesPageView);
+    const page = useSelector(getArticlesPagePage);
+    const hasMore = useSelector(getArticlesPageHasMore);
+
+    const onLoadNextPart = useCallback(() => {
+        if (!hasMore || isLoading) return;
+        dispatch(articlesPageActions.setPage(page + 1));
+        dispatch(
+            fetchArticlesList({
+                page: page + 1
+            })
+        );
+    }, [dispatch, hasMore, isLoading, page]);
+
     useInitialEffect(() => {
         dispatch(articlesPageActions.init());
         dispatch(
@@ -44,10 +62,6 @@ const ArticlesPage = (props: ArticlesPageProps) => {
             })
         );
     });
-
-    const isLoading = useSelector(getArticlesPageIsLoading);
-    const articles = useSelector(getArticlesList.selectAll);
-    const view = useSelector(getArticlesPageView);
 
     const onChangeView = useCallback(
         (view?: ArticleView) => {
@@ -59,7 +73,10 @@ const ArticlesPage = (props: ArticlesPageProps) => {
 
     return (
         <DynamicReducerLoader reducers={reducers}>
-            <Page className={classNames(style.articlesPage, [className])}>
+            <Page
+                onScrollEnd={onLoadNextPart}
+                className={classNames(style.articlesPage, [className])}
+            >
                 <header className={style.header}>
                     <ArticleViewSelector onChangeView={onChangeView} />
                 </header>

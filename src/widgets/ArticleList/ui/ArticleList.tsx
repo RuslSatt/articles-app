@@ -22,25 +22,15 @@ export const ArticleList = memo((props: ArticleListProps) => {
 
     const { t } = useTranslation();
 
-    let content;
-
-    if (isLoading) {
-        content = (
+    return (
+        <div className={classNames(style.article_list, [className])}>
             <ul className={style[view]}>
-                <ArticleListItemSkeleton view={view} />
+                {articles?.length > 0 &&
+                    articles?.map((article) => (
+                        <ArticleListItem key={article.id} article={article} view={view} />
+                    ))}
+                {isLoading && <ArticleListItemSkeleton view={view} />}
             </ul>
-        );
-    } else if (!articles?.length) {
-        content = <p>{t('Статьи отсутствуют')}</p>;
-    } else {
-        content = (
-            <ul className={style[view]}>
-                {articles?.map((article) => (
-                    <ArticleListItem key={article.id} article={article} view={view} />
-                ))}
-            </ul>
-        );
-    }
-
-    return <div className={classNames(style.article_list, [className])}>{content}</div>;
+        </div>
+    );
 });
