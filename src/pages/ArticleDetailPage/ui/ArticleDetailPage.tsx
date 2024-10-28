@@ -23,6 +23,7 @@ import { AddCommentForm } from '@/features/addComment';
 import { addArticleComment } from '../model/services/addArticleComment/addArticleComment';
 import { Button } from '@/shared/ui/Button/Button';
 import { AppRoutes, RoutePath } from '@/shared/config/router/routerConfig';
+import { Page } from '@/shared/ui/Page/Page';
 
 export interface ArticleDetailPageProps {
     className?: string;
@@ -57,9 +58,9 @@ const ArticleDetailPage = (props: ArticleDetailPageProps) => {
 
     if (!id) {
         return (
-            <div className={classNames(style.articleDetailPage, [className])}>
+            <Page className={classNames(style.articleDetailPage, [className])}>
                 {t('ARTICLE NOT FOUND')}
-            </div>
+            </Page>
         );
     }
 
@@ -68,14 +69,14 @@ const ArticleDetailPage = (props: ArticleDetailPageProps) => {
     };
 
     return (
-        <div className={classNames(style.articleDetailPage, [className])}>
+        <Page className={classNames(style.articleDetailPage, [className])}>
             <Button className={style.button} label={t('Назад к списку')} onClick={onBackToList} />
             <ArticleDetails id={id} />
             <DynamicReducerLoader reducers={reducersList}>
                 <AddCommentForm onSendComment={onSendComment} />
                 <CommentList comments={comments ?? []} isLoading={isLoading} />
             </DynamicReducerLoader>
-        </div>
+        </Page>
     );
 };
 

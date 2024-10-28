@@ -21,6 +21,7 @@ import {
 import { useInitialEffect } from '@/shared/lib/hooks/useInitailEffect';
 import { ArticleViewSelector } from '@/features/articleViewSelector';
 import { ArticleView } from '@/entities/article';
+import { Page } from '@/shared/ui/Page/Page';
 
 export interface ArticlesPageProps {
     className?: string;
@@ -36,8 +37,12 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     const dispatch = useAppDispatch();
 
     useInitialEffect(() => {
-        dispatch(fetchArticlesList());
         dispatch(articlesPageActions.init());
+        dispatch(
+            fetchArticlesList({
+                page: 1
+            })
+        );
     });
 
     const isLoading = useSelector(getArticlesPageIsLoading);
@@ -54,12 +59,12 @@ const ArticlesPage = (props: ArticlesPageProps) => {
 
     return (
         <DynamicReducerLoader reducers={reducers}>
-            <div className={classNames(style.articlesPage, [className])}>
+            <Page className={classNames(style.articlesPage, [className])}>
                 <header className={style.header}>
                     <ArticleViewSelector onChangeView={onChangeView} />
                 </header>
                 <ArticleList view={view} isLoading={isLoading} articles={articles} />
-            </div>
+            </Page>
         </DynamicReducerLoader>
     );
 };

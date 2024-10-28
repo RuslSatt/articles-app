@@ -26,7 +26,7 @@ const App = () => {
                     <Navbar />
                     <div className='content-page'>
                         <Sidebar />
-                        <div className='page-wrapper'>{mounted && <AppRouter />}</div>
+                        {mounted && <AppRouter />}
                     </div>
                 </Suspense>
             </ErrorBoundary>

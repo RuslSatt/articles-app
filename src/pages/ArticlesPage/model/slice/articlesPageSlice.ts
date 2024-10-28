@@ -10,7 +10,9 @@ const initialState: IArticlePageSchema = {
     entities: {},
     isLoading: false,
     view: ArticleView.LIST,
-    error: undefined
+    error: undefined,
+    page: 1,
+    hasMore: true
 };
 
 const commentsAdapter = createEntityAdapter<IArticle>({
@@ -30,7 +32,9 @@ export const articlesPageSlice = createSlice({
             localStorage.setItem(ARTICLE_VIEW_KEY, action.payload);
         },
         init(state) {
-            state.view = localStorage.getItem(ARTICLE_VIEW_KEY) as ArticleView;
+            const view = localStorage.getItem(ARTICLE_VIEW_KEY) as ArticleView;
+            state.view = view;
+            state.limit = view === ArticleView.LIST ? 5 : 10;
         }
     },
     extraReducers: (builder) => {

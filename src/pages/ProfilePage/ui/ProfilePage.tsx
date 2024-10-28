@@ -21,6 +21,7 @@ import { Loader } from '@/shared/ui/Loader/Loader';
 import { Message, Severity } from '@/shared/ui/Message/Message';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitailEffect';
 import { getUserData } from '@/entities/user';
+import { Page } from '@/shared/ui/Page/Page';
 
 export interface ProfilePageProps {
     className?: string;
@@ -51,7 +52,7 @@ const ProfilePage: FC<ProfilePageProps> = (props) => {
 
     return (
         <DynamicReducerLoader reducers={reducersList}>
-            <div className={classNames(style.profilePage, [className])}>
+            <Page className={classNames(style.profilePage, [className])}>
                 {error && <Message severity={Severity.ERROR} text={error} />}
 
                 {isLoading && (
@@ -67,7 +68,7 @@ const ProfilePage: FC<ProfilePageProps> = (props) => {
                         editButton={canEdit ? <ProfileEditButton /> : null}
                     />
                 )}
-            </div>
+            </Page>
         </DynamicReducerLoader>
     );
 };
