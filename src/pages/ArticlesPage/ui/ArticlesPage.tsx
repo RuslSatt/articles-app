@@ -6,9 +6,7 @@ import { ArticleList } from '@/widgets/ArticleList';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { fetchArticlesList } from '../model/services/fetchArticlesList/fetchArticlesList';
 import {
-    getArticlesPageHasMore,
     getArticlesPageIsLoading,
-    getArticlesPagePage,
     getArticlesPageView
 } from '../model/selectors/getArticlesPageData';
 import {
@@ -24,6 +22,8 @@ import { useInitialEffect } from '@/shared/lib/hooks/useInitailEffect';
 import { ArticleViewSelector } from '@/features/articleViewSelector';
 import { ArticleView } from '@/entities/article';
 import { Page } from '@/shared/ui/Page/Page';
+// eslint-disable-next-line max-len
+import { fetchNextArticlesPage } from '../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 
 export interface ArticlesPageProps {
     className?: string;
@@ -41,18 +41,10 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     const isLoading = useSelector(getArticlesPageIsLoading);
     const articles = useSelector(getArticlesList.selectAll);
     const view = useSelector(getArticlesPageView);
-    const page = useSelector(getArticlesPagePage);
-    const hasMore = useSelector(getArticlesPageHasMore);
 
     const onLoadNextPart = useCallback(() => {
-        if (!hasMore || isLoading) return;
-        dispatch(articlesPageActions.setPage(page + 1));
-        dispatch(
-            fetchArticlesList({
-                page: page + 1
-            })
-        );
-    }, [dispatch, hasMore, isLoading, page]);
+        dispatch(fetchNextArticlesPage());
+    }, [dispatch]);
 
     useInitialEffect(() => {
         dispatch(articlesPageActions.init());
