@@ -6,3 +6,4 @@ export const getArticlesPageView = (state: StateSchema) => state.articlesPage?.v
 export const getArticlesPagePage = (state: StateSchema) => state.articlesPage?.page || 1;
 export const getArticlesPageHasMore = (state: StateSchema) => state.articlesPage?.hasMore;
 export const getArticlesPageLimit = (state: StateSchema) => state.articlesPage?.limit;
+export const getArticlesPageMounted = (state: StateSchema) => state.articlesPage?._mounted;

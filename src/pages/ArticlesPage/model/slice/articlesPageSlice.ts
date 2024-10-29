@@ -12,7 +12,9 @@ const initialState: IArticlePageSchema = {
     view: ArticleView.LIST,
     error: undefined,
     page: 1,
-    hasMore: true
+    hasMore: true,
+
+    _mounted: false
 };
 
 const commentsAdapter = createEntityAdapter<IArticle>({
@@ -35,6 +37,7 @@ export const articlesPageSlice = createSlice({
             const view = localStorage.getItem(ARTICLE_VIEW_KEY) as ArticleView;
             state.view = view;
             state.limit = view === ArticleView.LIST ? 5 : 10;
+            state._mounted = true;
         },
         setPage: (state, action: PayloadAction<number>) => {
             state.page = action.payload;

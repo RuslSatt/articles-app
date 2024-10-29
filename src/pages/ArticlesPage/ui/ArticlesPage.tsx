@@ -4,7 +4,6 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import style from './ArticlesPage.module.scss';
 import { ArticleList } from '@/widgets/ArticleList';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { fetchArticlesList } from '../model/services/fetchArticlesList/fetchArticlesList';
 import {
     getArticlesPageIsLoading,
     getArticlesPageView
@@ -24,6 +23,7 @@ import { ArticleView } from '@/entities/article';
 import { Page } from '@/shared/ui/Page/Page';
 // eslint-disable-next-line max-len
 import { fetchNextArticlesPage } from '../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
+import { initArticlesPage } from '../model/services/initArticlesPage/initArticlesPage';
 
 export interface ArticlesPageProps {
     className?: string;
@@ -47,12 +47,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     }, [dispatch]);
 
     useInitialEffect(() => {
-        dispatch(articlesPageActions.init());
-        dispatch(
-            fetchArticlesList({
-                page: 1
-            })
-        );
+        dispatch(initArticlesPage());
     });
 
     const onChangeView = useCallback(
@@ -64,7 +59,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     );
 
     return (
-        <DynamicReducerLoader reducers={reducers}>
+        <DynamicReducerLoader reducers={reducers} removeAfterUnmount={false}>
             <Page
                 onScrollEnd={onLoadNextPart}
                 className={classNames(style.articlesPage, [className])}
