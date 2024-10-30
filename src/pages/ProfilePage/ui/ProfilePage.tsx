@@ -21,7 +21,7 @@ import { Loader } from '@/shared/ui/Loader/Loader';
 import { Message, Severity } from '@/shared/ui/Message/Message';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitailEffect';
 import { getUserData } from '@/entities/user';
-import { Page } from '@/shared/ui/Page/Page';
+import { Page } from '@/widgets/Page/Page';
 
 export interface ProfilePageProps {
     className?: string;

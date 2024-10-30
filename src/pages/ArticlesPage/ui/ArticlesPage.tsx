@@ -20,7 +20,7 @@ import {
 import { useInitialEffect } from '@/shared/lib/hooks/useInitailEffect';
 import { ArticleViewSelector } from '@/features/articleViewSelector';
 import { ArticleView } from '@/entities/article';
-import { Page } from '@/shared/ui/Page/Page';
+import { Page } from '@/widgets/Page/Page';
 // eslint-disable-next-line max-len
 import { fetchNextArticlesPage } from '../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import { initArticlesPage } from '../model/services/initArticlesPage/initArticlesPage';

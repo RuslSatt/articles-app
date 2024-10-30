@@ -8,9 +8,12 @@ import { ArticleSchema } from '@/entities/article';
 import { IArticleCommentsSchema } from '@/pages/ArticleDetailPage';
 import { IAddCommentFormSchema } from '@/features/addComment';
 import { IArticlePageSchema } from '@/pages/ArticlesPage';
+import { ISaveScrollSchema } from '@/features/saveScroll';
 
 export interface StateSchema {
     user: UserSchema;
+    saveScroll: ISaveScrollSchema;
+
     login?: LoginSchema;
     profile?: ProfileSchema;
     articleDetails?: ArticleSchema;

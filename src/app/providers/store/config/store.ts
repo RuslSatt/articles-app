@@ -3,6 +3,7 @@ import { StateSchema } from './schema';
 import { userReducer } from '@/entities/user';
 import { createReducerManager } from './reducerManager';
 import { api } from '@/shared/api/base';
+import { saveScrollReducer } from '@/features/saveScroll';
 
 export interface CreateReduxStoreProps {
     initialState?: StateSchema;
@@ -13,7 +14,8 @@ export function createReduxStore(props: CreateReduxStoreProps) {
 
     const rootReducers = {
         ...dynamicReducers,
-        user: userReducer
+        user: userReducer,
+        saveScroll: saveScrollReducer
     };
 
     const reducerManager = createReducerManager(rootReducers);
