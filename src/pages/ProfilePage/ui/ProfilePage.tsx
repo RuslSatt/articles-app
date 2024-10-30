@@ -51,7 +51,7 @@ const ProfilePage: FC<ProfilePageProps> = (props) => {
     });
 
     return (
-        <DynamicReducerLoader reducers={reducersList}>
+        <DynamicReducerLoader reducersList={reducersList}>
             <Page className={classNames(style.profilePage, [className])}>
                 {error && <Message severity={Severity.ERROR} text={error} />}
 

@@ -44,7 +44,7 @@ const AddCommentForm = memo((props: AddCommentFormProps) => {
     }, [onChangeText, onSendComment, text]);
 
     return (
-        <DynamicReducerLoader reducers={reducersList}>
+        <DynamicReducerLoader reducersList={reducersList}>
             <div className={classNames(style.addCommentForm, [className])}>
                 <Input
                     value={text}

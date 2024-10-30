@@ -48,7 +48,7 @@ const LoginForm: FC<LoginFormProps> = (props) => {
     };
 
     return (
-        <DynamicReducerLoader reducers={reducersList}>
+        <DynamicReducerLoader reducersList={reducersList}>
             <div className={classNames(style.loginForm, [className])}>
                 {error && <Message severity={Severity.ERROR} text={error} />}
                 <Input autofocus type='text' value={username} onChange={handlerChangeUsername} />

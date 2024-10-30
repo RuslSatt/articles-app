@@ -59,7 +59,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     );
 
     return (
-        <DynamicReducerLoader reducers={reducers} removeAfterUnmount={false}>
+        <DynamicReducerLoader reducersList={reducers} removeAfterUnmount={false}>
             <Page
                 onScrollEnd={onLoadNextPart}
                 className={classNames(style.articlesPage, [className])}

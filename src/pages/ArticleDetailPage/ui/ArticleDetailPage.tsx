@@ -72,7 +72,7 @@ const ArticleDetailPage = (props: ArticleDetailPageProps) => {
         <Page className={classNames(style.articleDetailPage, [className])}>
             <Button className={style.button} label={t('Назад к списку')} onClick={onBackToList} />
             <ArticleDetails id={id} />
-            <DynamicReducerLoader reducers={reducersList}>
+            <DynamicReducerLoader reducersList={reducersList}>
                 <AddCommentForm onSendComment={onSendComment} />
                 <CommentList comments={comments ?? []} isLoading={isLoading} />
             </DynamicReducerLoader>

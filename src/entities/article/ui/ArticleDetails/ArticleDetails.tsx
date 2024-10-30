@@ -135,7 +135,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     }
 
     return (
-        <DynamicReducerLoader reducers={reducersList}>
+        <DynamicReducerLoader reducersList={reducersList}>
             <div className={classNames(style.articleDetails, [className])}>{content}</div>
         </DynamicReducerLoader>
     );
