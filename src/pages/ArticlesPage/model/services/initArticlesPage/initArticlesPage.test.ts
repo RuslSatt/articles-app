@@ -1,6 +1,6 @@
 import { TestAsyncThunk } from '@/shared/lib/tests/testAsyncThunk/testAsyncThunk';
 import { initArticlesPage } from './initArticlesPage';
-import { ArticleView } from '@/entities/article';
+import { ArticleSortField, ArticleView } from '@/entities/article';
 import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList';
 import { IArticlePageSchema } from '../../types/articlesPage';
 
@@ -14,6 +14,9 @@ const articlesPage: IArticlePageSchema = {
     isLoading: false,
     hasMore: true,
     view: ArticleView.LIST,
+    sort: ArticleSortField.CREATED_DATE,
+    order: 'asc',
+    search: '',
     _mounted: false
 };
 

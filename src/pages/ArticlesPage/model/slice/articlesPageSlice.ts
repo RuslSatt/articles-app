@@ -1,7 +1,7 @@
 import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { StateSchema } from '@/app/providers/store';
 import { IArticlePageSchema } from '../types/articlesPage';
-import { ArticleView, IArticle } from '@/entities/article';
+import { ArticleSortField, ArticleView, IArticle } from '@/entities/article';
 import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList';
 import { ARTICLE_VIEW_KEY } from '@/shared/const/storage';
 
@@ -13,6 +13,10 @@ const initialState: IArticlePageSchema = {
     error: undefined,
     page: 1,
     hasMore: true,
+    limit: 5,
+    order: 'asc',
+    sort: ArticleSortField.CREATED_DATE,
+    search: '',
 
     _mounted: false
 };

@@ -1,6 +1,6 @@
 import { TestAsyncThunk } from '@/shared/lib/tests/testAsyncThunk/testAsyncThunk';
 import { fetchNextArticlesPage } from './fetchNextArticlesPage';
-import { ArticleView } from '@/entities/article';
+import { ArticleSortField, ArticleView } from '@/entities/article';
 import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList';
 import { IArticlePageSchema } from '../../types/articlesPage';
 
@@ -13,7 +13,11 @@ const articlesPage: IArticlePageSchema = {
     limit: 5,
     isLoading: false,
     hasMore: true,
-    view: ArticleView.LIST
+    view: ArticleView.LIST,
+    sort: ArticleSortField.CREATED_DATE,
+    order: 'asc',
+    search: '',
+    _mounted: false
 };
 
 describe('fetchNextArticlesPage', () => {
