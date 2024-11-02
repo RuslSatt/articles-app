@@ -8,6 +8,7 @@ import {
     getArticlesPageSearch,
     getArticlesPageSort
 } from '../../selectors/getArticlesPageData';
+import { addQueryParams } from '@/shared/lib/url/addQueryParams/addQueryParams';
 
 interface FetchArticlesListProps {
     replace?: boolean;
@@ -26,6 +27,11 @@ export const fetchArticlesList = createAsyncThunk<
     const search = getArticlesPageSearch(getState());
 
     try {
+        addQueryParams({
+            sort,
+            order,
+            search
+        });
         const response = await extra.api.get<IArticle[]>(`/articles`, {
             params: {
                 _expand: 'user',
