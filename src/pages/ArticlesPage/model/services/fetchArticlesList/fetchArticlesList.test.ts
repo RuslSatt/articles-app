@@ -1,6 +1,7 @@
 import { TestAsyncThunk } from '@/shared/lib/tests/testAsyncThunk/testAsyncThunk';
 import { fetchArticlesList } from './fetchArticlesList';
-import { ArticleType, IArticle } from '@/entities/article';
+import { ArticleSortField, ArticleType, ArticleView, IArticle } from '@/entities/article';
+import { IArticlePageSchema } from '../../types/articlesPage';
 
 const data: IArticle[] = [
     {
@@ -20,11 +21,27 @@ const data: IArticle[] = [
     }
 ];
 
+const articlesPageData: IArticlePageSchema = {
+    page: 1,
+    ids: [],
+    entities: {},
+    limit: 5,
+    isLoading: false,
+    hasMore: true,
+    view: ArticleView.LIST,
+    sort: ArticleSortField.CREATED_DATE,
+    order: 'asc',
+    search: '',
+    _mounted: true
+};
+
 describe('fetchArticlesList', () => {
     test('success fetch articles list', async () => {
-        const TestThunk = new TestAsyncThunk(fetchArticlesList);
+        const TestThunk = new TestAsyncThunk(fetchArticlesList, {
+            articlesPage: articlesPageData
+        });
         TestThunk.api.get.mockReturnValue(Promise.resolve({ data }));
-        const action = await TestThunk.callThunk({ page: 1 });
+        const action = await TestThunk.callThunk({});
 
         expect(TestThunk.api.get).toHaveBeenCalled();
         expect(action.meta.requestStatus).toBe('fulfilled');
@@ -34,7 +51,7 @@ describe('fetchArticlesList', () => {
     test('error fetch articles list', async () => {
         const TestThunk = new TestAsyncThunk(fetchArticlesList);
         TestThunk.api.get.mockReturnValue(Promise.resolve(null));
-        const action = await TestThunk.callThunk({ page: 1 });
+        const action = await TestThunk.callThunk({});
 
         expect(action.meta.requestStatus).toBe('rejected');
     });

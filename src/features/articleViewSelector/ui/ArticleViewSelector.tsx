@@ -7,7 +7,7 @@ import { ArticleView } from '@/entities/article';
 
 export interface ArticleViewSelectorProps {
     className?: string;
-    onChangeView?: (view?: ArticleView) => void;
+    onChangeView: (view: ArticleView) => void;
 }
 
 const views = [

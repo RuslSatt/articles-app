@@ -58,15 +58,25 @@ export const articlesPageSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
-        builder.addCase(fetchArticlesList.fulfilled, (state, action: PayloadAction<IArticle[]>) => {
+        builder.addCase(fetchArticlesList.fulfilled, (state, action) => {
             state.isLoading = false;
-            commentsAdapter.addMany(state, action.payload);
+
             state.error = undefined;
             state.hasMore = action.payload.length > 0;
+
+            if (action.meta.arg.replace) {
+                commentsAdapter.setAll(state, action.payload);
+            } else {
+                commentsAdapter.addMany(state, action.payload);
+            }
         });
-        builder.addCase(fetchArticlesList.pending, (state) => {
+        builder.addCase(fetchArticlesList.pending, (state, action) => {
             state.isLoading = true;
             state.error = undefined;
+
+            if (action.meta.arg.replace) {
+                commentsAdapter.removeAll(state);
+            }
         });
         builder.addCase(fetchArticlesList.rejected, (state, action) => {
             state.isLoading = false;

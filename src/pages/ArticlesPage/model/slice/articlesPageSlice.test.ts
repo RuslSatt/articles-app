@@ -32,7 +32,7 @@ describe('articlesPageSlice', () => {
         expect(
             articlesPageReducer(
                 state as IArticlePageSchema,
-                fetchArticlesList.fulfilled([data], '', { page: 1 })
+                fetchArticlesList.fulfilled([data], '', {})
             )
         ).toEqual({
             ids: ['1'],
