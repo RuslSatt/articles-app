@@ -2,7 +2,7 @@ import React, { memo, useMemo } from 'react';
 import style from './Select.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
-interface Option<T extends string> {
+export interface SelectOption<T extends string> {
     [key: string]: string;
 }
 
@@ -11,7 +11,7 @@ export interface SelectProps<T extends string> {
     value?: string;
     onChange?: (value: T) => void;
     disabled?: boolean;
-    options?: Option<T>[];
+    options?: SelectOption<T>[];
     optionLabel?: string;
 }
 

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import style from './ArticleSortSelector.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ArticleSortField } from '@/entities/article';
-import { Select } from '@/shared/ui/Select/Select';
+import { Select, SelectOption } from '@/shared/ui/Select/Select';
 import { SortOrder } from '@/shared/types/sort';
 
 export interface ArticleSortSelectorProps {
@@ -19,7 +19,7 @@ export const ArticleSortSelector = memo((props: ArticleSortSelectorProps) => {
 
     const { t } = useTranslation();
 
-    const orderOptions = useMemo(() => {
+    const orderOptions = useMemo<SelectOption<SortOrder>[]>(() => {
         return [
             {
                 value: 'asc',
@@ -32,7 +32,7 @@ export const ArticleSortSelector = memo((props: ArticleSortSelectorProps) => {
         ];
     }, [t]);
 
-    const sortOptions = useMemo(() => {
+    const sortOptions = useMemo<SelectOption<ArticleSortField>[]>(() => {
         return [
             {
                 value: ArticleSortField.TITLE,
