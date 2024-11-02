@@ -4,6 +4,7 @@ import { IArticlePageSchema } from '../types/articlesPage';
 import { ArticleSortField, ArticleView, IArticle } from '@/entities/article';
 import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList';
 import { ARTICLE_VIEW_KEY } from '@/shared/const/storage';
+import { SortOrder } from '@/shared/types/sort';
 
 const initialState: IArticlePageSchema = {
     ids: [],
@@ -45,6 +46,15 @@ export const articlesPageSlice = createSlice({
         },
         setPage: (state, action: PayloadAction<number>) => {
             state.page = action.payload;
+        },
+        setOrder: (state, action: PayloadAction<SortOrder>) => {
+            state.order = action.payload;
+        },
+        setSort: (state, action: PayloadAction<ArticleSortField>) => {
+            state.sort = action.payload;
+        },
+        setSearch: (state, action: PayloadAction<string>) => {
+            state.search = action.payload;
         }
     },
     extraReducers: (builder) => {

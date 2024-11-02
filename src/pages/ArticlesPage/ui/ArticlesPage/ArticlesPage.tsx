@@ -7,23 +7,18 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import {
     getArticlesPageIsLoading,
     getArticlesPageView
-} from '../model/selectors/getArticlesPageData';
-import {
-    articlesPageActions,
-    articlesPageReducer,
-    getArticlesList
-} from '../model/slice/articlesPageSlice';
+} from '../../model/selectors/getArticlesPageData';
+import { articlesPageReducer, getArticlesList } from '../../model/slice/articlesPageSlice';
 import {
     DynamicReducerLoader,
     ReducersList
 } from '@/shared/lib/DynamicReducerLoader/DynamicReducerLoader';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitailEffect';
-import { ArticleViewSelector } from '@/features/articleViewSelector';
-import { ArticleView } from '@/entities/article';
 import { Page } from '@/widgets/Page/Page';
 // eslint-disable-next-line max-len
-import { fetchNextArticlesPage } from '../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
-import { initArticlesPage } from '../model/services/initArticlesPage/initArticlesPage';
+import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
+import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
+import { ArticlesPageFilter } from '../ArticlesPageFilter/ArticlesPageFilter';
 
 export interface ArticlesPageProps {
     className?: string;
@@ -50,14 +45,6 @@ const ArticlesPage = (props: ArticlesPageProps) => {
         dispatch(initArticlesPage());
     });
 
-    const onChangeView = useCallback(
-        (view?: ArticleView) => {
-            if (!view) return;
-            dispatch(articlesPageActions.setView(view));
-        },
-        [dispatch]
-    );
-
     return (
         <DynamicReducerLoader reducersList={reducers} removeAfterUnmount={false}>
             <Page
@@ -65,7 +52,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
                 className={classNames(style.articlesPage, [className])}
             >
                 <header className={style.header}>
-                    <ArticleViewSelector onChangeView={onChangeView} />
+                    <ArticlesPageFilter />
                 </header>
                 <ArticleList view={view} isLoading={isLoading} articles={articles} />
             </Page>
