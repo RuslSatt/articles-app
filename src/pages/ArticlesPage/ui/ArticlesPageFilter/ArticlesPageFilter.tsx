@@ -16,6 +16,7 @@ import { Input } from '@/shared/ui/Input/Input';
 import { ArticleSortSelector } from '@/features/articleSortSelector';
 import { SortOrder } from '@/shared/types/sort';
 import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
+import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 
 export interface ArticlesPageFilterProps {
     className?: string;
@@ -36,10 +37,11 @@ export const ArticlesPageFilter = (props: ArticlesPageFilterProps) => {
         dispatch(fetchArticlesList({ replace: true }));
     }, [dispatch]);
 
+    const debounceFetchData = useDebounce(fetchData, 500);
+
     const onChangeView = useCallback(
         (view: ArticleView) => {
             dispatch(articlesPageActions.setView(view));
-            dispatch(articlesPageActions.setPage(1));
             fetchData();
         },
         [dispatch, fetchData]
@@ -67,9 +69,9 @@ export const ArticlesPageFilter = (props: ArticlesPageFilterProps) => {
         (search: string) => {
             dispatch(articlesPageActions.setSearch(search));
             dispatch(articlesPageActions.setPage(1));
-            fetchData();
+            debounceFetchData();
         },
-        [dispatch, fetchData]
+        [dispatch, debounceFetchData]
     );
 
     return (
