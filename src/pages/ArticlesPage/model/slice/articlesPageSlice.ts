@@ -62,7 +62,7 @@ export const articlesPageSlice = createSlice({
             state.isLoading = false;
 
             state.error = undefined;
-            state.hasMore = action.payload.length > 0;
+            state.hasMore = action.payload.length >= state.limit;
 
             if (action.meta.arg.replace) {
                 commentsAdapter.setAll(state, action.payload);

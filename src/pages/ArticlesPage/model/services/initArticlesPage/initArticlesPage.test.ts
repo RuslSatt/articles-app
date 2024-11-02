@@ -26,7 +26,7 @@ describe('initArticlesPage', () => {
             articlesPage
         });
 
-        await TestThunk.callThunk();
+        await TestThunk.callThunk(new URLSearchParams());
 
         expect(TestThunk.dispatch).toBeCalledTimes(4);
         expect(fetchArticlesList).toHaveBeenCalledWith({ page: 1 });
@@ -40,7 +40,7 @@ describe('initArticlesPage', () => {
             }
         });
 
-        await TestThunk.callThunk();
+        await TestThunk.callThunk(new URLSearchParams());
 
         expect(TestThunk.dispatch).toBeCalledTimes(2);
         expect(fetchArticlesList).not.toHaveBeenCalled();

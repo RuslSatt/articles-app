@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useCallback } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import style from './ArticlesPage.module.scss';
 import { ArticleList } from '@/widgets/ArticleList';
@@ -37,12 +38,14 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     const articles = useSelector(getArticlesList.selectAll);
     const view = useSelector(getArticlesPageView);
 
+    const [searchParams] = useSearchParams();
+
     const onLoadNextPart = useCallback(() => {
         dispatch(fetchNextArticlesPage());
     }, [dispatch]);
 
     useInitialEffect(() => {
-        dispatch(initArticlesPage());
+        dispatch(initArticlesPage(searchParams));
     });
 
     return (
