@@ -2,7 +2,7 @@ import { memo, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import style from './ArticleSortSelector.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { ArticleSortField, ArticleView } from '@/entities/article';
+import { ArticleSortField } from '@/entities/article';
 import { Select } from '@/shared/ui/Select/Select';
 import { SortOrder } from '@/shared/types/sort';
 
@@ -19,7 +19,20 @@ export const ArticleSortSelector = memo((props: ArticleSortSelectorProps) => {
 
     const { t } = useTranslation();
 
-    const options = useMemo(() => {
+    const orderOptions = useMemo(() => {
+        return [
+            {
+                value: 'asc',
+                content: t('По возрастанию')
+            },
+            {
+                value: 'desc',
+                content: t('По убыванию')
+            }
+        ];
+    }, [t]);
+
+    const sortOptions = useMemo(() => {
         return [
             {
                 value: ArticleSortField.TITLE,
@@ -38,11 +51,18 @@ export const ArticleSortSelector = memo((props: ArticleSortSelectorProps) => {
 
     return (
         <div className={classNames(style.articleSortSelector, [className])}>
-            <Select
+            <Select<SortOrder>
+                onChange={onChangeOrder}
+                optionLabel='content'
+                className={style.order}
+                options={orderOptions}
+                value={order}
+            />
+            <Select<ArticleSortField>
                 onChange={onChangeSort}
                 optionLabel='content'
-                className={style.select}
-                options={options}
+                className={style.sort}
+                options={sortOptions}
                 value={sort}
             />
         </div>
