@@ -1,7 +1,7 @@
 import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { StateSchema } from '@/app/providers/store';
 import { IArticlePageSchema } from '../types/articlesPage';
-import { ArticleSortField, ArticleView, IArticle } from '@/entities/article';
+import { ArticleSortField, ArticleType, ArticleView, IArticle } from '@/entities/article';
 import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList';
 import { ARTICLE_VIEW_KEY } from '@/shared/const/storage';
 import { SortOrder } from '@/shared/types/sort';
@@ -18,6 +18,7 @@ const initialState: IArticlePageSchema = {
     order: 'asc',
     sort: ArticleSortField.CREATED_DATE,
     search: '',
+    type: ArticleType.ALL,
 
     _mounted: false
 };
@@ -55,6 +56,9 @@ export const articlesPageSlice = createSlice({
         },
         setSearch: (state, action: PayloadAction<string>) => {
             state.search = action.payload;
+        },
+        setType(state, action: PayloadAction<ArticleType>) {
+            state.type = action.payload;
         }
     },
     extraReducers: (builder) => {

@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import style from './Select.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 

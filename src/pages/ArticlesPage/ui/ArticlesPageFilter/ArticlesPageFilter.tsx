@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import style from './ArticlesPageFilter.module.scss';
@@ -7,16 +7,18 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import {
     getArticlesPageOrder,
     getArticlesPageSearch,
-    getArticlesPageSort
+    getArticlesPageSort,
+    getArticlesPageType
 } from '../../model/selectors/getArticlesPageData';
 import { articlesPageActions } from '../../model/slice/articlesPageSlice';
 import { ArticleViewSelector } from '@/features/articleViewSelector';
-import { ArticleSortField, ArticleView } from '@/entities/article';
+import { ArticleSortField, ArticleType, ArticleView } from '@/entities/article';
 import { Input } from '@/shared/ui/Input/Input';
 import { ArticleSortSelector } from '@/features/articleSortSelector';
 import { SortOrder } from '@/shared/types/sort';
 import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
+import { ArticleTypeSelector } from '@/features/articleTypeSelector';
 
 export interface ArticlesPageFilterProps {
     className?: string;
@@ -30,6 +32,7 @@ export const ArticlesPageFilter = (props: ArticlesPageFilterProps) => {
     const sort = useSelector(getArticlesPageSort);
     const order = useSelector(getArticlesPageOrder);
     const search = useSelector(getArticlesPageSearch);
+    const type = useSelector(getArticlesPageType);
 
     const { t } = useTranslation();
 
@@ -74,6 +77,15 @@ export const ArticlesPageFilter = (props: ArticlesPageFilterProps) => {
         [dispatch, debounceFetchData]
     );
 
+    const onChangeType = useCallback(
+        (value: ArticleType) => {
+            dispatch(articlesPageActions.setPage(1));
+            dispatch(articlesPageActions.setType(value));
+            fetchData();
+        },
+        [dispatch, fetchData]
+    );
+
     return (
         <div className={classNames(style.articlesPageFilter, [className])}>
             <div className={style.sort}>
@@ -87,6 +99,9 @@ export const ArticlesPageFilter = (props: ArticlesPageFilterProps) => {
             </div>
             <div className={style.search}>
                 <Input onChange={onChangeSearch} value={search} placeholder={t('Поиск...')} />
+            </div>
+            <div className={style.tabs}>
+                <ArticleTypeSelector type={type} onChangeType={onChangeType} />
             </div>
         </div>
     );

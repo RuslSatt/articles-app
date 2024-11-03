@@ -32,6 +32,7 @@ const articlesPageData: IArticlePageSchema = {
     sort: ArticleSortField.CREATED_DATE,
     order: 'asc',
     search: '',
+    type: ArticleType.ALL,
     _mounted: true
 };
 
