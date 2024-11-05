@@ -18,33 +18,27 @@ import {
 } from '../model/selectors/comments/getArticleCommentsData';
 import { fetchArticleComments } from '../model/services/fetchArticleComments/fetchArticleComments';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitailEffect';
-import {
-    articleCommentsReducer,
-    getArticleComments
-} from '../model/slice/comments/articleCommentsSlice';
+import { getArticleComments } from '../model/slice/comments/articleCommentsSlice';
 import { AddCommentForm } from '@/features/addComment';
 import { addArticleComment } from '../model/services/addArticleComment/addArticleComment';
 import { Button } from '@/shared/ui/Button/Button';
 import { AppRoutes, RoutePath } from '@/shared/config/router/routerConfig';
 import { Page } from '@/widgets/Page/Page';
 // eslint-disable-next-line max-len
-import {
-    articleRecommendationsReducer,
-    getArticleRecommendations
-} from '../model/slice/recommendations/articleRecommendationsSlice';
+import { getArticleRecommendations } from '../model/slice/recommendations/articleRecommendationsSlice';
 import { ArticleRecommendationsList } from '@/widgets/ArticleRecommedationsList';
 // eslint-disable-next-line max-len
 import { fetchArticleRecommendations } from '../model/services/fetchArticleRecommendations/fetchArticleRecommendations';
 // eslint-disable-next-line max-len
 import { getArticleRecommendationsIsLoading } from '../model/selectors/recommendations/getRecommendationsData';
+import { articleDetailsPageReducer } from '../model/slice';
 
 export interface ArticleDetailPageProps {
     className?: string;
 }
 
 const reducersList: ReducersList = {
-    articleDetailComments: articleCommentsReducer,
-    articleRecommendations: articleRecommendationsReducer
+    articleDetailsPage: articleDetailsPageReducer
 };
 
 const ArticleDetailPage = (props: ArticleDetailPageProps) => {

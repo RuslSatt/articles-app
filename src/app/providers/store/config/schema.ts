@@ -5,10 +5,10 @@ import { UserSchema } from '@/entities/user';
 import { LoginSchema } from '@/features/login';
 import { ProfileSchema } from '@/entities/profile';
 import { ArticleSchema } from '@/entities/article';
-import { IArticleCommentsSchema, IArticleRecommendationsSchema } from '@/pages/ArticleDetailPage';
 import { IAddCommentFormSchema } from '@/features/addComment';
 import { IArticlePageSchema } from '@/pages/ArticlesPage';
 import { ISaveScrollSchema } from '@/features/saveScroll';
+import { IArticleDetailsPageSchema } from '@/pages/ArticleDetailPage';
 
 export interface StateSchema {
     user: UserSchema;
@@ -17,8 +17,7 @@ export interface StateSchema {
     login?: LoginSchema;
     profile?: ProfileSchema;
     articleDetails?: ArticleSchema;
-    articleDetailComments?: IArticleCommentsSchema;
-    articleRecommendations?: IArticleRecommendationsSchema;
+    articleDetailsPage?: IArticleDetailsPageSchema;
     addCommentForm?: IAddCommentFormSchema;
     articlesPage?: IArticlePageSchema;
 }
