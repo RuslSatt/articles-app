@@ -19,7 +19,12 @@ export const ArticleRecommendationsList = memo((props: ArticleRecommendationsLis
     return (
         <div className={classNames(style.articleRecommendations, [className])}>
             <p className={style.title}>{t('Рекомендуем')}</p>
-            <ArticleList articles={articles} isLoading={isLoading} view={ArticleView.GRID} />
+            <ArticleList
+                target='_blank'
+                articles={articles}
+                isLoading={isLoading}
+                view={ArticleView.GRID}
+            />
         </div>
     );
 });

@@ -1,6 +1,5 @@
-import { memo, useCallback } from 'react';
+import { HTMLAttributeAnchorTarget, memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import style from './ArticleListItem.module.scss';
 import {
@@ -15,16 +14,18 @@ import { Avatar } from '@/shared/ui/Avatar/Avatar';
 import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock';
 import { Button } from '@/shared/ui/Button/Button';
 import { AppRoutes, RoutePath } from '@/shared/config/router/routerConfig';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
 
 export interface ArticleListItemProps {
     className?: string;
     article: IArticle;
     view?: ArticleView;
     isLoading?: boolean;
+    target?: HTMLAttributeAnchorTarget;
 }
 
 export const ArticleListItem = memo((props: ArticleListItemProps) => {
-    const { className, article, isLoading, view = ArticleView.LIST } = props;
+    const { className, article, isLoading, view = ArticleView.LIST, target } = props;
 
     const { t } = useTranslation();
 
@@ -40,12 +41,6 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
             <EyeIcon />
         </div>
     );
-
-    const navigate = useNavigate();
-
-    const openArticleDetails = useCallback(() => {
-        navigate(`${RoutePath[AppRoutes.ARTICLES_DETAILS]}${article.id}`);
-    }, [article.id, navigate]);
 
     if (view === ArticleView.LIST) {
         const contentBlock = article?.blocks?.find((block) => block.type === ArticleBlockType.TEXT);
@@ -82,8 +77,12 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                         </div>
 
                         <div className={style.footer}>
-                            <Button label={t('Читать далее...')} onClick={openArticleDetails} />
-
+                            <AppLink
+                                target={target}
+                                to={`${RoutePath[AppRoutes.ARTICLES_DETAILS]}${article.id}`}
+                            >
+                                <Button label={t('Читать далее...')} />
+                            </AppLink>
                             {Views}
                         </div>
                     </div>
@@ -93,22 +92,24 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
     }
 
     return (
-        <div className={classNames(style.item, [className, style[view]])}>
-            <Card onClick={openArticleDetails}>
-                <div className={style.item__container}>
-                    <div className={style.img__container}>
-                        <img className={style.img} src={article?.img} alt={article?.title} />
-                        <div className={style.date}>{article?.createdAt}</div>
-                    </div>
-                    <div className={style.info__container}>
-                        <div className={style.info}>
-                            {Types}
-                            {Views}
+        <AppLink target={target} to={`${RoutePath[AppRoutes.ARTICLES_DETAILS]}${article.id}`}>
+            <div className={classNames(style.item, [className, style[view]])}>
+                <Card>
+                    <div className={style.item__container}>
+                        <div className={style.img__container}>
+                            <img className={style.img} src={article?.img} alt={article?.title} />
+                            <div className={style.date}>{article?.createdAt}</div>
                         </div>
-                        <div className={style.title}>{article?.title}</div>
+                        <div className={style.info__container}>
+                            <div className={style.info}>
+                                {Types}
+                                {Views}
+                            </div>
+                            <div className={style.title}>{article?.title}</div>
+                        </div>
                     </div>
-                </div>
-            </Card>
-        </div>
+                </Card>
+            </div>
+        </AppLink>
     );
 });

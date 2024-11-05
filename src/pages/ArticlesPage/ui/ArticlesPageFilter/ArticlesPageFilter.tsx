@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { useCallback, useMemo } from 'react';
+import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import style from './ArticlesPageFilter.module.scss';
