@@ -1,5 +1,4 @@
 import { memo } from 'react';
-import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import style from './ArticleList.module.scss';
 import {
@@ -19,8 +18,6 @@ export interface ArticleListProps {
 
 export const ArticleList = memo((props: ArticleListProps) => {
     const { className, articles, isLoading = false, view = ArticleView.LIST } = props;
-
-    const { t } = useTranslation();
 
     return (
         <div className={classNames(style.article_list, [className])}>

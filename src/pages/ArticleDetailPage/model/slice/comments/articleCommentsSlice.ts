@@ -1,7 +1,7 @@
 import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IArticleCommentsSchema } from '../types/articleComments';
+import { IArticleCommentsSchema } from '../../types/articleComments';
 // eslint-disable-next-line max-len
-import { fetchArticleComments } from '../services/fetchArticleComments/fetchArticleComments';
+import { fetchArticleComments } from '../../services/fetchArticleComments/fetchArticleComments';
 import { IComment } from '@/entities/comment';
 import { StateSchema } from '@/app/providers/store';
 

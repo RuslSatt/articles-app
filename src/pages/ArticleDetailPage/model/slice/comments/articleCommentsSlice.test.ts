@@ -1,8 +1,8 @@
 import { DeepPartial } from '@reduxjs/toolkit';
 import { IComment } from '@/entities/comment';
-import { IArticleCommentsSchema } from '../types/articleComments';
 import { articleCommentsReducer } from './articleCommentsSlice';
-import { fetchArticleComments } from '../services/fetchArticleComments/fetchArticleComments';
+import { IArticleCommentsSchema } from '../../types/articleComments';
+import { fetchArticleComments } from '../../services/fetchArticleComments/fetchArticleComments';
 
 const data: IComment = {
     id: '1',
