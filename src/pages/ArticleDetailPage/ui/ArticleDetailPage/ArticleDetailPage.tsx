@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { useCallback } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import style from './ArticleDetailPage.module.scss';
 import { ArticleDetails } from '@/entities/article';
@@ -15,23 +14,23 @@ import {
 import {
     getArticleCommentsError,
     getArticleCommentsIsLoading
-} from '../model/selectors/comments/getArticleCommentsData';
-import { fetchArticleComments } from '../model/services/fetchArticleComments/fetchArticleComments';
+} from '../../model/selectors/comments/getArticleCommentsData';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitailEffect';
-import { getArticleComments } from '../model/slice/comments/articleCommentsSlice';
+import { getArticleComments } from '../../model/slice/comments/articleCommentsSlice';
 import { AddCommentForm } from '@/features/addComment';
-import { addArticleComment } from '../model/services/addArticleComment/addArticleComment';
-import { Button } from '@/shared/ui/Button/Button';
-import { AppRoutes, RoutePath } from '@/shared/config/router/routerConfig';
+import { addArticleComment } from '../../model/services/addArticleComment/addArticleComment';
 import { Page } from '@/widgets/Page/Page';
 // eslint-disable-next-line max-len
-import { getArticleRecommendations } from '../model/slice/recommendations/articleRecommendationsSlice';
+import { getArticleRecommendations } from '../../model/slice/recommendations/articleRecommendationsSlice';
 import { ArticleRecommendationsList } from '@/widgets/ArticleRecommedationsList';
 // eslint-disable-next-line max-len
-import { fetchArticleRecommendations } from '../model/services/fetchArticleRecommendations/fetchArticleRecommendations';
+import { fetchArticleRecommendations } from '../../model/services/fetchArticleRecommendations/fetchArticleRecommendations';
 // eslint-disable-next-line max-len
-import { getArticleRecommendationsIsLoading } from '../model/selectors/recommendations/getRecommendationsData';
-import { articleDetailsPageReducer } from '../model/slice';
+import { getArticleRecommendationsIsLoading } from '../../model/selectors/recommendations/getRecommendationsData';
+import { articleDetailsPageReducer } from '../../model/slice';
+// eslint-disable-next-line max-len
+import { fetchArticleComments } from '../../model/services/fetchArticleComments/fetchArticleComments';
+import { ArticleDetailPageHeader } from '../ArticleDetailPageHeader/ArticleDetailPageHeader';
 
 export interface ArticleDetailPageProps {
     className?: string;
@@ -61,12 +60,6 @@ const ArticleDetailPage = (props: ArticleDetailPageProps) => {
         dispatch(fetchArticleRecommendations());
     });
 
-    const navigate = useNavigate();
-
-    const onBackToList = useCallback(() => {
-        navigate(RoutePath[AppRoutes.ARTICLES]);
-    }, [navigate]);
-
     if (!id) {
         return (
             <Page className={classNames(style.articleDetailPage, [className])}>
@@ -81,7 +74,7 @@ const ArticleDetailPage = (props: ArticleDetailPageProps) => {
 
     return (
         <Page className={classNames(style.articleDetailPage, [className])}>
-            <Button className={style.button} label={t('Назад к списку')} onClick={onBackToList} />
+            <ArticleDetailPageHeader />
             <ArticleDetails id={id} />
             <DynamicReducerLoader reducersList={reducersList}>
                 <ArticleRecommendationsList
