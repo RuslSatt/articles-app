@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator';
-import { Theme } from '@/app/providers/theme';
 import ArticlesPage from './ArticlesPage';
+import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator';
 
 const meta = {
     title: 'pages/ArticlesPage',
@@ -19,8 +18,4 @@ export const Default: Story = {
     args: {}
 };
 
-export const Dark: Story = {
-    args: {}
-};
-
-Dark.decorators = [ThemeDecorator(Theme.DARK)];
+Default.decorators = [StoreDecorator({})];

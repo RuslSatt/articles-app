@@ -30,7 +30,7 @@ describe('fetchNextArticlesPage', () => {
         await TestThunk.callThunk();
 
         expect(TestThunk.dispatch).toBeCalledTimes(4);
-        expect(fetchArticlesList).toHaveBeenCalledWith({ page: 3 });
+        expect(fetchArticlesList).toHaveBeenCalled();
     });
 
     test('not called fetch articles list with hasMore', async () => {

@@ -1,5 +1,5 @@
 import { DeepPartial } from '@reduxjs/toolkit';
-import { ArticleType, IArticle } from '@/entities/article';
+import { ArticleSortField, ArticleType, ArticleView, IArticle } from '@/entities/article';
 import { IArticlePageSchema } from '../types/articlesPage';
 import { articlesPageReducer } from './articlesPageSlice';
 import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList';
@@ -20,9 +20,25 @@ const data: IArticle = {
     blocks: []
 };
 
+const schema: IArticlePageSchema = {
+    ids: ['1'],
+    entities: { '1': data },
+    isLoading: false,
+    error: undefined,
+    page: 1,
+    hasMore: false,
+    limit: 5,
+    view: ArticleView.LIST,
+    order: 'asc',
+    sort: ArticleSortField.TITLE,
+    search: '',
+    type: ArticleType.ALL
+};
+
 describe('articlesPageSlice', () => {
     test('should fetch articles list', () => {
         const state: DeepPartial<IArticlePageSchema> = {
+            ...schema,
             ids: [],
             entities: {},
             isLoading: true,
@@ -35,6 +51,7 @@ describe('articlesPageSlice', () => {
                 fetchArticlesList.fulfilled([data], '', {})
             )
         ).toEqual({
+            ...schema,
             ids: ['1'],
             entities: { '1': data },
             isLoading: false,

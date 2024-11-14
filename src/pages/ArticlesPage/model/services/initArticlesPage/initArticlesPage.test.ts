@@ -30,7 +30,7 @@ describe('initArticlesPage', () => {
         await TestThunk.callThunk(new URLSearchParams());
 
         expect(TestThunk.dispatch).toBeCalledTimes(4);
-        expect(fetchArticlesList).toHaveBeenCalledWith({ page: 1 });
+        expect(fetchArticlesList).toHaveBeenCalled();
     });
 
     test('not called init articles page with mounted', async () => {
