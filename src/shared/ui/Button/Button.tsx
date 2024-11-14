@@ -5,6 +5,12 @@ import BurgerIcon from '@/shared/assets/icons/burger.svg';
 import MoonIcon from '@/shared/assets/icons/moon.svg';
 import SunIcon from '@/shared/assets/icons/sun.svg';
 import LangIcon from '@/shared/assets/icons/lang.svg';
+import CalendarIcon from '@/shared/assets/icons/calendar.svg';
+import CheckIcon from '@/shared/assets/icons/check.svg';
+import CopyIcon from '@/shared/assets/icons/copy.svg';
+import EyeIcon from '@/shared/assets/icons/eye.svg';
+import GridIcon from '@/shared/assets/icons/grid.svg';
+import ListIcon from '@/shared/assets/icons/list.svg';
 import { icons } from '@/shared/assets/icons/types';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -33,6 +39,24 @@ export const Button = memo((props: ButtonProps) => {
             break;
         case icons.LANG:
             Icon = <LangIcon />;
+            break;
+        case icons.CALENDAR:
+            Icon = <CalendarIcon />;
+            break;
+        case icons.CHECK:
+            Icon = <CheckIcon />;
+            break;
+        case icons.COPY:
+            Icon = <CopyIcon />;
+            break;
+        case icons.EYE:
+            Icon = <EyeIcon />;
+            break;
+        case icons.GRID:
+            Icon = <GridIcon />;
+            break;
+        case icons.LIST:
+            Icon = <ListIcon />;
             break;
     }
 

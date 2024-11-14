@@ -8,7 +8,7 @@ jest.mock('@/shared/api/base');
 const axiosMock = api as jest.Mocked<typeof api>;
 
 type ActionCreatorType<Return, Arg, RejectedValue> = (
-    arg?: Arg
+    arg: Arg
 ) => AsyncThunkAction<Return, Arg, { rejectValue: RejectedValue }>;
 
 export class TestAsyncThunk<Return, Arg, RejectedValue> {
@@ -31,7 +31,7 @@ export class TestAsyncThunk<Return, Arg, RejectedValue> {
         this.api = axiosMock;
     }
 
-    async callThunk(arg?: Arg) {
+    async callThunk(arg: Arg) {
         const thunk = this.actionCreator(arg);
         const action = await thunk(this.dispatch, this.getState, { api: this.api });
         return action;

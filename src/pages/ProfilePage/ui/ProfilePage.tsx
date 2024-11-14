@@ -1,5 +1,6 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import style from './ProfilePage.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import {
@@ -18,6 +19,9 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { ProfileEditButton, ProfileForm } from '@/features/profile';
 import { Loader } from '@/shared/ui/Loader/Loader';
 import { Message, Severity } from '@/shared/ui/Message/Message';
+import { useInitialEffect } from '@/shared/lib/hooks/useInitailEffect';
+import { getUserData } from '@/entities/user';
+import { Page } from '@/widgets/Page/Page';
 
 export interface ProfilePageProps {
     className?: string;
@@ -32,19 +36,23 @@ const ProfilePage: FC<ProfilePageProps> = (props) => {
 
     const dispatch = useAppDispatch();
 
+    const paramId = useParams<{ id: string }>()?.id;
+
     const isLoading = useSelector(getProfileLoading);
     const error = useSelector(getProfileError);
     const formData = useSelector(getProfileForm);
+    const authData = useSelector(getUserData);
+    const canEdit = formData?.id === authData?.id;
 
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchProfileData());
-        }
-    }, [dispatch]);
+    useInitialEffect(() => {
+        const id = paramId ?? formData?.id;
+
+        if (id) dispatch(fetchProfileData(id));
+    });
 
     return (
-        <DynamicReducerLoader reducers={reducersList}>
-            <div className={classNames(style.profilePage, [className])}>
+        <DynamicReducerLoader reducersList={reducersList}>
+            <Page className={classNames(style.profilePage, [className])}>
                 {error && <Message severity={Severity.ERROR} text={error} />}
 
                 {isLoading && (
@@ -57,10 +65,10 @@ const ProfilePage: FC<ProfilePageProps> = (props) => {
                     <ProfileCard
                         data={formData}
                         form={<ProfileForm data={formData} />}
-                        editButton={<ProfileEditButton />}
+                        editButton={canEdit ? <ProfileEditButton /> : null}
                     />
                 )}
-            </div>
+            </Page>
         </DynamicReducerLoader>
     );
 };

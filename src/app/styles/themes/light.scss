@@ -10,4 +10,13 @@
     --border-color: #6b7280;
     --bar-color: #ededed;
     --icon-color: #000;
+    --skeleton-bg-color: #e5e7eb;
+    --skeleton-border-color:
+        linear-gradient(
+            90deg,
+            rgb(255 255 255 / 0%),
+            rgb(255 255 255 / 40%),
+            rgb(255 255 255 / 0%)
+        );
+    --surface-card: #fff;
 }

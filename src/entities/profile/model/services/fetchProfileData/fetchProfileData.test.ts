@@ -18,7 +18,7 @@ describe('fetchProfileData', () => {
     test('success fetch profile data', async () => {
         const TestThunk = new TestAsyncThunk(fetchProfileData);
         TestThunk.api.get.mockReturnValue(Promise.resolve({ data }));
-        const action = await TestThunk.callThunk();
+        const action = await TestThunk.callThunk('1');
 
         expect(TestThunk.api.get).toHaveBeenCalled();
         expect(action.meta.requestStatus).toBe('fulfilled');
@@ -28,7 +28,7 @@ describe('fetchProfileData', () => {
     test('error fetch profile data', async () => {
         const TestThunk = new TestAsyncThunk(fetchProfileData);
         TestThunk.api.get.mockReturnValue(Promise.resolve(null));
-        const action = await TestThunk.callThunk();
+        const action = await TestThunk.callThunk('1');
 
         expect(action.meta.requestStatus).toBe('rejected');
     });

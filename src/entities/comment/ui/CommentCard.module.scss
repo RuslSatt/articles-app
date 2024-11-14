@@ -1,0 +1,15 @@
+.commentCard {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 10px;
+    width: 100%;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

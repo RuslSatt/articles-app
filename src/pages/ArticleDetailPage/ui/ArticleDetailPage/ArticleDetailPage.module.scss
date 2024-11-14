@@ -1,0 +1,11 @@
+.articleDetailPage {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+    gap: 20px;
+
+    .button {
+        max-width: 150px;
+    }
+}

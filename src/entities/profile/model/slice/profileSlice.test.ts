@@ -1,5 +1,4 @@
 import { DeepPartial } from '@reduxjs/toolkit';
-import { error } from 'console';
 import { IProfile, ProfileSchema, ValidateProfileError } from '../types/profile';
 import { profileActions, profileReducer } from './profileSlice';
 import { Country } from '@/entities/countries';
@@ -8,6 +7,7 @@ import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData'
 import { updateProfileData } from '../services/updateProfileData/updateProfileData';
 
 const data: IProfile = {
+    id: '1',
     username: 'admin',
     age: 22,
     country: Country.UZBEKISTAN,
@@ -28,6 +28,7 @@ describe('profileSlice', () => {
             profileReducer(
                 state as ProfileSchema,
                 profileActions.setProfileData({
+                    ...data,
                     username: 'Serg_2',
                     age: 35,
                     first: 'Sergey'
@@ -72,7 +73,7 @@ describe('profileSlice', () => {
         };
 
         expect(
-            profileReducer(state as ProfileSchema, fetchProfileData.fulfilled(data, ''))
+            profileReducer(state as ProfileSchema, fetchProfileData.fulfilled(data, '', '1'))
         ).toEqual({
             data,
             form: data,

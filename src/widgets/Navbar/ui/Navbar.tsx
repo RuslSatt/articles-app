@@ -1,4 +1,4 @@
-import { FC, memo, useState } from 'react';
+import { memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './Navbar.module.scss';
@@ -9,6 +9,8 @@ import { Button } from '@/shared/ui/Button/Button';
 import { Portal } from '@/shared/ui/Portal/Portal';
 import { LoginModal } from '@/features/login';
 import { getUserData, userActions } from '@/entities/user';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { AppRoutes, RoutePath } from '@/shared/config/router/routerConfig';
 
 export interface NavbarProps {
     className?: string;
@@ -38,6 +40,14 @@ export const Navbar = memo((props: NavbarProps) => {
 
     return (
         <header className={classNames(style.navbar, [className])}>
+            <div className={style.navbar__links}>
+                <AppLink className={style.logo} to={RoutePath[AppRoutes.MAIN]}>
+                    {t('articles-app')}
+                </AppLink>
+                <AppLink className={style.article} to={RoutePath[AppRoutes.ARTICLE_CREATE]}>
+                    {t('Создать статью')}
+                </AppLink>
+            </div>
             <div className={style.navbar__tools}>
                 <ThemeSwitcher />
                 <LangSwitcher />

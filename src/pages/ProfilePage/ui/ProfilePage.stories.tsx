@@ -21,6 +21,7 @@ type Story = StoryObj<typeof meta>;
 const store: DeepPartial<StateSchema> = {
     profile: {
         form: {
+            id: '1',
             username: 'admin',
             age: 22,
             country: Country.UZBEKISTAN,

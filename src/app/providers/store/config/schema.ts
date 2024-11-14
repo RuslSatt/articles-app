@@ -4,11 +4,22 @@ import { AxiosInstance } from 'axios';
 import { UserSchema } from '@/entities/user';
 import { LoginSchema } from '@/features/login';
 import { ProfileSchema } from '@/entities/profile';
+import { ArticleSchema } from '@/entities/article';
+import { IAddCommentFormSchema } from '@/features/addComment';
+import { IArticlePageSchema } from '@/pages/ArticlesPage';
+import { ISaveScrollSchema } from '@/features/saveScroll';
+import { IArticleDetailsPageSchema } from '@/pages/ArticleDetailPage';
 
 export interface StateSchema {
     user: UserSchema;
+    saveScroll: ISaveScrollSchema;
+
     login?: LoginSchema;
     profile?: ProfileSchema;
+    articleDetails?: ArticleSchema;
+    articleDetailsPage?: IArticleDetailsPageSchema;
+    addCommentForm?: IAddCommentFormSchema;
+    articlesPage?: IArticlePageSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

@@ -6,7 +6,7 @@ import { Country } from '@/entities/countries';
 import { Currency } from '@/entities/currency';
 import { ProfileEditButton, ProfileForm } from '@/features/profile';
 import { StateSchema } from '@/app/providers/store';
-import { ValidateProfileError } from '../model/types/profile';
+import { IProfile, ValidateProfileError } from '../model/types/profile';
 
 const meta = {
     title: 'entities/ProfileCard',
@@ -23,6 +23,7 @@ type Story = StoryObj<typeof meta>;
 const store: DeepPartial<StateSchema> = {
     profile: {
         form: {
+            id: '1',
             username: 'admin',
             age: 22,
             country: Country.UZBEKISTAN,
@@ -42,7 +43,7 @@ const store: DeepPartial<StateSchema> = {
 export const Default: Story = {
     args: {
         data: store.profile?.form,
-        form: <ProfileForm data={store.profile?.form} />,
+        form: <ProfileForm data={store.profile!.form as IProfile} />,
         editButton: <ProfileEditButton />
     }
 };

@@ -1,0 +1,12 @@
+.articlesPage {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: space-between;
+}

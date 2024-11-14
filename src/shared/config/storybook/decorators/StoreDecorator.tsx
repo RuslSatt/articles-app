@@ -3,9 +3,15 @@ import { DeepPartial, ReducersMapObject } from '@reduxjs/toolkit';
 import { StateSchema, StoreProvider } from '@/app/providers/store';
 import { loginReducer } from '@/features/login/model/slice/loginSlice';
 import { ReducersList } from '@/shared/lib/DynamicReducerLoader/DynamicReducerLoader';
+import { profileReducer } from '@/entities/profile';
+import { articleDetailsReducer } from '@/entities/article';
+import { articleDetailsPageReducer } from '@/pages/ArticleDetailPage';
 
 const defaultDynamicReducers: ReducersList = {
-    login: loginReducer
+    login: loginReducer,
+    profile: profileReducer,
+    articleDetails: articleDetailsReducer,
+    articleDetailsPage: articleDetailsPageReducer
 };
 
 export interface StoreDecoratorOptions {
