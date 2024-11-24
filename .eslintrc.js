@@ -19,7 +19,7 @@ module.exports = {
         ecmaVersion: 'latest',
         sourceType: 'module'
     },
-    plugins: ['react', '@typescript-eslint', 'react-hooks'],
+    plugins: ['react', '@typescript-eslint', 'react-hooks', 'fsd-rules-by-russell'],
     rules: {
         'react/jsx-indent': [2, 4],
         'react/jsx-indent-props': [2, 4],
@@ -57,7 +57,8 @@ module.exports = {
         'click-events-have-key-events': 'off',
         'no-noninteractive-element-interactions': 'off',
         'no-param-reassign': 'off',
-        'react/jsx-no-useless-fragment': 'warn'
+        'react/jsx-no-useless-fragment': 'warn',
+        'fsd-rules-by-russell/path-checker': 'error'
     },
     globals: {
         __IS_DEV__: true,
