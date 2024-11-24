@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import style from './ProfileForm.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import {
     getProfileReadonly,
@@ -15,6 +14,7 @@ import { Currency, CurrencySelect } from '@/entities/currency';
 import { Country, CountrySelect } from '@/entities/countries';
 import { ValidateProfileError } from '@/entities/profile/model/types/profile';
 import { Message, Severity } from '@/shared/ui/Message/Message';
+import { VStack } from '@/shared/ui/Stack/VStack/VStack';
 
 export interface ProfileFormProps {
     className?: string;
@@ -68,7 +68,7 @@ export const ProfileForm: FC<ProfileFormProps> = (props) => {
     ));
 
     return (
-        <div className={classNames(style.profileForm, [className])}>
+        <VStack gap='10' className={classNames('', [className])}>
             {errors?.length && errorsMessage}
             <Input
                 readOnly={readonly}
@@ -101,6 +101,6 @@ export const ProfileForm: FC<ProfileFormProps> = (props) => {
                 onChange={onChangeCurrency}
             />
             <CountrySelect readonly={readonly} value={data?.country} onChange={onChangeCountry} />
-        </div>
+        </VStack>
     );
 };

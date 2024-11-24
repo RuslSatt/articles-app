@@ -5,6 +5,8 @@ import style from './CommentList.module.scss';
 import { IComment } from '@/entities/comment';
 import { CommentCard } from '@/entities/comment/ui/CommentCard';
 import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
+import { VStack } from '@/shared/ui/Stack/VStack/VStack';
+import { HStack } from '@/shared/ui/Stack/HStack/HStack';
 
 export interface CommentListProps {
     className?: string;
@@ -21,14 +23,14 @@ export const CommentList = memo((props: CommentListProps) => {
 
     if (isLoading) {
         content = (
-            <div className={style.skeleton}>
-                <div className={style.skeleton_user}>
+            <VStack gap='15' className={style.skeleton}>
+                <HStack gap='10'>
                     <Skeleton width={32} height={32} />
                     <Skeleton width={100} height={32} />
-                </div>
+                </HStack>
                 <Skeleton width='100%' height={32} />
                 <Skeleton width='100%' height={32} />
-            </div>
+            </VStack>
         );
     } else if (!comments?.length) {
         content = <p>{t('Комментарии отсутствуют')}</p>;
@@ -40,5 +42,5 @@ export const CommentList = memo((props: CommentListProps) => {
         );
     }
 
-    return <div className={classNames(style.commentList, [className])}>{content}</div>;
+    return <VStack className={classNames(style.commentList, [className])}>{content}</VStack>;
 });

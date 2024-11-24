@@ -47,7 +47,9 @@ module.exports = {
                     'name',
                     'alt',
                     'options',
-                    'optionLabel'
+                    'optionLabel',
+                    'direction',
+                    'justifyContent'
                 ]
             }
         ],

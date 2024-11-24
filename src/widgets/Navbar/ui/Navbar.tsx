@@ -11,6 +11,7 @@ import { LoginModal } from '@/features/login';
 import { getUserData, userActions } from '@/entities/user';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { AppRoutes, RoutePath } from '@/shared/config/router/routerConfig';
+import { HStack } from '@/shared/ui/Stack/HStack/HStack';
 
 export interface NavbarProps {
     className?: string;
@@ -40,15 +41,15 @@ export const Navbar = memo((props: NavbarProps) => {
 
     return (
         <header className={classNames(style.navbar, [className])}>
-            <div className={style.navbar__links}>
+            <HStack gap='20'>
                 <AppLink className={style.logo} to={RoutePath[AppRoutes.MAIN]}>
                     {t('articles-app')}
                 </AppLink>
                 <AppLink className={style.article} to={RoutePath[AppRoutes.ARTICLE_CREATE]}>
                     {t('Создать статью')}
                 </AppLink>
-            </div>
-            <div className={style.navbar__tools}>
+            </HStack>
+            <HStack gap='10' className={style.navbar__tools}>
                 <ThemeSwitcher />
                 <LangSwitcher />
                 <Button label={authText} onClick={onClickHandler} />
@@ -58,7 +59,7 @@ export const Navbar = memo((props: NavbarProps) => {
                         <LoginModal visible={visible} onHide={() => setVisible(false)} />
                     </Portal>
                 )}
-            </div>
+            </HStack>
         </header>
     );
 });

@@ -1,11 +1,11 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import style from './ProfileEditButton.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button } from '@/shared/ui/Button/Button';
 import { getProfileReadonly, profileActions, updateProfileData } from '@/entities/profile';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { HStack } from '@/shared/ui/Stack/HStack/HStack';
 
 export interface ProfileEditButtonProps {
     className?: string;
@@ -34,18 +34,18 @@ export const ProfileEditButton: FC<ProfileEditButtonProps> = (props) => {
 
     if (readonly) {
         return (
-            <div className={classNames(style.buttons, [className])}>
-                <Button onClick={handlerEdit} label={t('Редактировать')} className={style.button} />
-            </div>
+            <HStack gap='10' justifyContent='end' className={classNames('', [className])}>
+                <Button onClick={handlerEdit} label={t('Редактировать')} />
+            </HStack>
         );
     }
 
     if (!readonly) {
         return (
-            <div className={classNames(style.buttons, [className])}>
-                <Button onClick={handlerCancelEdit} label={t('Отмена')} className={style.button} />
-                <Button onClick={handlerSave} label={t('Сохранить')} className={style.button} />
-            </div>
+            <HStack gap='10' justifyContent='end' className={classNames('', [className])}>
+                <Button onClick={handlerCancelEdit} label={t('Отмена')} />
+                <Button onClick={handlerSave} label={t('Сохранить')} />
+            </HStack>
         );
     }
 

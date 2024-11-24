@@ -10,26 +10,12 @@
 }
 
 .navbar__tools {
-    display: flex;
-    align-items: center;
-    gap: 10px;
     margin-left: auto;
-}
-
-.navbar__links {
-    display: flex;
-    align-items: center;
-    gap: 20px;
 }
 
 .logo {
     font-weight: 600;
-    font-family:
-        'Trebuchet MS',
-        'Lucida Sans Unicode',
-        'Lucida Grande',
-        'Lucida Sans',
-        Arial,
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial,
         sans-serif;
 }
 

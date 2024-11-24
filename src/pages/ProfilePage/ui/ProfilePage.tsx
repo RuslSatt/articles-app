@@ -22,6 +22,7 @@ import { Message, Severity } from '@/shared/ui/Message/Message';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitailEffect';
 import { getUserData } from '@/entities/user';
 import { Page } from '@/widgets/Page/Page';
+import { VStack } from '@/shared/ui/Stack/VStack/VStack';
 
 export interface ProfilePageProps {
     className?: string;
@@ -56,9 +57,9 @@ const ProfilePage: FC<ProfilePageProps> = (props) => {
                 {error && <Message severity={Severity.ERROR} text={error} />}
 
                 {isLoading && (
-                    <div className={style.profileLoader}>
+                    <VStack justifyContent='center' className={style.profileLoader}>
                         <Loader />
-                    </div>
+                    </VStack>
                 )}
 
                 {!isLoading && !error && (
