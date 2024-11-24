@@ -49,7 +49,8 @@ module.exports = {
                     'options',
                     'optionLabel',
                     'direction',
-                    'justifyContent'
+                    'justifyContent',
+                    'tag'
                 ]
             }
         ],

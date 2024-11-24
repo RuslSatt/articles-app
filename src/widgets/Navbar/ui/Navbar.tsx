@@ -40,7 +40,12 @@ export const Navbar = memo((props: NavbarProps) => {
     const onClickHandler = userData ? logout : showModal;
 
     return (
-        <header className={classNames(style.navbar, [className])}>
+        <HStack
+            tag='header'
+            gap='10'
+            justifyContent='between'
+            className={classNames(style.navbar, [className])}
+        >
             <HStack gap='20'>
                 <AppLink className={style.logo} to={RoutePath[AppRoutes.MAIN]}>
                     {t('articles-app')}
@@ -60,6 +65,6 @@ export const Navbar = memo((props: NavbarProps) => {
                     </Portal>
                 )}
             </HStack>
-        </header>
+        </HStack>
     );
 });

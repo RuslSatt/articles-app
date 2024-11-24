@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
 import style from './Flex.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
@@ -7,13 +7,30 @@ type FlexAlign = 'center' | 'start' | 'end';
 type FlexDirection = 'row' | 'column';
 type FlexGap = '5' | '10' | '15' | '20' | '30';
 
-export interface FlexProps {
+type DivProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+
+type Tag =
+    | 'div'
+    | 'span'
+    | 'p'
+    | 'h1'
+    | 'h2'
+    | 'h3'
+    | 'h4'
+    | 'h5'
+    | 'h6'
+    | 'section'
+    | 'header'
+    | 'footer';
+
+export interface FlexProps extends DivProps {
     className?: string;
     children?: ReactNode;
     justifyContent?: FlexJustify;
     alignItems?: FlexAlign;
     direction?: FlexDirection;
     gap?: FlexGap;
+    tag?: Tag;
 }
 
 const justifyClasses: Record<FlexJustify, string> = {
@@ -50,7 +67,8 @@ export const Flex = (props: FlexProps) => {
         justifyContent = 'start',
         alignItems = 'center',
         direction = 'row',
-        gap
+        gap,
+        tag
     } = props;
 
     const classes = [
@@ -61,5 +79,7 @@ export const Flex = (props: FlexProps) => {
         gap && gapClasses[gap]
     ];
 
-    return <div className={classNames(style.flex, classes)}>{children}</div>;
+    const Element = tag ?? 'div';
+
+    return <Element className={classNames(style.flex, classes)}>{children}</Element>;
 };
