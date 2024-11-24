@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 import style from './ArticleSortSelector.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ArticleSortField } from '@/entities/article';
-import { Select, SelectOption } from '@/shared/ui/Select/Select';
 import { SortOrder } from '@/shared/types/sort';
+import { Listbox, ListBoxOption } from '@/shared/ui/ListBox/ListBox';
 
 export interface ArticleSortSelectorProps {
     className?: string;
@@ -19,7 +19,7 @@ export const ArticleSortSelector = memo((props: ArticleSortSelectorProps) => {
 
     const { t } = useTranslation();
 
-    const orderOptions = useMemo<SelectOption<SortOrder>[]>(() => {
+    const orderOptions = useMemo<ListBoxOption<SortOrder>[]>(() => {
         return [
             {
                 value: 'asc',
@@ -32,7 +32,7 @@ export const ArticleSortSelector = memo((props: ArticleSortSelectorProps) => {
         ];
     }, [t]);
 
-    const sortOptions = useMemo<SelectOption<ArticleSortField>[]>(() => {
+    const sortOptions = useMemo<ListBoxOption<ArticleSortField>[]>(() => {
         return [
             {
                 value: ArticleSortField.TITLE,
@@ -51,14 +51,14 @@ export const ArticleSortSelector = memo((props: ArticleSortSelectorProps) => {
 
     return (
         <div className={classNames(style.articleSortSelector, [className])}>
-            <Select<SortOrder>
+            <Listbox<SortOrder>
                 onChange={onChangeOrder}
                 optionLabel='content'
                 className={style.order}
                 options={orderOptions}
                 value={order}
             />
-            <Select<ArticleSortField>
+            <Listbox<ArticleSortField>
                 onChange={onChangeSort}
                 optionLabel='content'
                 className={style.sort}

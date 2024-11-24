@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { Select } from '@/shared/ui/Select/Select';
+import { Listbox, ListBoxOption } from '@/shared/ui/ListBox/ListBox';
 
 export enum Currency {
     RUB = 'RUB',
@@ -20,7 +20,7 @@ export const CurrencySelect = memo((props: CurrencySelectProps) => {
     const { className, value, onChange, readonly } = props;
 
     return (
-        <Select
+        <Listbox
             disabled={readonly}
             value={value}
             options={currencyItems}

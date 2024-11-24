@@ -1,0 +1,55 @@
+.ListBox {
+    position: relative;
+    width: 100%;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 10px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--bg-color);
+    z-index: 1;
+    margin-top: 5px;
+    padding: 5px;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: var(--text-color);
+    cursor: pointer;
+    width: 100%;
+
+    &:hover {
+        background-color: var(--highlight-bg);
+        color: var(--highlight-text-color);
+    }
+
+    &:active {
+        color: var(--highlight-text-color);
+    }
+
+    &.selected {
+        background-color: var(--primary-color);
+        color: var(--primary-color-text);
+    }
+}

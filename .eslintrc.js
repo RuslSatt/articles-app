@@ -50,7 +50,8 @@ module.exports = {
                     'optionLabel',
                     'direction',
                     'justifyContent',
-                    'tag'
+                    'tag',
+                    'as'
                 ]
             }
         ],

@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { Select } from '@/shared/ui/Select/Select';
+import { Listbox } from '@/shared/ui/ListBox/ListBox';
 
 export enum Country {
     RUSSIA = 'RU',
@@ -21,7 +21,7 @@ export const CountrySelect = memo((props: CountrySelectProps) => {
     const { className, value, onChange, readonly } = props;
 
     return (
-        <Select
+        <Listbox
             disabled={readonly}
             value={value}
             options={countryItems}
