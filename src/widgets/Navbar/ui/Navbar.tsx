@@ -12,6 +12,8 @@ import { getUserData, userActions } from '@/entities/user';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { AppRoutes, RoutePath } from '@/shared/config/router/routerConfig';
 import { HStack } from '@/shared/ui/Stack/HStack/HStack';
+import { Dropdown, DropdownItem } from '@/shared/ui/Dropdown/Dropdown';
+import { Avatar, AvatarSize } from '@/shared/ui/Avatar/Avatar';
 
 export interface NavbarProps {
     className?: string;
@@ -36,8 +38,18 @@ export const Navbar = memo((props: NavbarProps) => {
         dispatch(userActions.logout());
     };
 
-    const authText = userData ? t('Выйти') : t('Войти');
-    const onClickHandler = userData ? logout : showModal;
+    const dropdownItems: DropdownItem[] = [
+        {
+            id: '1',
+            name: t('Профиль'),
+            href: `${RoutePath[AppRoutes.PROFILE]}${userData?.id}`
+        },
+        {
+            id: '2',
+            name: t('Выйти'),
+            onClick: logout
+        }
+    ];
 
     return (
         <HStack
@@ -57,7 +69,15 @@ export const Navbar = memo((props: NavbarProps) => {
             <HStack gap='10' className={style.navbar__tools}>
                 <ThemeSwitcher />
                 <LangSwitcher />
-                <Button label={authText} onClick={onClickHandler} />
+
+                {userData ? (
+                    <Dropdown
+                        items={dropdownItems}
+                        trigger={<Avatar image={userData.avatar} size={AvatarSize.SMALL} />}
+                    />
+                ) : (
+                    <Button label={t('Войти')} onClick={showModal} />
+                )}
 
                 {!userData && (
                     <Portal>

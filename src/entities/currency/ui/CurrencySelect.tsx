@@ -14,7 +14,7 @@ export interface CurrencySelectProps {
     readonly?: boolean;
 }
 
-const currencyItems = Object.values(Currency).map((c) => ({ name: c, value: c }));
+const currencyItems = Object.values(Currency).map((c) => ({ id: c, name: c, value: c }));
 
 export const CurrencySelect = memo((props: CurrencySelectProps) => {
     const { className, value, onChange, readonly } = props;

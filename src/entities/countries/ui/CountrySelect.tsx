@@ -15,7 +15,7 @@ export interface CountrySelectProps {
     readonly?: boolean;
 }
 
-const countryItems = Object.values(Country).map((c) => ({ name: c, value: c }));
+const countryItems = Object.values(Country).map((c) => ({ id: c, name: c, value: c }));
 
 export const CountrySelect = memo((props: CountrySelectProps) => {
     const { className, value, onChange, readonly } = props;

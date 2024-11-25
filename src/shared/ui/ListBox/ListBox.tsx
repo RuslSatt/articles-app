@@ -2,10 +2,11 @@ import { Listbox as HListBox } from '@headlessui/react';
 import { Fragment } from 'react';
 import style from './ListBox.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { VStack } from '../Stack/VStack/VStack';
 
 export interface ListBoxOption<T extends string> {
-    [key: string]: string;
+    id: string;
+    value: T;
+    name: string;
 }
 
 export interface ListBoxProps<T extends string> {
@@ -30,26 +31,24 @@ export const Listbox = <T extends string>(props: ListBoxProps<T>) => {
         >
             <HListBox.Button className={style.button}>
                 {value
-                    ? options.find((option) => option.value === value)?.[optionLabel]
+                    ? options.find((option) => option.value === value)?.name
                     : 'Выберите значение'}
             </HListBox.Button>
             <HListBox.Options className={style.options}>
-                <VStack gap='5'>
-                    {options?.map((option) => (
-                        <HListBox.Option key={option.id} value={option.value} as={Fragment}>
-                            {({ active, selected }) => (
-                                <li
-                                    className={classNames(style.option, [], {
-                                        [style.active]: active,
-                                        [style.selected]: selected
-                                    })}
-                                >
-                                    {option[optionLabel]}
-                                </li>
-                            )}
-                        </HListBox.Option>
-                    ))}
-                </VStack>
+                {options?.map((option) => (
+                    <HListBox.Option key={option.id} value={option.value} as={Fragment}>
+                        {({ active, selected }) => (
+                            <li
+                                className={classNames(style.option, [], {
+                                    [style.active]: active,
+                                    [style.selected]: selected
+                                })}
+                            >
+                                {option.name}
+                            </li>
+                        )}
+                    </HListBox.Option>
+                ))}
             </HListBox.Options>
         </HListBox>
     );

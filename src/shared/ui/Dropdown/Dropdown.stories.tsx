@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Listbox } from './ListBox';
+import { Dropdown } from './Dropdown';
 
 const meta = {
-    title: 'shared/Listbox',
-    component: Listbox,
+    title: 'shared/Dropdown',
+    component: Dropdown,
     parameters: {
         layout: 'centered'
     },
@@ -11,30 +11,30 @@ const meta = {
     tags: ['autodocs'],
 
     args: {}
-} satisfies Meta<typeof Listbox>;
+} satisfies Meta<typeof Dropdown>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     args: {
-        options: [
+        items: [
             {
                 id: '1',
-                value: '1',
+
                 name: 'Option 1'
             },
             {
                 id: '2',
-                value: '2',
+
                 name: 'Option 2'
             },
             {
                 id: '3',
-                value: '3',
+
                 name: 'Option 3'
             }
         ],
-        optionLabel: 'content'
+        trigger: 'Dropdown'
     }
 };
