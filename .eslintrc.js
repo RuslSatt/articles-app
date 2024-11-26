@@ -51,7 +51,8 @@ module.exports = {
                     'direction',
                     'justifyContent',
                     'tag',
-                    'as'
+                    'as',
+                    'max'
                 ]
             }
         ],

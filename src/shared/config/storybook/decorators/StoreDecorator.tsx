@@ -5,13 +5,11 @@ import { loginReducer } from '@/features/login/model/slice/loginSlice';
 import { ReducersList } from '@/shared/lib/DynamicReducerLoader/DynamicReducerLoader';
 import { profileReducer } from '@/entities/profile';
 import { articleDetailsReducer } from '@/entities/article';
-import { articleDetailsPageReducer } from '@/pages/ArticleDetailPage';
 
 const defaultDynamicReducers: ReducersList = {
     login: loginReducer,
     profile: profileReducer,
-    articleDetails: articleDetailsReducer,
-    articleDetailsPage: articleDetailsPageReducer
+    articleDetails: articleDetailsReducer
 };
 
 export interface StoreDecoratorOptions {

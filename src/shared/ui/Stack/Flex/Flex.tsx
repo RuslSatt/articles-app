@@ -30,6 +30,7 @@ export interface FlexProps extends DivProps {
     alignItems?: FlexAlign;
     direction?: FlexDirection;
     gap?: FlexGap;
+    max?: boolean;
     tag?: Tag;
 }
 
@@ -68,6 +69,7 @@ export const Flex = (props: FlexProps) => {
         alignItems = 'center',
         direction = 'row',
         gap,
+        max,
         tag
     } = props;
 
@@ -81,5 +83,9 @@ export const Flex = (props: FlexProps) => {
 
     const Element = tag ?? 'div';
 
-    return <Element className={classNames(style.flex, classes)}>{children}</Element>;
+    return (
+        <Element className={classNames(style.flex, classes, { [style.max]: max })}>
+            {children}
+        </Element>
+    );
 };
