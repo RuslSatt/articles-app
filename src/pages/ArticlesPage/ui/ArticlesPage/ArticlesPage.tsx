@@ -1,15 +1,9 @@
-import { useSelector } from 'react-redux';
 import { useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import style from './ArticlesPage.module.scss';
-import { ArticleList } from '@/widgets/ArticleList';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import {
-    getArticlesPageIsLoading,
-    getArticlesPageView
-} from '../../model/selectors/getArticlesPageData';
-import { articlesPageReducer, getArticlesList } from '../../model/slice/articlesPageSlice';
+import { articlesPageReducer } from '../../model/slice/articlesPageSlice';
 import {
     DynamicReducerLoader,
     ReducersList
@@ -20,6 +14,7 @@ import { Page } from '@/widgets/Page/Page';
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 import { ArticlesPageFilter } from '../ArticlesPageFilter/ArticlesPageFilter';
+import { ArticleInfinityList } from '../ArticleInfinityList/ArticleInfinityList';
 
 export interface ArticlesPageProps {
     className?: string;
@@ -33,10 +28,6 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     const { className } = props;
 
     const dispatch = useAppDispatch();
-
-    const isLoading = useSelector(getArticlesPageIsLoading);
-    const articles = useSelector(getArticlesList.selectAll);
-    const view = useSelector(getArticlesPageView);
 
     const [searchParams] = useSearchParams();
 
@@ -57,7 +48,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
                 <header className={style.header}>
                     <ArticlesPageFilter />
                 </header>
-                <ArticleList view={view} isLoading={isLoading} articles={articles} />
+                <ArticleInfinityList />
             </Page>
         </DynamicReducerLoader>
     );
