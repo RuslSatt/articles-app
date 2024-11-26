@@ -9,10 +9,12 @@ import { IAddCommentFormSchema } from '@/features/addComment';
 import { IArticlePageSchema } from '@/pages/ArticlesPage';
 import { ISaveScrollSchema } from '@/features/saveScroll';
 import { IArticleDetailsPageSchema } from '@/pages/ArticleDetailPage';
+import { rtkApi } from '@/shared/api/rtk';
 
 export interface StateSchema {
     user: UserSchema;
     saveScroll: ISaveScrollSchema;
+    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
 
     login?: LoginSchema;
     profile?: ProfileSchema;

@@ -1,9 +1,7 @@
-import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import { StateSchema } from '@/app/providers/store';
 import { IArticleRecommendationsSchema } from '../../types/articleRecommendations';
 import { IArticle } from '@/entities/article';
-// eslint-disable-next-line max-len
-import { fetchArticleRecommendations } from '../../services/fetchArticleRecommendations/fetchArticleRecommendations';
 
 const initialState: IArticleRecommendationsSchema = {
     ids: [],
@@ -24,25 +22,7 @@ export const articleRecommendationsSlice = createSlice({
     name: 'articleRecommendationsSlice',
     initialState:
         recommendationsAdapter.getInitialState<IArticleRecommendationsSchema>(initialState),
-    reducers: {},
-    extraReducers: (builder) => {
-        builder.addCase(
-            fetchArticleRecommendations.fulfilled,
-            (state, action: PayloadAction<IArticle[]>) => {
-                state.isLoading = false;
-                recommendationsAdapter.setAll(state, action.payload);
-                state.error = undefined;
-            }
-        );
-        builder.addCase(fetchArticleRecommendations.pending, (state) => {
-            state.isLoading = true;
-            state.error = undefined;
-        });
-        builder.addCase(fetchArticleRecommendations.rejected, (state, action) => {
-            state.isLoading = false;
-            state.error = action.payload;
-        });
-    }
+    reducers: {}
 });
 
 export const { actions: articleRecommendationsActions } = articleRecommendationsSlice;

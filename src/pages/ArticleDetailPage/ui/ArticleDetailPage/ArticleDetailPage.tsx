@@ -20,13 +20,7 @@ import { getArticleComments } from '../../model/slice/comments/articleCommentsSl
 import { AddCommentForm } from '@/features/addComment';
 import { addArticleComment } from '../../model/services/addArticleComment/addArticleComment';
 import { Page } from '@/widgets/Page/Page';
-// eslint-disable-next-line max-len
-import { getArticleRecommendations } from '../../model/slice/recommendations/articleRecommendationsSlice';
 import { ArticleRecommendationsList } from '@/widgets/ArticleRecommedationsList';
-// eslint-disable-next-line max-len
-import { fetchArticleRecommendations } from '../../model/services/fetchArticleRecommendations/fetchArticleRecommendations';
-// eslint-disable-next-line max-len
-import { getArticleRecommendationsIsLoading } from '../../model/selectors/recommendations/getRecommendationsData';
 import { articleDetailsPageReducer } from '../../model/slice';
 // eslint-disable-next-line max-len
 import { fetchArticleComments } from '../../model/services/fetchArticleComments/fetchArticleComments';
@@ -50,14 +44,11 @@ const ArticleDetailPage = (props: ArticleDetailPageProps) => {
     const dispatch = useAppDispatch();
 
     const comments = useSelector(getArticleComments.selectAll);
-    const recommendations = useSelector(getArticleRecommendations.selectAll);
-    const recommendationsIsLoading = useSelector(getArticleRecommendationsIsLoading);
     const isLoading = useSelector(getArticleCommentsIsLoading);
     const error = useSelector(getArticleCommentsError);
 
     useInitialEffect(() => {
         dispatch(fetchArticleComments(id));
-        dispatch(fetchArticleRecommendations());
     });
 
     if (!id) {
@@ -77,10 +68,7 @@ const ArticleDetailPage = (props: ArticleDetailPageProps) => {
             <ArticleDetailPageHeader />
             <ArticleDetails id={id} />
             <DynamicReducerLoader reducersList={reducersList}>
-                <ArticleRecommendationsList
-                    articles={recommendations}
-                    isLoading={recommendationsIsLoading}
-                />
+                <ArticleRecommendationsList />
                 <AddCommentForm onSendComment={onSendComment} />
                 <CommentList comments={comments ?? []} isLoading={isLoading} />
             </DynamicReducerLoader>
