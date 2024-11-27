@@ -65,19 +65,21 @@ export const ProfileForm: FC<ProfileFormProps> = (props) => {
     ));
 
     return (
-        <VStack gap='10' className={classNames('', [className])}>
+        <VStack data-testid='profile-form' gap='10' className={classNames('', [className])}>
             {errors?.length && errorsMessage}
             <Input
                 readOnly={readonly}
                 value={data?.first}
                 onChange={handlerChangeName}
                 placeholder={t('Ваше имя')}
+                data-testid='profile-first-name'
             />
             <Input
                 readOnly={readonly}
                 value={data?.lastname}
                 onChange={handlerChangeLastName}
                 placeholder={t('Ваша фамилия')}
+                data-testid='profile-last-name'
             />
             <Input
                 readOnly={readonly}
@@ -85,19 +87,27 @@ export const ProfileForm: FC<ProfileFormProps> = (props) => {
                 value={data?.age}
                 onChange={handlerChangeAge}
                 placeholder={t('Ваш возраст')}
+                data-testid='profile-age'
             />
             <Input
                 readOnly={readonly}
                 value={data?.city}
                 onChange={handlerChangeCity}
                 placeholder={t('Ваш город')}
+                data-testid='profile-city'
             />
             <CurrencySelect
                 readonly={readonly}
                 value={data?.currency}
                 onChange={onChangeCurrency}
+                data-testid='profile-currency'
             />
-            <CountrySelect readonly={readonly} value={data?.country} onChange={onChangeCountry} />
+            <CountrySelect
+                readonly={readonly}
+                value={data?.country}
+                onChange={onChangeCountry}
+                data-testid='profile-country'
+            />
         </VStack>
     );
 };
