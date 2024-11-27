@@ -1,10 +1,11 @@
 import { DeepPartial } from '@reduxjs/toolkit';
-import { IProfile, ProfileSchema, ValidateProfileError } from '../types/profile';
 import { profileActions, profileReducer } from './profileSlice';
 import { Country } from '@/entities/countries';
 import { Currency } from '@/entities/currency';
 import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData';
 import { updateProfileData } from '../services/updateProfileData/updateProfileData';
+import { IProfile } from '@/entities/profile';
+import { ProfileSchema, ValidateProfileError } from '../types/editableProfileCard';
 
 const data: IProfile = {
     id: '1',

@@ -10,7 +10,7 @@ import {
     getProfileReadonly,
     getProfileValidateErrors
 } from './getProfileData';
-import { ValidateProfileError } from '../types/profile';
+import { ValidateProfileError } from '../types/editableProfileCard';
 
 const data = {
     id: '1',

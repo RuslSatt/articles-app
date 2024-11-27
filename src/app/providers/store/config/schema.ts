@@ -3,13 +3,13 @@ import { AnyAction, CombinedState, Reducer, ReducersMapObject } from '@reduxjs/t
 import { AxiosInstance } from 'axios';
 import { UserSchema } from '@/entities/user';
 import { LoginSchema } from '@/features/login';
-import { ProfileSchema } from '@/entities/profile';
 import { ArticleSchema } from '@/entities/article';
 import { IAddCommentFormSchema } from '@/features/addComment';
 import { IArticlePageSchema } from '@/pages/ArticlesPage';
 import { ISaveScrollSchema } from '@/features/saveScroll';
 import { IArticleDetailsPageSchema } from '@/pages/ArticleDetailPage';
 import { rtkApi } from '@/shared/api/rtk';
+import { ProfileSchema } from '@/features/editableProfile';
 
 export interface StateSchema {
     user: UserSchema;

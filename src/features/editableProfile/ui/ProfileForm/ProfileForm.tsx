@@ -2,19 +2,16 @@ import { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import {
-    getProfileReadonly,
-    getProfileValidateErrors,
-    IProfile,
-    profileActions
-} from '@/entities/profile';
+import { IProfile } from '@/entities/profile';
 import { Input } from '@/shared/ui/Input/Input';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Currency, CurrencySelect } from '@/entities/currency';
 import { Country, CountrySelect } from '@/entities/countries';
-import { ValidateProfileError } from '@/entities/profile/model/types/profile';
 import { Message, Severity } from '@/shared/ui/Message/Message';
 import { VStack } from '@/shared/ui/Stack/VStack/VStack';
+import { ValidateProfileError } from '../../model/types/editableProfileCard';
+import { profileActions } from '../../model/slice/profileSlice';
+import { getProfileReadonly, getProfileValidateErrors } from '../../model/selectors/getProfileData';
 
 export interface ProfileFormProps {
     className?: string;
@@ -63,7 +60,7 @@ export const ProfileForm: FC<ProfileFormProps> = (props) => {
         [ValidateProfileError.NO_DATA]: t('Данные не указаны')
     };
 
-    const errorsMessage = errors?.map((err) => (
+    const errorsMessage = errors?.map((err: ValidateProfileError) => (
         <Message severity={Severity.ERROR} text={validateErrorsTranslate[err]} key={err} />
     ));
 

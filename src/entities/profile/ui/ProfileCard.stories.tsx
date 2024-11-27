@@ -4,9 +4,10 @@ import { ProfileCard } from './ProfileCard';
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator';
 import { Country } from '@/entities/countries';
 import { Currency } from '@/entities/currency';
-import { ProfileEditButton, ProfileForm } from '@/features/profile';
+import { ProfileEditButton, ProfileForm } from '@/features/editableProfile';
 import { StateSchema } from '@/app/providers/store';
-import { IProfile, ValidateProfileError } from '../model/types/profile';
+import { IProfile } from '../model/types/profile';
+import { ValidateProfileError } from '@/features/editableProfile/model/types/editableProfileCard';
 
 const meta = {
     title: 'entities/ProfileCard',

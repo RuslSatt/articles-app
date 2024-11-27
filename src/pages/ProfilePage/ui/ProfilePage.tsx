@@ -7,16 +7,17 @@ import {
     DynamicReducerLoader,
     ReducersList
 } from '@/shared/lib/DynamicReducerLoader/DynamicReducerLoader';
+import { ProfileCard } from '@/entities/profile';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import {
     fetchProfileData,
     getProfileError,
     getProfileForm,
     getProfileLoading,
-    ProfileCard,
+    ProfileEditButton,
+    ProfileForm,
     profileReducer
-} from '@/entities/profile';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { ProfileEditButton, ProfileForm } from '@/features/profile';
+} from '@/features/editableProfile';
 import { Loader } from '@/shared/ui/Loader/Loader';
 import { Message, Severity } from '@/shared/ui/Message/Message';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitailEffect';
