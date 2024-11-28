@@ -61,7 +61,12 @@ export const ProfileForm: FC<ProfileFormProps> = (props) => {
     };
 
     const errorsMessage = errors?.map((err: ValidateProfileError) => (
-        <Message severity={Severity.ERROR} text={validateErrorsTranslate[err]} key={err} />
+        <Message
+            data-testid='profile-error-message'
+            severity={Severity.ERROR}
+            text={validateErrorsTranslate[err]}
+            key={err}
+        />
     ));
 
     return (

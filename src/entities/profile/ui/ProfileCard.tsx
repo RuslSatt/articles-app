@@ -18,7 +18,7 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
     const { t } = useTranslation();
 
     return (
-        <div className={classNames(style.profileCard, [className])}>
+        <div data-testid='profile-card' className={classNames(style.profileCard, [className])}>
             <h1>{t('Профиль')}</h1>
             <Avatar size={AvatarSize.LARGE} image={data?.avatar || ''} />
             <div className={style.card__content}>{form}</div>

@@ -37,7 +37,11 @@ export const ProfileEditButton: FC<ProfileEditButtonProps> = (props) => {
     if (readonly) {
         return (
             <HStack gap='10' justifyContent='end' className={classNames('', [className])}>
-                <Button onClick={handlerEdit} label={t('Редактировать')} />
+                <Button
+                    data-testid='profile-edit-button'
+                    onClick={handlerEdit}
+                    label={t('Редактировать')}
+                />
             </HStack>
         );
     }
@@ -45,8 +49,16 @@ export const ProfileEditButton: FC<ProfileEditButtonProps> = (props) => {
     if (!readonly) {
         return (
             <HStack gap='10' justifyContent='end' className={classNames('', [className])}>
-                <Button onClick={handlerCancelEdit} label={t('Отмена')} />
-                <Button onClick={handlerSave} label={t('Сохранить')} />
+                <Button
+                    data-testid='profile-cancel-button'
+                    onClick={handlerCancelEdit}
+                    label={t('Отмена')}
+                />
+                <Button
+                    data-testid='profile-save-button'
+                    onClick={handlerSave}
+                    label={t('Сохранить')}
+                />
             </HStack>
         );
     }
