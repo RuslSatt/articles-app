@@ -4,7 +4,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import style from './ArticleDetailPage.module.scss';
 import { ArticleDetails } from '@/entities/article';
 import { CommentList } from '@/widgets/CommentList';
-import { Page } from '@/widgets/Page/Page';
+import { Page } from '@/widgets/Page/ui/Page';
 import { ArticleRecommendationsList } from '@/widgets/ArticleRecommedationsList';
 import { ArticleDetailPageHeader } from '../ArticleDetailPageHeader/ArticleDetailPageHeader';
 

@@ -7,13 +7,13 @@ import { RequireAuth } from './RequireAuth';
 export const AppRouter = () => (
     <Suspense fallback={<PageLoader />}>
         <Routes>
-            {router.map(({ path, element, authOnly }) => (
+            {router.map(({ path, element, authOnly, roles }) => (
                 <Route
                     key={path}
                     path={path}
                     element={
                         authOnly ? (
-                            <RequireAuth>{element as React.ReactElement}</RequireAuth>
+                            <RequireAuth roles={roles}>{element as React.ReactElement}</RequireAuth>
                         ) : (
                             element
                         )

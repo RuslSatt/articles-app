@@ -8,7 +8,7 @@ import { LangSwitcher } from '@/features/LangSwitcher';
 import { Button } from '@/shared/ui/Button/Button';
 import { Portal } from '@/shared/ui/Portal/Portal';
 import { LoginModal } from '@/features/login';
-import { getUserData, userActions } from '@/entities/user';
+import { getUserData, isUserAdmin, userActions } from '@/entities/user';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { AppRoutes, RoutePath } from '@/shared/config/router/routerConfig';
 import { HStack } from '@/shared/ui/Stack/HStack/HStack';
@@ -27,6 +27,7 @@ export const Navbar = memo((props: NavbarProps) => {
     const dispatch = useDispatch();
 
     const userData = useSelector(getUserData);
+    const isAdmin = useSelector(isUserAdmin);
 
     const [visible, setVisible] = useState(false);
 
@@ -50,6 +51,14 @@ export const Navbar = memo((props: NavbarProps) => {
             onClick: logout
         }
     ];
+
+    if (isAdmin) {
+        dropdownItems.unshift({
+            id: 'admin',
+            name: t('Админ-панель'),
+            href: `${RoutePath[AppRoutes.ADMIN_PANEL]}`
+        });
+    }
 
     return (
         <HStack
