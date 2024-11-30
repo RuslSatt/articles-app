@@ -1,7 +1,6 @@
 import path from 'path';
 import type { StorybookConfig } from '@storybook/react-webpack5';
 import { DefinePlugin, RuleSetRule } from 'webpack';
-import { buildFileLoader } from 'config/webpack/loaders/buildFileLoader';
 import { buildStyleLoader } from '../webpack/loaders/buildStyleLoader';
 import { buildSvgLoader } from '../webpack/loaders/buildSvgLoader';
 
@@ -13,7 +12,8 @@ const config: StorybookConfig = {
         '@storybook/addon-links',
         '@storybook/addon-essentials',
         '@chromatic-com/storybook',
-        '@storybook/addon-interactions'
+        '@storybook/addon-interactions',
+        'storybook-addon-mock'
     ],
     framework: {
         name: '@storybook/react-webpack5',
@@ -36,7 +36,7 @@ const config: StorybookConfig = {
         config.plugins?.push(
             new DefinePlugin({
                 __IS_DEV__: true,
-                __API__: JSON.stringify(''),
+                __API__: JSON.stringify('https://localhost:8000'),
                 __PROJECT__: JSON.stringify('storybook')
             })
         );
