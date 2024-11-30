@@ -9,7 +9,7 @@ import { Currency, CurrencySelect } from '@/entities/currency';
 import { Country, CountrySelect } from '@/entities/countries';
 import { Message, Severity } from '@/shared/ui/Message/Message';
 import { VStack } from '@/shared/ui/Stack/VStack/VStack';
-import { ValidateProfileError } from '../../model/types/editableProfileCard';
+import { ValidateProfileError } from '../../model/consts/consts';
 import { profileActions } from '../../model/slice/profileSlice';
 import { getProfileReadonly, getProfileValidateErrors } from '../../model/selectors/getProfileData';
 

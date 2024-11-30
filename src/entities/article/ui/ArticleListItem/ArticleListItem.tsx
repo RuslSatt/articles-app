@@ -2,12 +2,7 @@ import { HTMLAttributeAnchorTarget, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import style from './ArticleListItem.module.scss';
-import {
-    ArticleBlockType,
-    ArticleView,
-    IArticle,
-    IArticleTextBlock
-} from '../../model/types/article';
+import { IArticle, IArticleTextBlock } from '../../model/types/article';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
 import { Card } from '@/shared/ui/Card/Card';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
@@ -15,6 +10,7 @@ import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock';
 import { Button } from '@/shared/ui/Button/Button';
 import { AppRoutes, RoutePath } from '@/shared/config/router/routerConfig';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { ArticleBlockType, ArticleView } from '../../model/consts/consts';
 
 export interface ArticleListItemProps {
     className?: string;

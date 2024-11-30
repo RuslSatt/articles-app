@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { ArticleView } from '../../model/types/article';
+import { ArticleView } from '../../model/consts/consts';
 import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 
 export interface ArticleListItemSkeletonProps {

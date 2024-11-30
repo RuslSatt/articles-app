@@ -5,7 +5,8 @@ import { Currency } from '@/entities/currency';
 import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData';
 import { updateProfileData } from '../services/updateProfileData/updateProfileData';
 import { IProfile } from '@/entities/profile';
-import { ProfileSchema, ValidateProfileError } from '../types/editableProfileCard';
+import { ProfileSchema } from '../types/editableProfileCard';
+import { ValidateProfileError } from '../consts/consts';
 
 const data: IProfile = {
     id: '1',

@@ -3,7 +3,7 @@ import { ThunkConfig } from '@/app/providers/store';
 import { getProfileForm } from '../../selectors/getProfileData';
 import { validateProfileData } from '../validateProfileData/validateProfileData';
 import { IProfile } from '@/entities/profile';
-import { ValidateProfileError } from '../../types/editableProfileCard';
+import { ValidateProfileError } from '../../consts/consts';
 
 export const updateProfileData = createAsyncThunk<
     IProfile,

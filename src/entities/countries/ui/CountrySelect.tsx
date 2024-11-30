@@ -1,12 +1,6 @@
 import { memo } from 'react';
 import { Listbox } from '@/shared/ui/ListBox/ListBox';
-
-export enum Country {
-    RUSSIA = 'RU',
-    UZBEKISTAN = 'UZ',
-    KAZAKHSTAN = 'KZ',
-    TURKMENISTAN = 'TM'
-}
+import { Country } from '../model/consts/consts';
 
 export interface CountrySelectProps {
     className?: string;

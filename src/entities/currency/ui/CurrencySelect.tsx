@@ -1,11 +1,6 @@
 import { memo } from 'react';
-import { Listbox, ListBoxOption } from '@/shared/ui/ListBox/ListBox';
-
-export enum Currency {
-    RUB = 'RUB',
-    USD = 'USD',
-    EUR = 'EUR'
-}
+import { Listbox } from '@/shared/ui/ListBox/ListBox';
+import { Currency } from '../model/consts/consts';
 
 export interface CurrencySelectProps {
     className?: string;
