@@ -1,14 +1,11 @@
 import { IBuildOptions } from '../types/config';
+import { buildBabelLoader } from './loaders/buildBabelLoader';
 import { buildFileLoader } from './loaders/buildFileLoader';
 import { buildStyleLoader } from './loaders/buildStyleLoader';
 import { buildSvgLoader } from './loaders/buildSvgLoader';
 
-export function buildLoaders({ isDev }: IBuildOptions) {
-    const tsLoader = {
-        test: /\.tsx?$/,
-        exclude: /node_modules/,
-        use: 'ts-loader'
-    };
+export function buildLoaders(options: IBuildOptions) {
+    const { isDev } = options;
 
     const styleLoader = buildStyleLoader(isDev);
 
@@ -16,16 +13,8 @@ export function buildLoaders({ isDev }: IBuildOptions) {
 
     const fileLoader = buildFileLoader();
 
-    const babelLoader = {
-        test: /\.m?js$/,
-        exclude: /node_modules/,
-        use: {
-            loader: 'babel-loader',
-            options: {
-                presets: ['@babel/preset-env']
-            }
-        }
-    };
+    const babelLoader = buildBabelLoader(options);
+    const tsxBabelLoader = buildBabelLoader({ ...options, isTsx: true });
 
-    return [fileLoader, svgLoader, babelLoader, tsLoader, styleLoader];
+    return [fileLoader, svgLoader, babelLoader, babelLoader, tsxBabelLoader, styleLoader];
 }
