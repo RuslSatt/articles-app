@@ -2,6 +2,8 @@ import { Listbox as HListBox } from '@headlessui/react';
 import { Fragment } from 'react';
 import style from './ListBox.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import popupStyle from '../../styles/Popups.module.scss';
+import { directionClasses, PopupDirection } from '../../styles/consts';
 
 export interface ListBoxOption<T extends string> {
     id: string;
@@ -16,10 +18,19 @@ export interface ListBoxProps<T extends string> {
     disabled?: boolean;
     options?: ListBoxOption<T>[];
     optionLabel?: string;
+    direction?: PopupDirection;
 }
 
 export const Listbox = <T extends string>(props: ListBoxProps<T>) => {
-    const { className, value, onChange, disabled, options = [], optionLabel = 'name' } = props;
+    const {
+        className,
+        value,
+        onChange,
+        disabled,
+        options = [],
+        optionLabel = 'name',
+        direction = 'bottom-left'
+    } = props;
 
     return (
         <HListBox
@@ -34,12 +45,14 @@ export const Listbox = <T extends string>(props: ListBoxProps<T>) => {
                     ? options.find((option) => option.value === value)?.name
                     : 'Выберите значение'}
             </HListBox.Button>
-            <HListBox.Options className={style.options}>
+            <HListBox.Options
+                className={classNames(popupStyle.items, [directionClasses[direction], style.items])}
+            >
                 {options?.map((option) => (
                     <HListBox.Option key={option.id} value={option.value} as={Fragment}>
                         {({ active, selected }) => (
                             <li
-                                className={classNames(style.option, [], {
+                                className={classNames(popupStyle.item, [], {
                                     [style.active]: active,
                                     [style.selected]: selected
                                 })}

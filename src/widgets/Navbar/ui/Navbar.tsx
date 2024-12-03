@@ -12,8 +12,8 @@ import { getUserData, isUserAdmin, userActions } from '@/entities/user';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { AppRoutes, RoutePath } from '@/shared/config/router/routerConfig';
 import { HStack } from '@/shared/ui/Stack/HStack/HStack';
-import { Dropdown, DropdownItem } from '@/shared/ui/Dropdown/Dropdown';
 import { Avatar, AvatarSize } from '@/shared/ui/Avatar/Avatar';
+import { Dropdown, DropdownItem } from '@/shared/ui/Popups';
 
 export interface NavbarProps {
     className?: string;

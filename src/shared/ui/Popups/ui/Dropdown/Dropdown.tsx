@@ -2,9 +2,9 @@ import { Menu } from '@headlessui/react';
 import { Fragment, memo, ReactNode } from 'react';
 import style from './Dropdown.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { AppLink } from '../AppLink/AppLink';
-
-export type DropdownDirection = 'bottom-left' | 'bottom-right' | 'top-left' | 'top-right';
+import { AppLink } from '../../../AppLink/AppLink';
+import popupStyle from '../../styles/Popups.module.scss';
+import { directionClasses, PopupDirection } from '../../styles/consts';
 
 export interface DropdownItem {
     id: string;
@@ -18,15 +18,8 @@ export interface DropdownProps {
     className?: string;
     items: DropdownItem[];
     trigger: ReactNode;
-    direction?: DropdownDirection;
+    direction?: PopupDirection;
 }
-
-const directionClasses: Record<DropdownDirection, string> = {
-    'bottom-left': style['bottom-left'],
-    'bottom-right': style['bottom-right'],
-    'top-left': style['top-left'],
-    'top-right': style['top-right']
-};
 
 export const Dropdown = memo((props: DropdownProps) => {
     const { className, items = [], trigger, direction = 'bottom-left' } = props;
@@ -34,12 +27,12 @@ export const Dropdown = memo((props: DropdownProps) => {
     return (
         <Menu as='div' className={classNames(style.dropdown, [className])}>
             <Menu.Button className={style.trigger}>{trigger}</Menu.Button>
-            <Menu.Items className={classNames(style.items, [directionClasses[direction]])}>
+            <Menu.Items className={classNames(popupStyle.items, [directionClasses[direction]])}>
                 {items.map((item) => {
                     const content = ({ acitve }: { acitve: boolean }) => (
                         <button
                             type='button'
-                            className={classNames(style.item, [], {
+                            className={classNames(popupStyle.item, [], {
                                 [style.active]: acitve
                             })}
                             onClick={item.onClick}

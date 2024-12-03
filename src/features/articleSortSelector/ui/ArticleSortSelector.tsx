@@ -4,7 +4,7 @@ import style from './ArticleSortSelector.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ArticleSortField } from '@/entities/article';
 import { SortOrder } from '@/shared/types/sort';
-import { Listbox, ListBoxOption } from '@/shared/ui/ListBox/ListBox';
+import { Listbox, ListBoxOption } from '@/shared/ui/Popups';
 
 export interface ArticleSortSelectorProps {
     className?: string;

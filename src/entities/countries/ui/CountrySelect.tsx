@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { Listbox } from '@/shared/ui/ListBox/ListBox';
+import { Listbox } from '@/shared/ui/Popups';
 import { Country } from '../model/consts/consts';
 
 export interface CountrySelectProps {
