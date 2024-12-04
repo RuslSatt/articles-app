@@ -1,0 +1,33 @@
+.popover {
+    position: relative;
+}
+
+.popup {
+    position: absolute;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--bg-color);
+    z-index: 1;
+    margin-top: 2px;
+    padding: 5px;
+
+    &.bottom-left {
+        top: 100%;
+        right: 0;
+    }
+
+    &.bottom-right {
+        top: 100%;
+        left: 0;
+    }
+
+    &.top-left {
+        bottom: 100%;
+        right: 0;
+    }
+
+    &.top-right {
+        bottom: 100%;
+        left: 0;
+    }
+}

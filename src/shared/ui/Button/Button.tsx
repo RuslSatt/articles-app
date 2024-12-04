@@ -11,6 +11,7 @@ import CopyIcon from '@/shared/assets/icons/copy.svg';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
 import GridIcon from '@/shared/assets/icons/grid.svg';
 import ListIcon from '@/shared/assets/icons/list.svg';
+import Bell from '@/shared/assets/icons/bell.svg';
 import { icons } from '@/shared/assets/icons/types';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -57,6 +58,9 @@ export const Button = memo((props: ButtonProps) => {
             break;
         case icons.LIST:
             Icon = <ListIcon />;
+            break;
+        case icons.BELL:
+            Icon = <Bell />;
             break;
     }
 

@@ -14,6 +14,7 @@ import { AppRoutes, RoutePath } from '@/shared/config/router/routerConfig';
 import { HStack } from '@/shared/ui/Stack/HStack/HStack';
 import { Avatar, AvatarSize } from '@/shared/ui/Avatar/Avatar';
 import { Dropdown, DropdownItem } from '@/shared/ui/Popups';
+import { NotificationButton } from '@/features/notificationButton';
 
 export interface NavbarProps {
     className?: string;
@@ -76,6 +77,7 @@ export const Navbar = memo((props: NavbarProps) => {
                 </AppLink>
             </HStack>
             <HStack gap='10' className={style.navbar__tools}>
+                <NotificationButton />
                 <ThemeSwitcher />
                 <LangSwitcher />
 

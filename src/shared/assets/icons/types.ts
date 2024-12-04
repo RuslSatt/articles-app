@@ -8,5 +8,6 @@ export enum icons {
     CHECK = 'check',
     COPY = 'copy',
     GRID = 'grid',
-    LIST = 'list'
+    LIST = 'list',
+    BELL = 'bell'
 }
