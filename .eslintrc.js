@@ -50,6 +50,7 @@ module.exports = {
                     'optionLabel',
                     'direction',
                     'justifyContent',
+                    'alignItems',
                     'tag',
                     'as',
                     'max'
