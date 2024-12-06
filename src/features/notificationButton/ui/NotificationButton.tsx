@@ -5,7 +5,6 @@ import { Button } from '@/shared/ui/Button/Button';
 import style from './NotificationButton.module.scss';
 import { NotificationList } from '@/entities/notification';
 import { useDevice } from '@/shared/lib/hooks/useDevice';
-import { AnimationProvider } from '@/shared/lib/components/AnimationProvider/AnimationProvider';
 import { Drawer } from '@/shared/ui/Drawer/Drawer';
 
 export const NotificationButton = () => {
@@ -26,12 +25,12 @@ export const NotificationButton = () => {
                     <NotificationList />
                 </Popover>
             ) : (
-                <AnimationProvider>
+                <div>
                     {trigger}
                     <Drawer isOpen={isOpen} onClose={onCloseDrawer}>
                         <NotificationList />
                     </Drawer>
-                </AnimationProvider>
+                </div>
             )}
         </div>
     );
