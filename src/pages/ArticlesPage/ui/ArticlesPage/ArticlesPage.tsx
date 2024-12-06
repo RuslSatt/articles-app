@@ -7,7 +7,7 @@ import { articlesPageReducer } from '../../model/slice/articlesPageSlice';
 import {
     DynamicReducerLoader,
     ReducersList
-} from '@/shared/lib/DynamicReducerLoader/DynamicReducerLoader';
+} from '@/shared/lib/components/DynamicReducerLoader/DynamicReducerLoader';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitailEffect';
 import { Page } from '@/widgets/Page/ui/Page';
 // eslint-disable-next-line max-len

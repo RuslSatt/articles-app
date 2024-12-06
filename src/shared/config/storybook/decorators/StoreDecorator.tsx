@@ -2,7 +2,7 @@ import { StoryFn } from '@storybook/react/*';
 import { DeepPartial, ReducersMapObject } from '@reduxjs/toolkit';
 import { StateSchema, StoreProvider } from '@/app/providers/store';
 import { loginReducer } from '@/features/login/model/slice/loginSlice';
-import { ReducersList } from '@/shared/lib/DynamicReducerLoader/DynamicReducerLoader';
+import { ReducersList } from '@/shared/lib/components/DynamicReducerLoader/DynamicReducerLoader';
 import { profileReducer } from '@/features/editableProfile';
 import { articleDetailsReducer } from '@/entities/article';
 

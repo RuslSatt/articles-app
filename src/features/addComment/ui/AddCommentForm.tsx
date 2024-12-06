@@ -11,7 +11,7 @@ import { Input } from '@/shared/ui/Input/Input';
 import {
     DynamicReducerLoader,
     ReducersList
-} from '@/shared/lib/DynamicReducerLoader/DynamicReducerLoader';
+} from '@/shared/lib/components/DynamicReducerLoader/DynamicReducerLoader';
 
 export interface AddCommentFormProps {
     className?: string;

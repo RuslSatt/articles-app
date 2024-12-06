@@ -12,7 +12,7 @@ import { Message, Severity } from '@/shared/ui/Message/Message';
 import {
     DynamicReducerLoader,
     ReducersList
-} from '@/shared/lib/DynamicReducerLoader/DynamicReducerLoader';
+} from '@/shared/lib/components/DynamicReducerLoader/DynamicReducerLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 export interface LoginFormProps {

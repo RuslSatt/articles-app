@@ -4,7 +4,7 @@ import style from './EditableProfileCard.module.scss';
 import {
     DynamicReducerLoader,
     ReducersList
-} from '@/shared/lib/DynamicReducerLoader/DynamicReducerLoader';
+} from '@/shared/lib/components/DynamicReducerLoader/DynamicReducerLoader';
 import { ProfileCard } from '@/entities/profile';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitailEffect';

@@ -1,6 +1,8 @@
 import React, { FC, ReactNode, useCallback, useEffect } from 'react';
 import style from './Modal.module.scss';
 import { classNames, ClassNamesMods } from '@/shared/lib/classNames/classNames';
+import { Overlay } from '../Overlay/Overlay';
+import { useModal } from '@/shared/lib/hooks/useModal';
 
 export interface ModalProps {
     className?: string;
@@ -17,51 +19,19 @@ export const Modal: FC<ModalProps> = (props) => {
         [style.visible]: visible
     };
 
-    const [isMounted, setIsMounted] = React.useState(false);
-
-    const onClose = useCallback(() => {
-        if (visible) {
-            onHide?.();
-        }
-    }, [visible, onHide]);
-
-    const clickOnContent = (e: React.MouseEvent) => {
-        e.stopPropagation();
-    };
-
-    const onKeyDown = useCallback(
-        (e: Event) => {
-            const event = e as KeyboardEvent;
-            if (event.key === 'Escape') {
-                onClose();
-            }
-        },
-        [onClose]
-    );
-
-    useEffect(() => {
-        if (visible) {
-            setIsMounted(true);
-        }
-    }, [visible]);
-
-    useEffect(() => {
-        if (visible) {
-            window.addEventListener('keydown', onKeyDown);
-        }
-        return () => {
-            window.removeEventListener('keydown', onKeyDown);
-        };
-    }, [visible, onKeyDown]);
+    const { close, isClosing, isMounted } = useModal({
+        animationDelay: 0,
+        onClose: onHide,
+        isOpen: visible
+    });
 
     if (lazy && !isMounted) return null;
 
     return (
         <div className={classNames(style.modal, [className], mods)}>
-            <div onClick={onClose} className={style.modal__overlay} aria-hidden='true'>
-                <div onClick={clickOnContent} className={style.modal__content} aria-hidden='true'>
-                    {children}
-                </div>
+            <Overlay onClick={close} />
+            <div className={style.modal__content} aria-hidden='true'>
+                {children}
             </div>
         </div>
     );

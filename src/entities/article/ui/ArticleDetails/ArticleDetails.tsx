@@ -7,7 +7,7 @@ import style from './ArticleDetails.module.scss';
 import {
     DynamicReducerLoader,
     ReducersList
-} from '@/shared/lib/DynamicReducerLoader/DynamicReducerLoader';
+} from '@/shared/lib/components/DynamicReducerLoader/DynamicReducerLoader';
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
