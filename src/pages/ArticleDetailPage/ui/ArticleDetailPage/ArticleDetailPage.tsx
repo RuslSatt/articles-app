@@ -7,6 +7,7 @@ import { CommentList } from '@/widgets/CommentList';
 import { Page } from '@/widgets/Page/ui/Page';
 import { ArticleRecommendationsList } from '@/widgets/ArticleRecommedationsList';
 import { ArticleDetailPageHeader } from '../ArticleDetailPageHeader/ArticleDetailPageHeader';
+import { ArticleRating } from '@/features/articleRating';
 
 export interface ArticleDetailPageProps {
     className?: string;
@@ -32,6 +33,7 @@ const ArticleDetailPage = (props: ArticleDetailPageProps) => {
             <ArticleDetailPageHeader />
             <ArticleDetails id={id} />
             <ArticleRecommendationsList />
+            <ArticleRating articleId={id} />
             <CommentList id={id} />
         </Page>
     );

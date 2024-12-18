@@ -17,13 +17,14 @@ export interface RatingCardProps {
     hasFeedback?: boolean;
     onCancel?: (starsCount: number) => void;
     onAccept?: (starsCount: number, feedback?: string) => void;
+    rate?: number;
 }
 
 export const RatingCard = (props: RatingCardProps) => {
-    const { className, title, feedbackTitle, hasFeedback, onCancel, onAccept } = props;
+    const { className, title, feedbackTitle, hasFeedback, onCancel, onAccept, rate = 0 } = props;
 
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [starsCount, setStarsCount] = useState(0);
+    const [starsCount, setStarsCount] = useState(rate);
     const [feedback, setFeedback] = useState('');
 
     const onSelectStars = useCallback(
@@ -54,7 +55,7 @@ export const RatingCard = (props: RatingCardProps) => {
         <VStack gap='30'>
             <h1>{feedbackTitle}</h1>
             <Input value={feedback} onChange={setFeedback} placeholder={t('Ваш отзыв')} />
-            <HStack>
+            <HStack max justifyContent='end' gap='10'>
                 <Button onClick={cancelHandler} label={t('Закрыть')} />
                 <Button onClick={acceptHandler} label={t('Отправить')} />
             </HStack>
@@ -64,10 +65,14 @@ export const RatingCard = (props: RatingCardProps) => {
     return (
         <Card className={classNames(style.ratingCard, [className])}>
             <VStack alignItems='center' gap='10'>
-                <h1>{title}</h1>
-                <StarRating onSelect={onSelectStars} />
+                <h1>{rate ? 'Спасибо за оценку' : title}</h1>
+                <StarRating selectedStars={starsCount} onSelect={onSelectStars} />
             </VStack>
-            <Modal visible={isModalOpen} onHide={() => setIsModalOpen(false)}>
+            <Modal
+                className={style.modal}
+                visible={isModalOpen}
+                onHide={() => setIsModalOpen(false)}
+            >
                 {modalContent}
             </Modal>
         </Card>

@@ -433,5 +433,49 @@
       "username": "Aaron_01",
       "avatar": "https://img.kupigolos.ru/hero/5f40c310ab69d.png?p=bh&s=67737a924da032027fdf8f9d7a897e6b"
     }
+  ],
+  "article-ratings": [
+    {
+      "id": "1",
+      "rate": 4,
+      "feedback": "Хорошая статья",
+      "userId": "1",
+      "articleId": "1"
+    },
+    {
+      "id": "2",
+      "rate": 4,
+      "feedback": "Хорошая статья",
+      "userId": "1",
+      "articleId": "2"
+    },
+    {
+      "userId": "1",
+      "articleId": "1",
+      "rate": 5,
+      "id": "9dbVKvG"
+    },
+    {
+      "userId": "1",
+      "articleId": "1",
+      "rate": 5,
+      "feedback": "ghjdgfj",
+      "id": "m6Wu3pS"
+    },
+    {
+      "userId": "1",
+      "articleId": "1",
+      "rate": 2,
+      "id": "fk-0uBK"
+    }
+  ],
+  "profile-ratings": [
+    {
+      "id": "1",
+      "rate": 4,
+      "feedback": "Хорошая статья",
+      "userId": "1",
+      "profileId": "1"
+    }
   ]
 }
