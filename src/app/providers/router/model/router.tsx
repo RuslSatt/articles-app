@@ -6,7 +6,7 @@ import { ProfilePage } from '@/pages/ProfilePage';
 import { ArticlesPage } from '@/pages/ArticlesPage';
 import { ArticleDetailPage } from '@/pages/ArticleDetailPage';
 import { ArticleEditPage } from '@/pages/ArticleEditPage';
-import AdminPanelPage from '@/pages/AdminPanelPage/ui/AdminPanelPage';
+import { AdminPanelPage } from '@/pages/AdminPanelPage';
 import { UserRole } from '@/entities/user';
 import { ForbiddenPage } from '@/pages/ForbiddenPage';
 

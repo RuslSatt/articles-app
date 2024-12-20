@@ -64,7 +64,8 @@ module.exports = {
         'no-noninteractive-element-interactions': 'off',
         'no-param-reassign': 'off',
         'react/jsx-no-useless-fragment': 'warn',
-        'fsd-rules-by-russell/path-checker': ['error', { alias: '@' }]
+        'fsd-rules-by-russell/path-checker': ['error', { alias: '@' }],
+        'fsd-rules-by-russell/public-api-imports': ['error', { alias: '@' }]
     },
     globals: {
         __IS_DEV__: true,

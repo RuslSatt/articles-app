@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import style from './CommentList.module.scss';
-import { CommentCard } from '@/entities/comment/ui/CommentCard';
+import { CommentCard } from '@/entities/comment';
 import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 import { VStack } from '@/shared/ui/Stack/VStack/VStack';
 import { HStack } from '@/shared/ui/Stack/HStack/HStack';

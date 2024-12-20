@@ -9,7 +9,7 @@ import {
     ReducersList
 } from '@/shared/lib/components/DynamicReducerLoader/DynamicReducerLoader';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitailEffect';
-import { Page } from '@/widgets/Page/ui/Page';
+import { Page } from '@/widgets/Page';
 // eslint-disable-next-line max-len
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
