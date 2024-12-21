@@ -65,7 +65,10 @@ module.exports = {
         'no-param-reassign': 'off',
         'react/jsx-no-useless-fragment': 'warn',
         'fsd-rules-by-russell/path-checker': ['error', { alias: '@' }],
-        'fsd-rules-by-russell/public-api-imports': ['error', { alias: '@' }]
+        'fsd-rules-by-russell/public-api-imports': [
+            'error',
+            { alias: '@', testFilePatterns: ['**/*.test.{ts,tsx}', '**/*.story.{ts,tsx}'] }
+        ]
     },
     globals: {
         __IS_DEV__: true,
