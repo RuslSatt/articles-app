@@ -10,7 +10,7 @@ import { Portal } from '@/shared/ui/Portal/Portal';
 import { LoginModal } from '@/features/login';
 import { getUserData } from '@/entities/user';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
-import { AppRoutes, RoutePath } from '@/shared/config/router/routerConfig';
+import { AppRoutes, RoutePath } from '@/shared/types/router';
 import { HStack } from '@/shared/ui/Stack/HStack/HStack';
 import { NotificationButton } from '@/features/notificationButton';
 import { AvatarDropdown } from '@/features/avatarDropdown';

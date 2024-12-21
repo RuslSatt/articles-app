@@ -1,6 +1,6 @@
 import { RouteProps } from 'react-router-dom';
 import { lazy } from 'react';
-import { AppRoutes, RoutePath } from '@/shared/config/router/routerConfig';
+import { AppRoutes, RoutePath } from '@/shared/types/router';
 import { NotPageFound } from '@/pages/NotPageFound';
 import { ProfilePage } from '@/pages/ProfilePage';
 import { ArticlesPage } from '@/pages/ArticlesPage';

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { Avatar, AvatarSize } from '@/shared/ui/Avatar/Avatar';
 import { Dropdown, DropdownItem } from '@/shared/ui/Popups';
-import { AppRoutes, RoutePath } from '@/shared/config/router/routerConfig';
+import { AppRoutes, RoutePath } from '@/shared/types/router';
 import { isUserAdmin, User, userActions } from '@/entities/user';
 
 export interface AvatarDropdownProps {

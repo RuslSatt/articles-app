@@ -5,7 +5,7 @@ import style from './CommentCard.module.scss';
 import { IComment } from '../model/types/comment';
 import { Avatar, AvatarSize } from '@/shared/ui/Avatar/Avatar';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
-import { AppRoutes, RoutePath } from '@/shared/config/router/routerConfig';
+import { AppRoutes, RoutePath } from '@/shared/types/router';
 
 export interface CommentCardProps {
     className?: string;
