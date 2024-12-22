@@ -1,5 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { PayloadAction } from '@reduxjs/toolkit';
 import { IAddCommentFormSchema } from '../types/addCommentForm';
+import { buildSlice } from '@/shared/lib/store/buildSlice';
 
 const initialState: IAddCommentFormSchema = {
     text: '',
@@ -7,7 +8,7 @@ const initialState: IAddCommentFormSchema = {
     isLoading: false
 };
 
-export const addCommentFormSlice = createSlice({
+export const addCommentFormSlice = buildSlice({
     name: 'addCommentForm',
     initialState,
     reducers: {
@@ -19,3 +20,4 @@ export const addCommentFormSlice = createSlice({
 
 export const { actions: addCommentFormActions } = addCommentFormSlice;
 export const { reducer: addCommentFormReducer } = addCommentFormSlice;
+export const { useActions: useAddCommentFormActions } = addCommentFormSlice;
