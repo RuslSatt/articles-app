@@ -5,9 +5,9 @@ import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import style from './ArticleDetailPageHeader.module.scss';
 import { Button } from '@/shared/ui/Button/Button';
-import { AppRoutes, RoutePath } from '@/shared/types/router';
 import { getCanEditArticle } from '../../model/selectors/article/getCanEditArticle';
 import { getArticleDetailsData } from '@/entities/article';
+import { getRouteArticleEdit, getRouteArticles } from '@/shared/types/router';
 
 export interface ArticleDetailPageHeaderProps {
     className?: string;
@@ -24,11 +24,11 @@ export const ArticleDetailPageHeader = memo((props: ArticleDetailPageHeaderProps
     const navigate = useNavigate();
 
     const onBackToList = useCallback(() => {
-        navigate(RoutePath[AppRoutes.ARTICLES]);
+        navigate(getRouteArticles());
     }, [navigate]);
 
     const onEditArticle = useCallback(() => {
-        navigate(`${RoutePath[AppRoutes.ARTICLES]}/${articleData?.id}/edit`);
+        navigate(getRouteArticleEdit(articleData?.id ?? ''));
     }, [articleData?.id, navigate]);
 
     return (

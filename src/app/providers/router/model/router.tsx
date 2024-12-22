@@ -1,6 +1,17 @@
 import { RouteProps } from 'react-router-dom';
 import { lazy } from 'react';
-import { AppRoutes, RoutePath } from '@/shared/types/router';
+import {
+    getRouteAbout,
+    getRouteAdminPanel,
+    getRouteArticleCreate,
+    getRouteArticleDetails,
+    getRouteArticleEdit,
+    getRouteArticles,
+    getRouteForbidden,
+    getRouteMain,
+    getRouteNotFound,
+    getRouteProfile
+} from '@/shared/types/router';
 import { NotPageFound } from '@/pages/NotPageFound';
 import { ProfilePage } from '@/pages/ProfilePage';
 import { ArticlesPage } from '@/pages/ArticlesPage';
@@ -20,51 +31,51 @@ export type IRouteProps = RouteProps & {
 
 export const router: Array<IRouteProps> = [
     {
-        path: RoutePath[AppRoutes.MAIN],
+        path: getRouteMain(),
         element: <MainPage />
     },
     {
-        path: RoutePath[AppRoutes.ABOUT],
+        path: getRouteAbout(),
         element: <AboutPage />
     },
     {
-        path: `${RoutePath[AppRoutes.PROFILE]}:id`,
+        path: getRouteProfile(':id'),
         element: <ProfilePage />,
         authOnly: true
     },
     {
-        path: RoutePath[AppRoutes.ARTICLES],
+        path: getRouteArticles(),
         element: <ArticlesPage />,
         authOnly: true
     },
     {
-        path: `${RoutePath[AppRoutes.ARTICLES_DETAILS]}:id`,
+        path: getRouteArticleDetails(':id'),
         element: <ArticleDetailPage />,
         authOnly: true
     },
     {
-        path: `${RoutePath[AppRoutes.ARTICLE_CREATE]}`,
+        path: getRouteArticleCreate(),
         element: <ArticleEditPage />,
         authOnly: true
     },
     {
-        path: `${RoutePath[AppRoutes.ARTICLE_EDIT]}`,
+        path: getRouteArticleEdit(':id'),
         element: <ArticleEditPage />,
         authOnly: true
     },
     {
-        path: RoutePath[AppRoutes.ADMIN_PANEL],
+        path: getRouteAdminPanel(),
         element: <AdminPanelPage />,
         authOnly: true,
         roles: [UserRole.ADMIN]
     },
     {
-        path: RoutePath[AppRoutes.FORBIDDEN],
+        path: getRouteForbidden(),
         element: <ForbiddenPage />,
         authOnly: true
     },
     {
-        path: RoutePath[AppRoutes.NOT_FOUND],
+        path: getRouteNotFound(),
         element: <NotPageFound />
     }
 ];

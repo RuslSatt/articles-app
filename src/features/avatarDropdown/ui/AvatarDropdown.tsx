@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { Avatar, AvatarSize } from '@/shared/ui/Avatar/Avatar';
 import { Dropdown, DropdownItem } from '@/shared/ui/Popups';
-import { AppRoutes, RoutePath } from '@/shared/types/router';
 import { isUserAdmin, User, userActions } from '@/entities/user';
+import { getRouteAdminPanel, getRouteProfile } from '@/shared/types/router';
 
 export interface AvatarDropdownProps {
     className?: string;
@@ -26,7 +26,7 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
         {
             id: '1',
             name: t('Профиль'),
-            href: `${RoutePath[AppRoutes.PROFILE]}${userData?.id}`
+            href: getRouteProfile(userData?.id ?? '')
         },
         {
             id: '2',
@@ -41,7 +41,7 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
         dropdownItems.unshift({
             id: 'admin',
             name: t('Админ-панель'),
-            href: `${RoutePath[AppRoutes.ADMIN_PANEL]}`
+            href: getRouteAdminPanel()
         });
     }
 

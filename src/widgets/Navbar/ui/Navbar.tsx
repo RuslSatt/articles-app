@@ -10,10 +10,10 @@ import { Portal } from '@/shared/ui/Portal/Portal';
 import { LoginModal } from '@/features/login';
 import { getUserData } from '@/entities/user';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
-import { AppRoutes, RoutePath } from '@/shared/types/router';
 import { HStack } from '@/shared/ui/Stack/HStack/HStack';
 import { NotificationButton } from '@/features/notificationButton';
 import { AvatarDropdown } from '@/features/avatarDropdown';
+import { getRouteArticleCreate, getRouteMain } from '@/shared/types/router';
 
 export interface NavbarProps {
     className?: string;
@@ -40,10 +40,10 @@ export const Navbar = memo((props: NavbarProps) => {
             className={classNames(style.navbar, [className])}
         >
             <HStack gap='20'>
-                <AppLink className={style.logo} to={RoutePath[AppRoutes.MAIN]}>
+                <AppLink className={style.logo} to={getRouteMain()}>
                     {t('articles-app')}
                 </AppLink>
-                <AppLink className={style.article} to={RoutePath[AppRoutes.ARTICLE_CREATE]}>
+                <AppLink className={style.article} to={getRouteArticleCreate()}>
                     {t('Создать статью')}
                 </AppLink>
             </HStack>
