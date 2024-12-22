@@ -2,9 +2,12 @@ import { StoryFn } from '@storybook/react/*';
 import { DeepPartial, ReducersMapObject } from '@reduxjs/toolkit';
 import { StateSchema, StoreProvider } from '@/app/providers/store';
 import { ReducersList } from '@/shared/lib/components/DynamicReducerLoader/DynamicReducerLoader';
-import { profileReducer } from '@/features/editableProfile';
-import { articleDetailsReducer } from '@/entities/article';
-import { loginReducer } from '@/features/login';
+// eslint-disable-next-line fsd-rules-by-russell/public-api-imports
+import { profileReducer } from '@/features/editableProfile/testing';
+// eslint-disable-next-line fsd-rules-by-russell/public-api-imports
+import { articleDetailsReducer } from '@/entities/article/testing';
+// eslint-disable-next-line fsd-rules-by-russell/public-api-imports
+import { loginReducer } from '@/features/login/testing';
 
 const defaultDynamicReducers: ReducersList = {
     login: loginReducer,

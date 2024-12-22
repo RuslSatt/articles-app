@@ -67,7 +67,17 @@ module.exports = {
         'fsd-rules-by-russell/path-checker': ['error', { alias: '@' }],
         'fsd-rules-by-russell/public-api-imports': [
             'error',
-            { alias: '@', testFilePatterns: ['**/*.test.{ts,tsx}', '**/*.story.{ts,tsx}'] }
+            {
+                alias: '@',
+                testFilePatterns: [
+                    '**/*.test.{ts,tsx}',
+                    '**/*.story.{ts,tsx}, **/StoreDecorator.tsx'
+                ]
+            }
+        ],
+        'fsd-rules-by-russell/layer-imports': [
+            'error',
+            { alias: '@', ignoreImportPatterns: ['**/StoreProvider', '**/testing', '**/store'] }
         ]
     },
     globals: {

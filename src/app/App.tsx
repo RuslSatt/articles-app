@@ -1,13 +1,13 @@
 import './styles/index.scss';
 import { Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useTheme } from '@/app/providers/theme';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppRouter } from './providers/router';
 import { Navbar } from '@/widgets/Navbar';
 import { Sidebar } from '@/widgets/Sidebar';
-import ErrorBoundary from '@/app/providers/ErrorBoundary';
+import ErrorBoundary from './providers/ErrorBoundary';
 import { getUserMounted, userActions } from '@/entities/user';
+import { useTheme } from '@/shared/lib/hooks/useTheme';
 
 const App = () => {
     const { theme } = useTheme();

@@ -4,6 +4,7 @@ import { ProfileCard } from './ProfileCard';
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator';
 import { Country } from '@/entities/countries';
 import { Currency } from '@/entities/currency';
+// eslint-disable-next-line fsd-rules-by-russell/layer-imports
 import { ProfileEditButton, ProfileForm, ValidateProfileError } from '@/features/editableProfile';
 import { StateSchema } from '@/app/providers/store';
 import { IProfile } from '../model/types/profile';

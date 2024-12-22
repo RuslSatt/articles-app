@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import style from './ArticleRecommendationsList.module.scss';
 import { ArticleView } from '@/entities/article';
+// eslint-disable-next-line fsd-rules-by-russell/layer-imports
 import { ArticleList } from '@/widgets/ArticleList';
 import { useFetchArticleRecommendationsQuery } from '../api';
 
