@@ -9,22 +9,16 @@ import { IBuildOptions } from '../types/config';
 
 export function buildPlugins(options: IBuildOptions): webpack.WebpackPluginInstance[] {
     const { paths, isDev, apiUrl, project } = options;
-
+    const isProd = !isDev;
     const plugins = [
         new webpack.ProgressPlugin(),
         new HtmlWebpackPlugin({
             template: paths.html
         }),
-        new MiniCssExtractPlugin({
-            filename: 'css/[name].css'
-        }),
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
             __API__: JSON.stringify(apiUrl),
             __PROJECT__: JSON.stringify(project)
-        }),
-        new CopyPlugin({
-            patterns: [{ from: paths.locales, to: paths.buildLocales }]
         }),
         new ForkTsCheckerWebpackPlugin({
             typescript: {
@@ -45,6 +39,17 @@ export function buildPlugins(options: IBuildOptions): webpack.WebpackPluginInsta
             new CircularDependencyPlugin({
                 exclude: /node_modules/,
                 failOnError: true
+            })
+        );
+    }
+
+    if (isProd) {
+        plugins.push(
+            new MiniCssExtractPlugin({
+                filename: 'css/[name].css'
+            }),
+            new CopyPlugin({
+                patterns: [{ from: paths.locales, to: paths.buildLocales }]
             })
         );
     }

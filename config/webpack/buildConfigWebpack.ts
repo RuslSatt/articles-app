@@ -11,7 +11,7 @@ export function buildConfigWebpack(options: IBuildOptions): webpack.Configuratio
     return {
         mode,
         entry: paths.entry,
-        devtool: isDev ? 'inline-source-map' : undefined,
+        devtool: isDev ? 'eval-cheap-module-source-map' : undefined,
         devServer: isDev ? buildDevServer(options) : undefined,
         output: {
             filename: '[name].[contenthash].js',
