@@ -1,4 +1,4 @@
-import { CSSProperties, memo, useCallback } from 'react';
+import { CSSProperties, useCallback } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import style from './SelectButton.module.scss';
 import { Button } from '../Button/Button';

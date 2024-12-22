@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, useCallback, useEffect } from 'react';
+import React, { FC, ReactNode } from 'react';
 import style from './Modal.module.scss';
 import { classNames, ClassNamesMods } from '@/shared/lib/classNames/classNames';
 import { Overlay } from '../Overlay/Overlay';

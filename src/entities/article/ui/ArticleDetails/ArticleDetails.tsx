@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 import { useTranslation } from 'react-i18next';
-import { memo, useCallback, useEffect } from 'react';
+import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import style from './ArticleDetails.module.scss';

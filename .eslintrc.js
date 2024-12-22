@@ -19,7 +19,13 @@ module.exports = {
         ecmaVersion: 'latest',
         sourceType: 'module'
     },
-    plugins: ['react', '@typescript-eslint', 'react-hooks', 'fsd-rules-by-russell'],
+    plugins: [
+        'react',
+        '@typescript-eslint',
+        'react-hooks',
+        'fsd-rules-by-russell',
+        'unused-imports'
+    ],
     rules: {
         'react/jsx-indent': [2, 4],
         'react/jsx-indent-props': [2, 4],
@@ -78,7 +84,8 @@ module.exports = {
         'fsd-rules-by-russell/layer-imports': [
             'error',
             { alias: '@', ignoreImportPatterns: ['**/StoreProvider', '**/testing', '**/store'] }
-        ]
+        ],
+        'unused-imports/no-unused-imports': 'error'
     },
     globals: {
         __IS_DEV__: true,

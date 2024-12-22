@@ -1,6 +1,5 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { classNames } from '@/shared/lib/classNames/classNames';
 import { SelectButton, SelectButtonOption } from '@/shared/ui/SelectButton/SelectButton';
 import { ArticleType } from '@/entities/article';
 
