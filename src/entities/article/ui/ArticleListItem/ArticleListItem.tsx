@@ -11,6 +11,8 @@ import { Button } from '@/shared/ui/Button/Button';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { ArticleBlockType, ArticleView } from '../../model/consts/consts';
 import { getRouteArticleDetails } from '@/shared/types/router';
+import { AppImage } from '@/shared/ui/AppImage/AppImage';
+import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 
 export interface ArticleListItemProps {
     className?: string;
@@ -63,7 +65,12 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                         {Types}
 
                         <div className={style.img__container}>
-                            <img className={style.img} src={article?.img} alt={article?.title} />
+                            <AppImage
+                                fallback={<Skeleton width='100%' height={500} />}
+                                className={style.img}
+                                src={article?.img}
+                                alt={article?.title}
+                            />
                         </div>
 
                         <div className={style.content}>
@@ -90,7 +97,12 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                 <Card>
                     <div className={style.item__container}>
                         <div className={style.img__container}>
-                            <img className={style.img} src={article?.img} alt={article?.title} />
+                            <AppImage
+                                fallback={<Skeleton width='100%' height='100%' />}
+                                className={style.img}
+                                src={article?.img}
+                                alt={article?.title}
+                            />
                             <div className={style.date}>{article?.createdAt}</div>
                         </div>
                         <div className={style.info__container}>
