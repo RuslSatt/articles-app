@@ -42,6 +42,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     return (
         <DynamicReducerLoader reducersList={reducers} removeAfterUnmount={false}>
             <Page
+                dataTestId='ArticlesPage'
                 onScrollEnd={onLoadNextPart}
                 className={classNames(style.articlesPage, [className])}
             >

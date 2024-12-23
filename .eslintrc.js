@@ -9,7 +9,8 @@ module.exports = {
         'airbnb',
         'plugin:i18next/recommended',
         'plugin:prettier/recommended',
-        'plugin:storybook/recommended'
+        'plugin:storybook/recommended',
+        'plugin:cypress/recommended'
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
