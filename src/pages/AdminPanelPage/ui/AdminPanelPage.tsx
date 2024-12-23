@@ -10,7 +10,7 @@ const AdminPanelPage = (props: IAdminPanelPageProps) => {
 
     const { t } = useTranslation();
 
-    return <Page>{t('Admin panel')}</Page>;
+    return <Page dataTestId='AdminPanelPage'>{t('Admin panel')}</Page>;
 };
 
 export default AdminPanelPage;

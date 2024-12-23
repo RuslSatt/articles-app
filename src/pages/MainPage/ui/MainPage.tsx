@@ -5,7 +5,7 @@ import { Page } from '@/widgets/Page';
 const MainPage = () => {
     const { t } = useTranslation();
 
-    return <Page>{t('MAIN PAGE')}</Page>;
+    return <Page dataTestId='MainPage'>{t('MAIN PAGE')}</Page>;
 };
 
 export default MainPage;

@@ -14,7 +14,7 @@ export const NotPageFound: FC<NotPageFoundProps> = (props) => {
     const { t } = useTranslation();
 
     return (
-        <Page className={classNames(style.notPageFound, [className])}>
+        <Page dataTestId='NotPageFound' className={classNames(style.notPageFound, [className])}>
             <h1 className={style.notPageFound__title}>404</h1>
             <p className={style.notPageFound__text}>{t('Page not found')}</p>
         </Page>

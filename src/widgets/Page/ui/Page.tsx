@@ -9,15 +9,16 @@ import { getSaveScrollPositionByPath, saveScrollActions } from '@/features/saveS
 import { StateSchema } from '@/app/providers/store';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitailEffect';
 import { useThrottle } from '@/shared/lib/hooks/useThrottle';
+import { ITestsProps } from '@/shared/types/tests';
 
-export interface PageProps {
+export interface PageProps extends ITestsProps {
     className?: string;
     children: ReactNode;
     onScrollEnd?: () => void;
 }
 
 export const Page = (props: PageProps) => {
-    const { className, children, onScrollEnd } = props;
+    const { className, children, onScrollEnd, dataTestId } = props;
 
     const dispatch = useAppDispatch();
     const { pathname } = useLocation();
@@ -50,7 +51,12 @@ export const Page = (props: PageProps) => {
     }, 500);
 
     return (
-        <div onScroll={onScroll} ref={wrapperRef} className={classNames(style.page, [className])}>
+        <div
+            data-testid={dataTestId ?? 'page'}
+            onScroll={onScroll}
+            ref={wrapperRef}
+            className={classNames(style.page, [className])}
+        >
             {children}
             {onScrollEnd ? <div className={style.trigger} ref={triggerRef} /> : null}
         </div>

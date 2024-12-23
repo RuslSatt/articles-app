@@ -59,7 +59,8 @@ module.exports = {
                     'alignItems',
                     'tag',
                     'as',
-                    'max'
+                    'max',
+                    'dataTestId'
                 ]
             }
         ],
