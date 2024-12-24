@@ -420,6 +420,15 @@
       "roles": [
         "USER"
       ]
+    },
+    {
+      "id": "3",
+      "username": "testUser",
+      "password": "123",
+      "avatar": "https://img.kupigolos.ru/hero/5f40c310ab69d.png?p=bh&s=67737a924da032027fdf8f9d7a897e6b",
+      "roles": [
+        "ADMIN"
+      ]
     }
   ],
   "profile": [
@@ -443,6 +452,17 @@
       "country": "RU",
       "city": "Уфа",
       "username": "Aaron_01",
+      "avatar": "https://img.kupigolos.ru/hero/5f40c310ab69d.png?p=bh&s=67737a924da032027fdf8f9d7a897e6b"
+    },
+    {
+      "id": "3",
+      "first": "User",
+      "lastname": "Test",
+      "age": 1,
+      "currency": "RUB",
+      "country": "RU",
+      "city": "Уфа",
+      "username": "testUser",
       "avatar": "https://img.kupigolos.ru/hero/5f40c310ab69d.png?p=bh&s=67737a924da032027fdf8f9d7a897e6b"
     }
   ],

@@ -1,5 +1,3 @@
-import { selectByTestId } from 'cypress/helpers/selectByTestId';
-
 describe('Маршрутизация', () => {
     describe('Пользователь не авторизован', () => {
         it('Переход на главную страницу', () => {
@@ -17,7 +15,7 @@ describe('Маршрутизация', () => {
     });
     describe('Пользователь авторизован', () => {
         beforeEach(() => {
-            cy.login('admin', '123');
+            cy.login();
         });
 
         it('Переход на страницу профиля', () => {

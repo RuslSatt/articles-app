@@ -2,7 +2,7 @@ import { LOCAL_STORAGE_USER_KEY } from '../../../src/shared/const/storage';
 import { User } from '../../../src/entities/user';
 import { selectByTestId } from 'cypress/helpers/selectByTestId';
 
-export const login = (username: string, password: string) => {
+export const login = (username: string = 'testUser', password: string = '123') => {
     cy.request({
         method: 'POST',
         url: 'http://localhost:8000/login',
@@ -24,8 +24,8 @@ export const getByTestId = (testId: string) => {
 declare global {
     namespace Cypress {
         interface Chainable {
-            login(email: string, password: string): Chainable<User>;
-            getByTestId(testId: string): ReturnType<typeof cy.get>;
+            login(username?: string, password?: string): Chainable<User>;
+            getByTestId(testId: string): Chainable<JQuery<HTMLElement>>;
         }
     }
 }
