@@ -29,6 +29,13 @@ describe('Вход пользователя на страницу статьи',
         cy.addComment('my comment');
         cy.getByTestId('CommentCard').should('have.length', 1);
     });
+});
+
+describe('Оценка статьи пользователя', () => {
+    beforeEach(() => {
+        cy.login();
+        cy.visit(`articles/hjk`);
+    });
 
     it('Оценка статьи', () => {
         cy.intercept('GET', '**/articles/*', { fixture: 'article-details.json' });
@@ -36,5 +43,9 @@ describe('Вход пользователя на страницу статьи',
         cy.getByTestId('RatingCard').scrollIntoView();
         cy.setRate(4, 'feedback');
         cy.get('[data-selected=true]').should('have.length', 4);
+    });
+
+    afterEach(() => {
+        cy.removeArticle('hjk');
     });
 });
