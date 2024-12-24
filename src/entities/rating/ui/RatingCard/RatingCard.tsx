@@ -54,16 +54,29 @@ export const RatingCard = (props: RatingCardProps) => {
     const modalContent = (
         <VStack gap='30'>
             <h1>{feedbackTitle}</h1>
-            <Input value={feedback} onChange={setFeedback} placeholder={t('Ваш отзыв')} />
+            <Input
+                data-testid='RatingCardInput'
+                value={feedback}
+                onChange={setFeedback}
+                placeholder={t('Ваш отзыв')}
+            />
             <HStack max justifyContent='end' gap='10'>
-                <Button onClick={cancelHandler} label={t('Закрыть')} />
-                <Button onClick={acceptHandler} label={t('Отправить')} />
+                <Button
+                    data-testid='RatingCardCancel'
+                    onClick={cancelHandler}
+                    label={t('Закрыть')}
+                />
+                <Button
+                    data-testid='RatingCardAccept'
+                    onClick={acceptHandler}
+                    label={t('Отправить')}
+                />
             </HStack>
         </VStack>
     );
 
     return (
-        <Card className={classNames(style.ratingCard, [className])}>
+        <Card data-testid='RatingCard' className={classNames(style.ratingCard, [className])}>
             <VStack alignItems='center' gap='10'>
                 <h1>{rate ? 'Спасибо за оценку' : title}</h1>
                 <StarRating selectedStars={starsCount} onSelect={onSelectStars} />

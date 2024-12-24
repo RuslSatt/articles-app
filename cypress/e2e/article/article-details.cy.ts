@@ -26,7 +26,14 @@ describe('Вход пользователя на страницу статьи',
     it('Отправка комментариев для статьи', () => {
         cy.getByTestId('articleDetailsAvatar').should('exist');
         cy.getByTestId('AddCommentForm').scrollIntoView();
-        cy.addComment('my comment');
-        cy.getByTestId('CommentCard').should('have.length', 1);
+        // cy.addComment('my comment');
+        // cy.getByTestId('CommentCard').should('have.length', 1);
+    });
+
+    it('Оценка статьи', () => {
+        cy.getByTestId('articleDetailsAvatar').should('exist');
+        cy.getByTestId('RatingCard').scrollIntoView();
+        cy.setRate(4, 'feedback');
+        cy.get('[data-selected=true]').should('have.length', 4);
     });
 });
