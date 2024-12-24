@@ -31,6 +31,7 @@ describe('Вход пользователя на страницу статьи',
     });
 
     it('Оценка статьи', () => {
+        cy.intercept('GET', '**/articles/*', { fixture: 'article-details.json' });
         cy.getByTestId('articleDetailsAvatar').should('exist');
         cy.getByTestId('RatingCard').scrollIntoView();
         cy.setRate(4, 'feedback');
