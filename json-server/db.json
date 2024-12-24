@@ -400,6 +400,18 @@
       "userId": "1",
       "articleId": "4",
       "id": "zD4gGUN"
+    },
+    {
+      "text": "new comment",
+      "userId": "1",
+      "articleId": "3",
+      "id": "zV_-Dry"
+    },
+    {
+      "text": "2",
+      "userId": "1",
+      "articleId": "3",
+      "id": "PZqoXyx"
     }
   ],
   "users": [

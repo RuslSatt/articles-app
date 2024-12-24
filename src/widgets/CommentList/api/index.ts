@@ -16,14 +16,16 @@ const articleCommentsApi = rtkApi.injectEndpoints({
                     _expand: 'user',
                     articleId: id
                 }
-            })
+            }),
+            providesTags: (result) => ['Comments']
         }),
         addComment: builder.mutation<IComment, IAddCommentRequest>({
             query: (body: IAddCommentRequest) => ({
                 url: '/comments',
                 method: 'POST',
                 body
-            })
+            }),
+            invalidatesTags: ['Comments']
         })
     })
 });

@@ -50,7 +50,7 @@ export const CommentList = memo((props: CommentListProps) => {
     }
 
     const onSendComment = async (text: string) => {
-        const payload = await addComment({
+        await addComment({
             text,
             userId: user?.id ?? '',
             articleId: article?.id ?? ''

@@ -4,6 +4,7 @@ import { LOCAL_STORAGE_USER_KEY } from '../const/storage';
 // Define a service using a base URL and expected endpoints
 export const rtkApi = createApi({
     reducerPath: 'api',
+    tagTypes: ['Comments'],
     baseQuery: fetchBaseQuery({
         baseUrl: __API__,
         prepareHeaders: (headers) => {
