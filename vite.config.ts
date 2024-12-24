@@ -9,6 +9,9 @@ export default defineConfig({
         }),
         react()
     ],
+    server: {
+        host: true
+    },
     resolve: {
         alias: [{ find: '@', replacement: '/src' }]
     },

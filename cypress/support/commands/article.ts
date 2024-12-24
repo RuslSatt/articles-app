@@ -17,7 +17,8 @@ export const createArticle = (article?: IArticle) => {
         method: 'POST',
         url: `http://localhost:8000/articles`,
         body: article ?? defaultArticle,
-        headers: { Authorization: 'Bearer 123' }
+        headers: { Authorization: 'Bearer 123' },
+        failOnStatusCode: false
     }).then(({ body }) => {
         return body;
     });
@@ -27,7 +28,8 @@ export const removeArticle = (articleId: string) => {
     cy.request({
         method: 'DELETE',
         url: `http://localhost:8000/articles/${articleId}`,
-        headers: { Authorization: 'Bearer 123' }
+        headers: { Authorization: 'Bearer 123' },
+        failOnStatusCode: false
     });
 };
 

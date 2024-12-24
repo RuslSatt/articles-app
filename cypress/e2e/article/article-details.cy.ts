@@ -7,7 +7,7 @@ describe('Вход пользователя на страницу статьи',
         cy.login();
         cy.createArticle().then((article: IArticle) => {
             articleId = article.id;
-            cy.visit(`articles/${article.id}`);
+            cy.visit(`articles/${article.id}`, { failOnStatusCode: false });
         });
     });
 
@@ -26,8 +26,8 @@ describe('Вход пользователя на страницу статьи',
     it('Отправка комментариев для статьи', () => {
         cy.getByTestId('articleDetailsAvatar').should('exist');
         cy.getByTestId('AddCommentForm').scrollIntoView();
-        // cy.addComment('my comment');
-        // cy.getByTestId('CommentCard').should('have.length', 1);
+        cy.addComment('my comment');
+        cy.getByTestId('CommentCard').should('have.length', 1);
     });
 
     it('Оценка статьи', () => {
