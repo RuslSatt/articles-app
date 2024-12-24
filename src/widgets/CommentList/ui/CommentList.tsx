@@ -21,7 +21,7 @@ export const CommentList = memo((props: CommentListProps) => {
     const { className, id } = props;
 
     const { t } = useTranslation();
-    const { data: comments, isLoading } = useFetchArticleCommentsQuery(id);
+    let { data: comments, isLoading } = useFetchArticleCommentsQuery(id);
     const [addComment] = useAddCommentMutation();
     const user = useSelector(getUserData);
     const article = useSelector(getArticleDetailsData);
@@ -49,8 +49,8 @@ export const CommentList = memo((props: CommentListProps) => {
         );
     }
 
-    const onSendComment = (text: string) => {
-        addComment({
+    const onSendComment = async (text: string) => {
+        const payload = await addComment({
             text,
             userId: user?.id ?? '',
             articleId: article?.id ?? ''

@@ -45,14 +45,22 @@ const AddCommentForm = memo((props: AddCommentFormProps) => {
 
     return (
         <DynamicReducerLoader reducersList={reducersList}>
-            <div className={classNames(style.addCommentForm, [className])}>
+            <div
+                data-testid='AddCommentForm'
+                className={classNames(style.addCommentForm, [className])}
+            >
                 <Input
+                    data-testid='AddCommentFormInput'
                     value={text}
                     onChange={onChangeText}
                     type='text'
                     placeholder={t('Введите комментарий')}
                 />
-                <Button onClick={onSendCommentHandler} label={t('Отправить')} />
+                <Button
+                    data-testid='AddCommentFormButton'
+                    onClick={onSendCommentHandler}
+                    label={t('Отправить')}
+                />
             </div>
         </DynamicReducerLoader>
     );

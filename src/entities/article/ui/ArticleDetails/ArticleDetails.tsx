@@ -101,7 +101,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     } else {
         content = (
             <>
-                <div className={style.article_avatar}>
+                <div data-testid='articleDetailsAvatar' className={style.article_avatar}>
                     <Avatar
                         size={AvatarSize.LARGE}
                         image={data?.img || ''}
@@ -136,7 +136,12 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
 
     return (
         <DynamicReducerLoader reducersList={reducersList}>
-            <div className={classNames(style.articleDetails, [className])}>{content}</div>
+            <div
+                data-testid='ArticleDetails'
+                className={classNames(style.articleDetails, [className])}
+            >
+                {content}
+            </div>
         </DynamicReducerLoader>
     );
 });

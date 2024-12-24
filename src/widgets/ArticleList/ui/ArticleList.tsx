@@ -21,7 +21,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
     const { className, articles, isLoading = false, view = ArticleView.LIST, target } = props;
 
     return (
-        <div className={classNames(style.article_list, [className])}>
+        <div data-testid='ArticleList' className={classNames(style.article_list, [className])}>
             <ul className={style[view]}>
                 {articles?.length > 0 &&
                     articles?.map((article) => (

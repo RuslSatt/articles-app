@@ -23,7 +23,10 @@ export const ArticleRecommendationsList = memo((props: ArticleRecommendationsLis
     }
 
     return (
-        <div className={classNames(style.articleRecommendations, [className])}>
+        <div
+            data-testid='articleDetailsRecommendations'
+            className={classNames(style.articleRecommendations, [className])}
+        >
             <p className={style.title}>{t('Рекомендуем')}</p>
             <ArticleList
                 target='_blank'
